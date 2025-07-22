@@ -100,7 +100,7 @@
   <!-- Video Section -->
   <section id="videos">
     <h2>🎬 Music Videos</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_id" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=chvXOILtEXw" allowfullscreen></iframe>
   </section>
 
   <!-- Music Store -->
