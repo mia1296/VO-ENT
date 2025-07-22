@@ -31,7 +31,7 @@ VO ENT
     <h2>🎧 Listen to VO</h2>
     <p>Stream now on Apple Music & YouTube</p>
     <iframe width="300" height="170" src="https:www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
-https://youtube.com/channel/UCwOKjSCiX12RGV9GueSvE1w?si=oDpf0frYeqcEkEQk  </section>
+https://youtube.com/channel/UCwOKjSCiX12RGV9GueSvE1w?si=oDpf0frYeqcEkEQk</section>
 
   <section class="merch">
     <h2>🛍 New Merch Drops</h2>
