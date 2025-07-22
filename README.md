@@ -77,6 +77,7 @@
   </section>
 
   <section>
+      <img src="logo3small.png" alt="VO ENT Logo Footer">
     <h2>🗡️ About VO ENT 🗡️</h2>
     <p>VO ENT is a creative brand powered by raw energy, music, and street culture. Stay tuned for new drops, exclusive content, and the next wave from Vito Gwuap.</p>
   </section>
