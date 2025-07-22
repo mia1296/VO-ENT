@@ -78,25 +78,6 @@
   </section>
 
   <section>
-    <h2>🛍️ Merch Preview</h2>
-    <div class="item">
-      <img src="whitehoodiesmall.jpeg" alt="White Hoodie">
-      <p>White Hoodie – Coming Soon</p>
-    </div>
-    <div class="item">
-      <img src="blackhoodiesmall.jpeg" alt="Black Hoodie">
-      <p>Black Hoodie – Coming Soon</p>
-    </div>
-    <br>
-    <a class="button" href="#">Sign Up for Drop Alerts</a>
-  </section>
-
-  <section>
-    <h2>🧑‍🎤 About VO ENT</h2>
-    <p>VO ENT is a creative brand powered by raw energy, music, and street culture. Stay tuned for new drops, exclusive content, and the next wave from Vito Gwuap.</p>
-  </section>
-
-  <section>
     <h2>🎶 VO ENT Music</h2>
 
     <div class="track">
@@ -120,6 +101,25 @@
       <br>
       <a href="focus_full.mp3" download class="button">Download</a>
     </div>
+  </section>
+
+  <section>
+    <h2>🛍️ Merch Preview</h2>
+    <div class="item">
+      <img src="whitehoodiesmall.jpeg" alt="White Hoodie">
+      <p>White Hoodie – Coming Soon</p>
+    </div>
+    <div class="item">
+      <img src="blackhoodiesmall.jpeg" alt="Black Hoodie">
+      <p>Black Hoodie – Coming Soon</p>
+    </div>
+    <br>
+    <a class="button" href="#">Sign Up for Drop Alerts</a>
+  </section>
+
+  <section>
+    <h2>🗡️ About VO ENT 🗡️</h2>
+    <p>VO ENT is a creative brand powered by raw energy, music, and street culture. Stay tuned for new drops, exclusive content, and the next wave from Vito Gwuap.</p>
   </section>
 
   <div class="footer">
