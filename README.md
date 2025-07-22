@@ -1,58 +1,112 @@
-VO ENT
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VO – Official Site</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VO ENT | Music & Merch</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      letter-spacing: 1px;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 2em;
+    }
+    .buttons {
+      margin-bottom: 2em;
+    }
+    a.button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 10px;
+      background: #f04e23;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    a.button:hover {
+      background: #c13b15;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .social {
+      margin-top: 30px;
+    }
+    .social a {
+      margin: 0 10px;
+      color: #f04e23;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>VO</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Music</a>
-      <a href="#">Merch</a>
-      <a href="#">Tour</a>
-      <a href="#">VIP</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+  <h1>🎧 VO ENT</h1>
+  <p>Welcome to the VO Life!</p>
 
-  <section class="hero">
-    <h2>🎤 Real Music. Real Stories.</h2>
-    <p>🔥 New single “REAL ONES” out now.</p>
-    <a href="https://music.apple.com/" class="btn">🔊 Listen Now</a>
-    <a href="#" class="btn">👕 Shop Merch</a>
-  </section>
+  <div class="buttons">
+    <a class="button" href="https://music.apple.com/" target="_blank">🎵 Listen on Apple Music</a>
+    <a class="button" href="https://youtube.com/" target="_blank">📺 Watch on YouTube</a>
+  </div>
 
-  <section class="music">
-    <h2>🎧 Listen to VO</h2>
-    <p>Stream now on Apple Music & YouTube</p>
-    <iframe width="300" height="170" src="https:www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
-https://youtube.com/channel/UCwOKjSCiX12RGV9GueSvE1w?si=oDpf0frYeqcEkEQk</section>
+  <!-- You can upload your image as "cover.jpg" and replace this -->
+  <img src="cover.jpg" alt="VO ENT Album Cover">
 
-  <section class="merch">
-    <h2>🛍 New Merch Drops</h2>
-    <ul>
-      <li>👕 REAL ONES T-shirt – $30</li>
-      <li>🧢 Snapback – $25</li>
-      <li>👟 Hoodie – Preorder $50</li>
-    </ul>
-    <a href="#" class="btn">View All Merch</a>
-  </section>
+  <!-- YouTube Embed -->
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+      title="VO ENT Video" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
 
-  <section class="signup">
-    <h2>📬 Join the VO Squad</h2>
-    <p>Be the first to hear about drops, shows, and VIP perks.</p>
-    <!-- Mailchimp embed goes here -->
-  </section>
+  <div class="social">
+    <p>Follow us:</p>
+    <a href="https://youtube.com/" target="_blank">YouTube</a>
+  </div>
 
   <footer>
-    <p>© 2025 VO. All rights reserved.</p>
-    <p>
-      <a href="#">https://youtube.com/channel/UCwOKjSCiX12RGV9GueSvE1w?si=oDpf0frYeqcEkEQk</a> •
-      <a href="#">TikTok</a> •
-      <a href="#">Instagram</a>
-    
+    &copy; 2025 VO ENT. All rights reserved.
+  </footer>
+</body>
+</html>
