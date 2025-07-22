@@ -67,7 +67,7 @@
     }
   </style>
 </head>
-<body>
+<body><img src="images/cover.jpeg" alt="Cover Image">
   <header>
     <h1>VO ENT</h1>
     <p>Music • Movement • Merch</p>
