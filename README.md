@@ -1,4 +1,4 @@
-<img src="Logo1.jpeg" alt="Cover"> <!DOCTYPE html>
+<img src="logo1.jpeg" alt="Cover"> <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -67,7 +67,7 @@
     }
   </style>
 </head>
-<body><img src="images/cover.jpeg" alt="Cover Image">
+<body><img src="logo1.jpeg" alt="Cover Image">
   <header>
     <h1>VO ENT</h1>
     <p>Music • Movement • Merch</p>
@@ -120,7 +120,7 @@ frameborder="0" allowfullscreen></iframe>
   <section id="music">
     <h2>🛒 Buy Music</h2>
     <div class="item">
-      <img src="cover1.jpg" alt="Cover Art">
+      <img src="logo2.jpg" alt="Cover Art">
       <h3>Track Name 1</h3>
       <audio controls src="track1.mp3"></audio>
       <p>Price: $1.99</p>
@@ -132,7 +132,11 @@ frameborder="0" allowfullscreen></iframe>
   <section id="merch">
     <h2>🛍️ Merch</h2>
     <div class="item">
-      <img src="shirt.jpg" alt="T-shirt">
+      <img src="blackhoodie![white hoodie](https://github.com/user-attachments/assets/1601fe63-5551-4494-a1b7-0d1347023052)
+![logo2](https://github.com/user-attachments/assets/76a74502-70c9-4d68-b429-d5ec8d9fec7f)
+![black hoodie](https://github.com/user-attachments/assets/d5b6ef2a-d723-49e8-87ac-3b4160f6bec3)
+![logo3](https://github.com/user-attachments/assets/54e11475-54aa-45a0-aea0-1ea13c63854c)
+.jpg" alt="T-shirt">
       <h3>Logo Tee</h3>
       <p>$25.00</p>
       <a href="https://yourstorelink.com" class="buy-button">Buy Now</a>
