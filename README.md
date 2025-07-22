@@ -109,7 +109,7 @@
 
 <h2>Check out my video:</h2>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_https://youtu.be/tpHPzui_hPg?si=MkSVjtFy6l-2Neir" 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/https://youtu.be/tpHPzui_hPg?si=MkSVjtFy6l-2Neir" 
 frameborder="0" allowfullscreen></iframe>
 
 </body>
@@ -120,7 +120,8 @@ frameborder="0" allowfullscreen></iframe>
   <section id="music">
     <h2>🛒 Buy Music</h2>
     <div class="item">
-      <img src="cover1.jpg" alt="Cover Art">
+      <img src="![image](https://github.com/user-attachments/assets/723a6ef4-abd4-44a4-b1f6-3ceb565f5e61)
+" alt="Cover Art">
       <h3>Track Name 1</h3>
       <audio controls src="track1.mp3"></audio>
       <p>Price: $1.99</p>
