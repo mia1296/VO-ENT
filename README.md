@@ -15,15 +15,16 @@
     header {
       background: #000;
       text-align: center;
-      padding: 2rem 1rem;
-    }
-    header img {
-      max-width: 150px;
-      margin-bottom: 1rem;
+      padding: 3rem 1rem;
     }
     header h1 {
       font-size: 3rem;
       margin: 0;
+    }
+    header img {
+      max-width: 100px;
+      margin-bottom: 1rem;
+      background: transparent;
     }
     section {
       padding: 2rem 1rem;
@@ -41,26 +42,18 @@
     .footer {
       background: #222;
       text-align: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
     }
-    .item {
-      margin: 2rem auto;
-      max-width: 300px;
-    }
-    .item img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-    .item h3, .item p {
-      margin: 0.5rem 0;
+    .footer img {
+      max-width: 80px;
+      margin-bottom: 0.5rem;
     }
   </style>
 </head>
 <body>
-
   <header>
-  <img src="logo3small.png" alt="VO ENT Logo" style="max-width: 80px; margin-bottom: 1rem;">
+    <img src="logo3small.png" alt="VO ENT Logo">
     <h1>VO ENT</h1>
     <p>Music • Movement • Merch</p>
   </header>
@@ -68,7 +61,7 @@
   <section>
     <h2>🎧 Listen</h2>
     <a class="button" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank">Apple Music</a>
-    <a class="button" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank">YouTube Channel</a>
+    <a class="button" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank">YouTube</a>
   </section>
 
   <section>
@@ -76,33 +69,21 @@
     <a class="button" href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank">Instagram</a>
   </section>
 
-  <section id="signup">
-    <h2>📩 Sign Up</h2>
-    <p>Exclusive drops coming soon.</p>
-  </section>
-
-  <section id="merch">
-    <h2>🛍️ Merch (Coming Soon)</h2>
-    <div class="item">
-      <img src="whitehoodiesmall.jpeg" alt="White Hoodie">
-      <h3>White VO Hoodie</h3>
-      <p>Preview Only</p>
-    </div>
-    <div class="item">
-      <img src="blackhoodiesmall.jpeg" alt="Black Hoodie">
-      <h3>Black VO Hoodie</h3>
-      <p>Preview Only</p>
-    </div>
+  <section>
+    <h2>🛍️ Merch</h2>
+    <p>Coming Soon</p>
+    <img src="whitehoodiesmall.jpeg" alt="White Hoodie" style="max-width:200px; margin: 1rem;">
+    <img src="blackhoodiesmall.jpeg" alt="Black Hoodie" style="max-width:200px; margin: 1rem;">
   </section>
 
   <section>
     <h2>🗡️ About VO ENT 🗡️</h2>
     <p>VO ENT is a creative brand powered by raw energy, music, and street culture. Stay tuned for new drops, exclusive content, and the next wave from Vito Gwuap.</p>
-    <img src="logo2small.jpeg" alt="About Logo" style="max-width: 80px; margin-top: 1rem;">
+  </section>
 
   <div class="footer">
-    &copy; 2025 VO ENT. All rights reserved.
+    <img src="logo3small.png" alt="VO ENT Logo Footer">
+    <p>&copy; 2025 VO ENT. All rights reserved.</p>
   </div>
-
 </body>
 </html>
