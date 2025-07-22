@@ -1,5 +1,5 @@
 VO ENT
-├── <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -30,9 +30,8 @@ VO ENT
   <section class="music">
     <h2>🎧 Listen to VO</h2>
     <p>Stream now on Apple Music & YouTube</p>
-    <iframe width="300" height="170" src="https://youtu.be/-wpnJaxwnfg?si=gP2uFeUlwngqs9Cx/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
-    <!-- Replace with your video -->
-  </section>
+    <iframe width="300" height="170" src="https:www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+https://youtube.com/channel/UCwOKjSCiX12RGV9GueSvE1w?si=oDpf0frYeqcEkEQk  </section>
 
   <section class="merch">
     <h2>🛍 New Merch Drops</h2>
@@ -53,7 +52,7 @@ VO ENT
   <footer>
     <p>© 2025 VO. All rights reserved.</p>
     <p>
-      <a href="#">https://youtu.be/-wpnJaxwnfg?si=gP2uFeUlwngqs9Cx</a> •
+      <a href="#">https://youtube.com/channel/UCwOKjSCiX12RGV9GueSvE1w?si=oDpf0frYeqcEkEQk</a> •
       <a href="#">TikTok</a> •
       <a href="#">Instagram</a>
     
