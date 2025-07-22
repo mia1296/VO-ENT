@@ -120,8 +120,7 @@ frameborder="0" allowfullscreen></iframe>
   <section id="music">
     <h2>🛒 Buy Music</h2>
     <div class="item">
-      <img src="![image](https://github.com/user-attachments/assets/723a6ef4-abd4-44a4-b1f6-3ceb565f5e61)
-" alt="Cover Art">
+      <img src="cover1.jpg" alt="Cover Art">
       <h3>Track Name 1</h3>
       <audio controls src="track1.mp3"></audio>
       <p>Price: $1.99</p>
