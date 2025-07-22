@@ -30,7 +30,7 @@ VO ENT
   <section class="music">
     <h2>🎧 Listen to VO</h2>
     <p>Stream now on Apple Music & YouTube</p>
-    <iframe width="300" height="170" src="https://https://youtu.be/-wpnJaxwnfg?si=gP2uFeUlwngqs9Cx/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+    <iframe width="300" height="170" src="https://youtu.be/-wpnJaxwnfg?si=gP2uFeUlwngqs9Cx/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
     <!-- Replace with your video -->
   </section>
 
@@ -53,7 +53,7 @@ VO ENT
   <footer>
     <p>© 2025 VO. All rights reserved.</p>
     <p>
-      <a href="#">https://youtube.com/playlist?list=RDEM-9iAf3ma2Wp8VUDcb8fSig&playnext=1&si=6-DFtJICbpqm0QuR</a> •
+      <a href="#">https://youtu.be/-wpnJaxwnfg?si=gP2uFeUlwngqs9Cx</a> •
       <a href="#">TikTok</a> •
       <a href="#">Instagram</a>
     </p>
