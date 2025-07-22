@@ -60,7 +60,7 @@
 <body>
 
   <header>
-  <img src="logo3small.jpeg" alt="VO ENT Logo" style="max-width: 80px; margin-bottom: 1rem;">
+  <img src="logo1small.jpeg" alt="VO ENT Logo" style="max-width: 80px; margin-bottom: 1rem;">
     <h1>VO ENT</h1>
     <p>Music • Movement • Merch</p>
   </header>
