@@ -1,4 +1,4 @@
-<img src="logo1.jpeg" alt="Cover"> <!DOCTYPE html>
+<img src="logo2.jpeg" alt="Cover"> <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -67,7 +67,12 @@
     }
   </style>
 </head>
-<body><img src="logo1.jpeg" alt="Cover Image">
+<body><img src="logo2![black hoodie Small](https://github.com/user-attachments/assets/7087b45b-2819-4fe7-b460-417b2ddf1738)
+![white hoodie Small](https://github.com/user-attachments/assets/e81871ef-89f0-4301-b6fc-d5f3646a65b9)
+![logo2 Small](https://github.com/user-attachments/assets/acc749cd-7f51-4fa8-90d9-b861838bbfb1)
+![logo3 Small](https://github.com/user-attachments/assets/49308a20-d770-49b7-9a34-e178caccfc54)
+![logo1 Small](https://github.com/user-attachments/assets/2caea5fa-1114-4c92-95a6-159e433de58c)
+.jpeg" alt="Cover Image">
   <header>
     <h1>VO ENT</h1>
     <p>Music • Movement • Merch</p>
@@ -120,7 +125,7 @@ frameborder="0" allowfullscreen></iframe>
   <section id="music">
     <h2>🛒 Buy Music</h2>
     <div class="item">
-      <img src="logo2.jpg" alt="Cover Art">
+      <img src="logo3.jpg" alt="Cover Art">
       <h3>Track Name 1</h3>
       <audio controls src="track1.mp3"></audio>
       <p>Price: $1.99</p>
