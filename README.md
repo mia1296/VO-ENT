@@ -15,16 +15,15 @@
     header {
       background: #000;
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 2rem 1rem;
+    }
+    header img {
+      max-width: 120px;
+      height: auto;
     }
     header h1 {
       font-size: 3rem;
-      margin: 0;
-    }
-    header img {
-      max-width: 100px;
-      margin-bottom: 1rem;
-      background: transparent;
+      margin: 1rem 0 0.5rem;
     }
     section {
       padding: 2rem 1rem;
@@ -42,16 +41,25 @@
     .footer {
       background: #222;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 1rem;
       font-size: 0.9rem;
     }
-    .footer img {
-      max-width: 80px;
-      margin-bottom: 0.5rem;
+    .item img {
+      width: 200px;
+      border-radius: 8px;
+    }
+    .track img {
+      width: 160px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .track audio {
+      margin-top: 0.5rem;
     }
   </style>
 </head>
 <body>
+
   <header>
     <img src="logo3small.png" alt="VO ENT Logo">
     <h1>VO ENT</h1>
@@ -70,21 +78,53 @@
   </section>
 
   <section>
-    <h2>🛍️ Merch</h2>
-    <p>Coming Soon</p>
-    <img src="whitehoodiesmall.jpeg" alt="White Hoodie" style="max-width:200px; margin: 1rem;">
-    <img src="blackhoodiesmall.jpeg" alt="Black Hoodie" style="max-width:200px; margin: 1rem;">
+    <h2>🛍️ Merch Preview</h2>
+    <div class="item">
+      <img src="whitehoodiesmall.jpeg" alt="White Hoodie">
+      <p>White Hoodie – Coming Soon</p>
+    </div>
+    <div class="item">
+      <img src="blackhoodiesmall.jpeg" alt="Black Hoodie">
+      <p>Black Hoodie – Coming Soon</p>
+    </div>
+    <br>
+    <a class="button" href="#">Sign Up for Drop Alerts</a>
   </section>
 
   <section>
-      <img src="logo3small.png" alt="VO ENT Logo Footer">
     <h2>🗡️ About VO ENT 🗡️</h2>
     <p>VO ENT is a creative brand powered by raw energy, music, and street culture. Stay tuned for new drops, exclusive content, and the next wave from Vito Gwuap.</p>
   </section>
 
+  <section>
+    <h2>🎶 VO ENT Music</h2>
+
+    <div class="track">
+      <img src="logo2small.jpeg" alt="Cover Art">
+      <h3>Vito – R8</h3>
+      <audio controls>
+        <source src="vito_r8.m4a" type="audio/mp4">
+        Your browser does not support the audio element.
+      </audio>
+      <br>
+      <a href="vito_r8.m4a" download class="button">Download</a>
+    </div>
+
+    <div class="track">
+      <img src="logo2small.jpeg" alt="Cover Art">
+      <h3>Focus Full</h3>
+      <audio controls>
+        <source src="focus_full.m4a" type="audio/mp4">
+        Your browser does not support the audio element.
+      </audio>
+      <br>
+      <a href="focus_full.m4a" download class="button">Download</a>
+    </div>
+  </section>
+
   <div class="footer">
-    <img src="logo3small.png" alt="VO ENT Logo Footer">
-    <p>&copy; 2025 VO ENT. All rights reserved.</p>
+    &copy; 2025 VO ENT. All rights reserved.
   </div>
+
 </body>
 </html>
