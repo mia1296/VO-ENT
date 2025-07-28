@@ -1,35 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Redirecting to Sign Up</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VO ENT - Welcome</title>
   <script>
-    // Redirect to the external sign-up site after 3 seconds
-    setTimeout(function() {
-            window.location.href = "https://www.signupanywhere.com/signup/ce0apjkc";
-    }, 3000);
+    function goToSignup() {
+      setTimeout(() => {
+        window.location.href = "signup.html";
+      }, 3000); // Show landing for 3 seconds
+    }
   </script>
-  <style>
-    body {
-      background-color: #111;
-      color: #f2f2f2;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      flex-direction: column;
-    }
-    img {
-      max-width: 100px;
-      margin-bottom: 20px;
-    }
-  </style>
 </head>
-<body>
-  <img src="logo3small.png" alt="VO ENT Logo">
-  <h1>Taking you to the sign-up form...</h1>
+<body onload="goToSignup()">
+  <h1>🎤 Welcome to VO ENT 🎤</h1>
+  <p>Get ready to join the movement...</p>
 </body>
 </html>
