@@ -6,10 +6,23 @@ body {
   color: #fff;
   text-align: center;
 }
+
 header {
   background: #111;
   padding: 20px;
 }
+
+header img {
+  max-width: 80px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
 section {
   margin: 30px auto;
   padding: 20px;
@@ -17,45 +30,76 @@ section {
   background: #222;
   border-radius: 10px;
 }
-a {
-  color: #1db954;
+
+a.button,
+.buy-button,
+button {
+  display: inline-block;
+  margin: 1rem;
+  padding: 1rem 2rem;
+  background: #f00;
+  color: white;
   text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
 }
-a:hover {
-  text-decoration: underline;
+
+a.button:hover,
+.buy-button:hover,
+button:hover {
+  background: #c00;
 }
-.signup-container {
+
+.footer {
+  background: #111;
+  padding: 15px;
+  font-size: 0.9rem;
   margin-top: 50px;
 }
-input, button {
+
+.item {
+  margin: 2rem auto;
+  max-width: 300px;
+}
+
+.item img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.item h3,
+.item p {
+  margin: 0.5rem 0;
+}
+
+.about-logo {
+  max-width: 80px;
+  margin-top: 1rem;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.signup-container {
+  margin-top: 100px;
+  padding: 20px;
+}
+
+input,
+button {
   padding: 10px;
   margin: 10px;
   border: none;
   border-radius: 5px;
 }
+
 button {
   background-color: #1db954;
   color: #fff;
   cursor: pointer;
 }
-.item img {
-  max-width: 100%;
-  border-radius: 10px;
-}
-.button, .buy-button {
-  display: inline-block;
-  margin-top: 10px;
-  background-color: #1db954;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-.footer {
-  padding: 20px;
-  background: #111;
-  margin-top: 40px;
-}
-.about-logo {
+
+a.signup-button img {
   max-width: 100px;
-  margin-top: 10px;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
 }
