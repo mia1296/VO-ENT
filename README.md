@@ -91,7 +91,7 @@
   <section id="signup">
     <h2>📩 Sign Up</h2>
     <p>Exclusive drops coming soon.</p>
-    <a href="https://www.signupanywhere.com/signup/ce0apjkc" target="_blank" style="display:inline-block;">
+    <a href="https://form.jotform.com/252085628910156" target="_blank" style="display:inline-block;">
       <img src="logo3small.png" alt="Sign Up with VO ENT" style="max-width: 100px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));">
     </a>
   </section>
