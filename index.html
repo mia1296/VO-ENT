@@ -18,8 +18,9 @@
       padding: 2rem 1rem;
     }
     header img {
-      max-width: 150px;
+      max-width: 80px;
       margin-bottom: 1rem;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
     }
     header h1 {
       font-size: 3rem;
@@ -74,7 +75,7 @@
 <body>
 
   <header>
-    <img src="logo1small.jpeg" alt="VO ENT Logo" style="max-width: 80px; margin-bottom: 1rem;">
+    <img src="logo3small.png" alt="VO ENT Logo">
     <h1>VO ENT</h1>
     <p>Music • Movement • Merch</p>
   </header>
