@@ -3,42 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign Up with VO ENT</title>
-  <style>
-    body {
-      background-color: #111;
-      color: #f2f2f2;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
-    iframe {
-      width: 90%;
-      max-width: 500px;
-      height: 600px;
-      border: none;
-      margin-bottom: 20px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
-    p {
-      font-size: 1rem;
-      color: #ccc;
-    }
-  </style>
+  <title>Sign Up - VO ENT</title>
   <script>
-    // Redirect after 8 seconds
-    setTimeout(function() {
-      window.location.href = "index.html";
-    }, 8000);
+    // Open the JotForm and redirect to homepage after a short delay
+    function openJotFormAndRedirect() {
+      window.open("https://form.jotform.com/252085628910156", "_blank");
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 5000); // Wait 5 seconds before redirecting
+    }
   </script>
 </head>
-<body>
-  <iframe src="https://form.jotform.com/252085628910156" title="Signup Form"></iframe>
-  <p>Thank you for signing up. Taking you to VO ENT...</p>
+<body onload="openJotFormAndRedirect()">
+  <div class="signup-container">
+    <h1>Loading Signup Form...</h1>
+    <p>Redirecting to the main site shortly after opening the form.</p>
+  </div>
 </body>
 </html>
