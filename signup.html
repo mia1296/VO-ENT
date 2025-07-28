@@ -6,17 +6,31 @@
   <title>Sign Up - VO ENT</title>
   <script>
     function openJotFormAndRedirect() {
+      // Open JotForm in a new tab
       window.open("https://form.jotform.com/252085628910156", "_blank");
+
+      // Redirect this page to the homepage after 5 seconds
       setTimeout(() => {
         window.location.href = "home2.html";
-      }, 5000); // Wait 5 seconds before redirecting
+      }, 5000);
     }
   </script>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
 </head>
 <body onload="openJotFormAndRedirect()">
-  <div class="signup-container">
-    <h1>Loading Signup Form...</h1>
-    <p>Redirecting to the main site shortly.</p>
-  </div>
+  <h1>Opening Sign-Up Form...</h1>
+  <p>You’ll be redirected to the VO ENT homepage shortly.</p>
 </body>
 </html>
