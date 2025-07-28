@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="5; url=index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thanks for Signing Up!</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    img {
+      max-width: 100px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <img src="logo3small.png" alt="VO ENT Logo">
+  <h1>Thank you for signing up!</h1>
+  <p>You’re being redirected back to VO ENT...</p>
+</body>
+</html>
