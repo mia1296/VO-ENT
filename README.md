@@ -18,18 +18,18 @@
       padding: 2rem 1rem;
     }
     header img {
-      max-width: 120px;
-      height: auto;
+      max-width: 150px;
+      margin-bottom: 1rem;
     }
     header h1 {
       font-size: 3rem;
-      margin: 1rem 0 0.5rem;
+      margin: 0;
     }
     section {
       padding: 2rem 1rem;
       text-align: center;
     }
-    a.button {
+    a.button, .buy-button, button {
       display: inline-block;
       margin: 1rem;
       padding: 1rem 2rem;
@@ -37,6 +37,12 @@
       color: white;
       text-decoration: none;
       border-radius: 5px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    a.button:hover, .buy-button:hover, button:hover {
+      background: #c00;
     }
     .footer {
       background: #222;
@@ -44,24 +50,31 @@
       padding: 1rem;
       font-size: 0.9rem;
     }
+    .item {
+      margin: 2rem auto;
+      max-width: 300px;
+    }
     .item img {
-      width: 200px;
+      max-width: 100%;
       border-radius: 8px;
     }
-    .track img {
-      width: 160px;
-      border-radius: 10px;
-      margin-bottom: 1rem;
+    .item h3, .item p {
+      margin: 0.5rem 0;
     }
-    .track audio {
-      margin-top: 0.5rem;
+    #signup-form input[type="email"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 300px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 1rem;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="logo3small.png" alt="VO ENT Logo">
+    <img src="logo1small.jpeg" alt="VO ENT Logo" style="max-width: 80px; margin-bottom: 1rem;">
     <h1>VO ENT</h1>
     <p>Music • Movement • Merch</p>
   </header>
@@ -69,7 +82,7 @@
   <section>
     <h2>🎧 Listen</h2>
     <a class="button" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank">Apple Music</a>
-    <a class="button" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank">YouTube</a>
+    <a class="button" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank">YouTube Channel</a>
   </section>
 
   <section>
@@ -77,49 +90,35 @@
     <a class="button" href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank">Instagram</a>
   </section>
 
-  <section>
-    <h2>🎶 VO ENT Music</h2>
-
-    <div class="track">
-      <img src="logo2small.jpeg" alt="Cover Art">
-      <h3>Vito – R8</h3>
-      <audio controls>
-        <source src="vito_r8.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <br>
-      <a href="vito_r8.mp3" download class="button">Download</a>
-    </div>
-
-    <div class="track">
-      <img src="logo2small.jpeg" alt="Cover Art">
-      <h3>Focus Full</h3>
-      <audio controls>
-        <source src="focus_full.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <br>
-      <a href="focus_full.mp3" download class="button">Download</a>
-    </div>
+  <section id="signup">
+    <h2>📩 Sign Up</h2>
+    <p>Exclusive drops coming soon.</p>
+    <form id="signup-form" action="mailto:voent@example.com" method="POST" enctype="text/plain">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Join List</button>
+    </form>
   </section>
 
-  <section>
-    <h2>🛍️ Merch Preview</h2>
+  <section id="merch">
+    <h2>🛍️ Merch</h2>
     <div class="item">
       <img src="whitehoodiesmall.jpeg" alt="White Hoodie">
-      <p>White Hoodie – Coming Soon</p>
+      <h3>White VO Hoodie</h3>
+      <p>$50.00</p>
+      <a class="buy-button" href="https://your-payment-link.com/white-vo-hoodie" target="_blank">Buy Now</a>
     </div>
     <div class="item">
       <img src="blackhoodiesmall.jpeg" alt="Black Hoodie">
-      <p>Black Hoodie – Coming Soon</p>
+      <h3>Black VO Hoodie</h3>
+      <p>$50.00</p>
+      <a class="buy-button" href="https://your-payment-link.com/black-vo-hoodie" target="_blank">Buy Now</a>
     </div>
-    <br>
-    <a class="button" href="#">Sign Up for Drop Alerts</a>
   </section>
 
   <section>
     <h2>🗡️ About VO ENT 🗡️</h2>
     <p>VO ENT is a creative brand powered by raw energy, music, and street culture. Stay tuned for new drops, exclusive content, and the next wave from Vito Gwuap.</p>
+    <img src="logo2small.jpeg" alt="About Logo" style="max-width: 80px; margin-top: 1rem;">
   </section>
 
   <div class="footer">
