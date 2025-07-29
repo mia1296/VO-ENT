@@ -1,55 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign Up - VO ENT</title>
-  <link rel="icon" href="logo1small.png" type="image/png" />
-  <style>
-    body {
-      background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 0;
-    }
-    header {
-      padding: 40px 20px 20px;
-    }
-    header img {
-      max-width: 80px;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-      margin-bottom: 1rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .form-wrapper {
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-    }
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - VO ENT</title>
+  <link rel="icon" href="logo1small.png" type="image/png" />
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    img {
+      max-width: 80px;
+      margin-top: 50px;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+    }
+    h1 {
+      font-size: 2rem;
+      margin-top: 1rem;
+    }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <img src="logo1small.png" alt="VO ENT Logo" />
-    <h1>Join VO ENT</h1>
-  </header>
+  <img src="logo1small.png" alt="VO ENT Logo" />
+  <h1>Loading Signup Form...</h1>
 
-  <div class="form-wrapper">
-    <iframe
-      id="JotFormIFrame-252085628910156"
-      title="VO ENT Sign Up"
-      src="https://form.jotform.com/252085628910156"
-      allow="geolocation; microphone; camera; fullscreen; payment"
-    ></iframe>
-  </div>
+  <iframe
+    src="https://form.jotform.com/252085628910156"
+    allow="geolocation; microphone; camera; fullscreen; payment"
+    allowtransparency="true"
+    scrolling="no"
+    frameborder="0"
+    id="signupFormFrame"
+  ></iframe>
+
+  <script>
+    // Auto redirect after 5 seconds
+    setTimeout(() => {
+      window.location.href = "home2.html";
+    }, 5000);
+  </script>
 </body>
 </html>
