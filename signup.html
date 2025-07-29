@@ -1,32 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign Up - VO ENT</title>
-  <script>
-    function openFormAndRedirect() {
-      window.open("https://form.jotform.com/252085628910156", "_blank");
-      setTimeout(() => {
-        window.location.href = "home2.html";
-      }, 5000); // Redirect after 5 seconds
-    }
-  </script>
-  <style>
-    body {
-      background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
-    }
-    h1 {
-      font-size: 2rem;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VO ENT Sign Up</title>
+  <link rel="icon" href="logo1small.png" type="image/png" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      background: #111;
+      padding: 20px;
+    }
+
+    header img {
+      max-width: 80px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .signup-container {
+      margin: 50px auto;
+      padding: 20px;
+      max-width: 700px;
+      background: #111;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    iframe {
+      min-width: 100%;
+      max-width: 100%;
+      height: 539px;
+      border: none;
+    }
+
+    a.button {
+      display: inline-block;
+      margin: 2rem auto 1rem;
+      padding: 1rem 2rem;
+      background: #f00;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    a.button:hover {
+      background: #c00;
+    }
+  </style>
 </head>
-<body onload="openFormAndRedirect()">
-  <h1>Opening Signup Form...</h1>
-  <p>You'll be redirected to the site shortly.</p>
+<body>
+  <header>
+    <img src="logo1small.png" alt="VO ENT Logo" />
+    <h1>Join the Movement</h1>
+  </header>
+
+  <section class="signup-container">
+    <h2>Sign Up for Exclusive Access</h2>
+
+    <iframe
+      id="JotFormIFrame-252085628910156"
+      title="[Imported Form] Vo Sign Up"
+      onload="window.parent.scrollTo(0,0)"
+      allowtransparency="true"
+      allow="geolocation; microphone; camera; fullscreen; payment"
+      src="https://form.jotform.com/252085628910156"
+      frameborder="0"
+      style="min-width:100%;max-width:100%;height:539px;border:none;"
+      scrolling="no"
+    ></iframe>
+
+    <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+    <script>
+      window.jotformEmbedHandler("iframe[id='JotFormIFrame-252085628910156']", "https://form.jotform.com/");
+    </script>
+
+    <!-- Return to Home2 Homepage -->
+    <a href="home2.html" class="button">Return to Homepage</a>
+  </section>
 </body>
 </html>
