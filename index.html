@@ -2,23 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=signup.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Redirecting...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to VO ENT</title>
+  <link rel="icon" href="logo1small.png" type="image/png" />
   <style>
     body {
-      background-color: #000;
+      background: #000;
       color: #fff;
       font-family: Arial, sans-serif;
       text-align: center;
       padding-top: 100px;
+      margin: 0;
+    }
+    img {
+      max-width: 80px;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+      margin-bottom: 1rem;
     }
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
+      margin: 0.5rem 0;
+      color: #f00;
+    }
+    p {
+      font-size: 1rem;
+      color: #ccc;
     }
   </style>
+  <script>
+    // Redirect to the signup form after 3 seconds
+    window.onload = function() {
+      setTimeout(function() {
+        window.location.href = "signup.html";
+      }, 3000);
+    };
+  </script>
 </head>
 <body>
-  <h1>Redirecting to sign up...</h1>
+  <img src="logo1small.png" alt="VO ENT Logo" />
+  <h1>Welcome to VO ENT</h1>
+  <p>Page will be redirected shortly...</p>
 </body>
 </html>
