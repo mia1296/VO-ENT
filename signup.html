@@ -4,20 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign Up - VO ENT</title>
-  <link rel="stylesheet" href="style.css" />
   <script>
-    function openJotFormAndRedirect() {
+    function openFormAndRedirect() {
       window.open("https://form.jotform.com/252085628910156", "_blank");
       setTimeout(() => {
-        window.location.href = "thankyou.html";
-      }, 6000); // 6 seconds delay
+        window.location.href = "home2.html";
+      }, 5000); // Redirect after 5 seconds
     }
   </script>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+  </style>
 </head>
-<body onload="openJotFormAndRedirect()">
-  <div class="signup-container">
-    <h1>Loading Signup Form...</h1>
-    <p>Thank you for supporting VO ENT. You'll be redirected to the homepage shortly.</p>
-  </div>
+<body onload="openFormAndRedirect()">
+  <h1>Opening Signup Form...</h1>
+  <p>You'll be redirected to the site shortly.</p>
 </body>
 </html>
