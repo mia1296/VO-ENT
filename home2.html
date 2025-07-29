@@ -1,147 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VO ENT - Music & Merch</title>
-  <link rel="icon" href="logo3small.png" type="image/png" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: #fff;
-      text-align: center;
-    }
-    header {
-      background: #111;
-      padding: 20px;
-    }
-    header img {
-      max-width: 80px;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-    }
-    header h1 {
-      font-size: 3rem;
-      margin: 0;
-    }
-    section {
-      margin: 30px auto;
-      padding: 20px;
-      max-width: 700px;
-      background: #222;
-      border-radius: 10px;
-    }
-    .item {
-      margin: 2rem auto;
-      max-width: 300px;
-    }
-    .item img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-    .item h3, .item p {
-      margin: 0.5rem 0;
-    }
-    audio {
-      width: 100%;
-      margin-top: 0.5rem;
-    }
-    a.button, .buy-button, button {
-      display: inline-block;
-      margin: 1rem;
-      padding: 1rem 2rem;
-      background: #f00;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-    }
-    a.button:hover, .buy-button:hover, button:hover {
-      background: #c00;
-    }
-    .signup-logo {
-      margin-top: 40px;
-    }
-    .signup-logo img {
-      max-width: 100px;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-    }
-    .footer {
-      background: #111;
-      padding: 15px;
-      font-size: 0.9rem;
-      margin-top: 50px;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VO ENT</title>
+  <link rel="icon" href="logo3small.png" type="image/png" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      background: #111;
+      padding: 20px;
+    }
+
+    header img {
+      max-width: 80px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .links a {
+      margin: 0 10px;
+      color: #1db954;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .music-section {
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 600px;
+      background: #222;
+      border-radius: 10px;
+    }
+
+    .music-section h2 {
+      margin-bottom: 1rem;
+    }
+
+    audio {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    .merch-section {
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 600px;
+      background: #222;
+      border-radius: 10px;
+    }
+
+    .item {
+      margin: 2rem auto;
+      max-width: 300px;
+    }
+
+    .item img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .item h3, .item p {
+      margin: 0.5rem 0;
+    }
+
+    .signup-button {
+      display: block;
+      margin: 3rem auto 1rem;
+    }
+
+    .signup-button img {
+      max-width: 100px;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+    }
+
+    .footer {
+      background: #111;
+      padding: 15px;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <img src="logo3small.png" alt="VO ENT Logo" />
-    <h1>VO ENT</h1>
-  </header>
+  <header>
+    <img src="logo3small.png" alt="VO ENT Logo" />
+    <h1>Welcome to VO ENT</h1>
+    <div class="links">
+      <a href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank">Apple Music</a>
+      <a href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank">YouTube</a>
+      <a href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank">Instagram</a>
+    </div>
+  </header>
 
-  <!-- Social Links -->
-  <section>
-    <h2>📲 Follow VO GWUAP</h2>
-    <a href="https://music.apple.com/us/artist/vito-gwuap/1504520516" class="button">Apple Music</a>
-    <a href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" class="button">YouTube</a>
-    <a href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" class="button">Instagram</a>
-  </section>
+  <section class="music-section">
+    <h2>Listen Now</h2>
+    <p><strong>Focus</strong></p>
+    <audio controls>
+      <source src="focus_full.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
 
-  <!-- Music Section -->
-  <section>
-    <h2>🎧 New Tracks</h2>
+    <p><strong>Vito R8</strong></p>
+    <audio controls>
+      <source src="vito_r8.mp3" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+  </section>
 
-    <div class="item">
-      <h3>Focus (Full)</h3>
-      <audio controls>
-        <source src="focus_full.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-    </div>
+  <section class="merch-section">
+    <h2>Merch</h2>
+    <div class="item">
+      <img src="whitehoodiesmall.jpeg" alt="White Hoodie" />
+      <h3>White Hoodie</h3>
+      <p>$45</p>
+      <a href="#" class="buy-button">Buy Now</a>
+    </div>
 
-    <div class="item">
-      <h3>Vito R8</h3>
-      <audio controls>
-        <source src="vito_r8.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-  </section>
+    <div class="item">
+      <img src="blackhoodiesmall.jpeg" alt="Black Hoodie" />
+      <h3>Black Hoodie</h3>
+      <p>$45</p>
+      <a href="#" class="buy-button">Buy Now</a>
+    </div>
+  </section>
 
-  <!-- Merch Section -->
-  <section>
-    <h2>🛍️ Official Merch</h2>
+  <a href="signup.html" class="signup-button">
+    <img src="logo1small.png" alt="Sign Up">
+  </a>
 
-    <div class="item">
-      <img src="whitehoodiesmall.jpeg" alt="White Hoodie" />
-      <h3>White VO ENT Hoodie</h3>
-      <p>$40.00</p>
-      <a href="#" class="buy-button">Buy Now</a>
-    </div>
-
-    <div class="item">
-      <img src="blackhoodiesmall.jpeg" alt="Black Hoodie" />
-      <h3>Black VO ENT Hoodie</h3>
-      <p>$40.00</p>
-      <a href="#" class="buy-button">Buy Now</a>
-    </div>
-  </section>
-
-  <!-- Sign Up -->
-  <section class="signup-logo">
-    <a href="signup.html">
-      <img src="logo1small.png" alt="Sign Up" />
-    </a>
-  </section>
-
-  <div class="footer">
-    &copy; 2025 VO ENT. All rights reserved.
-  </div>
+  <footer class="footer">
+    <p>&copy; 2025 VO ENT. All rights reserved.</p>
+  </footer>
 </body>
 </html>
