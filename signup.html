@@ -9,12 +9,22 @@
     html, body {
       margin: 0;
       padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
       height: 100%;
+    }
+
+    #form-container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: #000;
     }
 
     iframe {
-      display: block;
       width: 100%;
       height: 100%;
       border: none;
@@ -22,19 +32,31 @@
   </style>
 </head>
 <body>
-  <iframe
-    id="JotFormIFrame-252085628910156"
-    title="VO ENT Sign Up"
-    allowtransparency="true"
-    allow="geolocation; microphone; camera; fullscreen; payment"
-    src="https://form.jotform.com/252085628910156"
-    frameborder="0"
-    scrolling="no"
-  ></iframe>
+  <div id="form-container">
+    <iframe
+      id="JotFormIFrame-252085628910156"
+      title="VO ENT Sign Up"
+      allowtransparency="true"
+      allow="geolocation; microphone; camera; fullscreen; payment"
+      src="https://form.jotform.com/252085628910156"
+      frameborder="0"
+      scrolling="no"
+    ></iframe>
+  </div>
 
   <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
   <script>
     window.jotformEmbedHandler("iframe[id='JotFormIFrame-252085628910156']", "https://form.jotform.com/");
+
+    // Redirect after form is submitted
+    window.addEventListener("message", function(e) {
+      if (typeof e.data === "string" && e.data.indexOf("submission_id") !== -1) {
+        // Delay to allow JotForm to finish submission
+        setTimeout(function() {
+          window.location.href = "home2.html";
+        }, 3000); // adjust timing if needed
+      }
+    });
   </script>
 </body>
 </html>
