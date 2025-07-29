@@ -3,60 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up - VO ENT</title>
+  <title>VO ENT Sign Up</title>
   <link rel="icon" href="logo1small.png" type="image/png" />
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background: #000;
+      height: 100%;
+      background-color: #000;
       color: #fff;
       font-family: Arial, sans-serif;
-      height: 100%;
-    }
-
-    #form-container {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #000;
     }
 
     iframe {
       width: 100%;
       height: 100%;
       border: none;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <div id="form-container">
-    <iframe
-      id="JotFormIFrame-252085628910156"
-      title="VO ENT Sign Up"
-      allowtransparency="true"
-      allow="geolocation; microphone; camera; fullscreen; payment"
-      src="https://form.jotform.com/252085628910156"
-      frameborder="0"
-      scrolling="no"
-    ></iframe>
-  </div>
+  <iframe
+    id="JotFormIFrame-252085628910156"
+    title="VO ENT Sign Up Form"
+    allowtransparency="true"
+    allow="geolocation; microphone; camera; fullscreen; payment"
+    src="https://form.jotform.com/252085628910156"
+    frameborder="0"
+    scrolling="no"
+  ></iframe>
 
   <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
   <script>
-    window.jotformEmbedHandler("iframe[id='JotFormIFrame-252085628910156']", "https://form.jotform.com/");
-
-    // Redirect after form is submitted
-    window.addEventListener("message", function(e) {
-      if (typeof e.data === "string" && e.data.indexOf("submission_id") !== -1) {
-        // Delay to allow JotForm to finish submission
-        setTimeout(function() {
-          window.location.href = "home2.html";
-        }, 3000); // adjust timing if needed
-      }
-    });
+    window.jotformEmbedHandler(
+      "iframe[id='JotFormIFrame-252085628910156']",
+      "https://form.jotform.com/"
+    );
   </script>
 </body>
 </html>
