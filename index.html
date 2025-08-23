@@ -23,7 +23,6 @@
   <h1>Welcome to VO ENT — Redirecting...</h1>
 
   <script>
-    // Wait until the page fully loads
     window.onload = function() {
       function getCookie(name) {
         let value = "; " + document.cookie;
@@ -32,7 +31,6 @@
         return null;
       }
 
-      // Redirect logic
       if (getCookie("signedUp") === "true") {
         window.location.href = "home2.html"; // Returning users
       } else {
