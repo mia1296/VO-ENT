@@ -17,7 +17,7 @@
       min-height: 100vh;
       text-align: center;
     }
-    h1 { color: #f00; }
+    h1 { color: #f00; margin-bottom: 20px; }
     iframe {
       width: 100%;
       max-width: 500px;
@@ -30,19 +30,13 @@
   <h1>Join VO ENT Today</h1>
   <p>Sign up to get exclusive access to music and merch!</p>
 
-  <!-- Replace src with your JotForm embed URL -->
-  <iframe src="YOUR_JOTFORM_EMBED_URL"></iframe>
+  <!-- Embed your JotForm -->
+  <iframe id="jotform-iframe" src="YOUR_JOTFORM_EMBED_URL"></iframe>
 
   <script>
-    // Set cookie for 30 days when the page is loaded (after successful form submission)
-    // You can also place this inside JotForm's "Thank You" redirect page if needed
-    function setSignupCookie() {
-      document.cookie = "signedUp=true; path=/; max-age=" + 30*24*60*60;
-      window.location.href = "home2.html"; // Redirect after signup
-    }
-
-    // Example: if you can detect form submission completion, call setSignupCookie()
-    // For JotForm, set Thank You URL to "signup-thankyou.html" and put the cookie there
+    // For JotForm, set the Thank You redirect URL in the form settings to:
+    // signup-thankyou.html
+    // No additional code needed here; cookie is set on thank-you page
   </script>
 </body>
 </html>
