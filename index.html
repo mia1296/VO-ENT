@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="5;url=signup.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome to VO ENT</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VO ENT</title>
   <style>
     body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      text-align: center;
-    }
-    img {
-      max-width: 100px;
-      margin-bottom: 2rem;
-      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    p {
-      color: #ccc;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
     }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("signedUp") === "true") {
+        // Already signed up → go to homepage
+        window.location.href = "home2.html";
+      } else {
+        // Not signed up → go to signup page
+        window.location.href = "signup.html";
+      }
+    });
+  </script>
 </head>
 <body>
-  <img src="logo3small.png" alt="VO ENT Logo">
-  <h1>Welcome to VO ENT</h1>
-  <p>Page will be redirected shortly...</p>
+  <h1>Loading VO ENT...</h1>
 </body>
 </html>
