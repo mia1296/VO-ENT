@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You – VO ENT</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+    }
+    h1 { color: #f00; margin-bottom: 20px; }
+    p { font-size: 1.2rem; }
+    a {
+      color: #f00;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Thank You for Signing Up!</h1>
+  <p>You’re officially part of the VO ENT community. 🎵</p>
+  <p>You will be redirected to the homepage shortly...</p>
+  <a href="home2.html">Click here if you are not redirected</a>
+
+  <script>
+    // Set cookie for 30 days
+    document.cookie = "signedUp=true; path=/; max-age=" + 30*24*60*60;
+
+    // Redirect to homepage after 3 seconds
+    setTimeout(function() {
+      window.location.href = "home2.html";
+    }, 3000);
+  </script>
+</body>
+</html>
