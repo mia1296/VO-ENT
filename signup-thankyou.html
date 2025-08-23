@@ -34,13 +34,15 @@
   <a href="home2.html">Click here if you are not redirected</a>
 
   <script>
-    // Set cookie for 30 days
-    document.cookie = "signedUp=true; path=/; max-age=" + 30*24*60*60;
+    window.onload = function() {
+      // Set cookie for 30 days
+      document.cookie = "signedUp=true; path=/; max-age=" + 30*24*60*60;
 
-    // Redirect to homepage after 3 seconds
-    setTimeout(function() {
-      window.location.href = "home2.html";
-    }, 3000);
+      // Redirect to homepage after 3 seconds
+      setTimeout(function() {
+        window.location.href = "home2.html";
+      }, 3000);
+    };
   </script>
 </body>
 </html>
