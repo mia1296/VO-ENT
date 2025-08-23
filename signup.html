@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up – VO ENT</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: #000;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up – VO ENT</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-  <iframe
-    id="JotFormIFrame-252085628910156"
-    title="VO ENT Sign Up Form"
-    allowtransparency="true"
-    allow="geolocation; microphone; camera; fullscreen; payment"
-    src="https://form.jotform.com/252085628910156"
-    scrolling="no"
-  ></iframe>
-  <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
-  <script>
-    window.jotformEmbedHandler(
-      "iframe[id='JotFormIFrame-252085628910156']",
-      "https://form.jotform.com/"
-    );
-  </script>
+  <!-- Replace the src URL with your actual JotForm link -->
+  <iframe 
+    src="https://form.jotform.com/your-form-id" 
+    frameborder="0"
+    onload="setupFormRedirect()">
+  </iframe>
+
+  <script>
+    function setupFormRedirect() {
+      // This trick works by listening for the JotForm "thank you" redirect
+      window.addEventListener("message", function(e) {
+        if (e.data.type === "submission-completed") {
+          localStorage.setItem("signedUp", "true"); 
+          window.location.href = "home2.html";
+        }
+      });
+    }
+  </script>
 </body>
 </html>
