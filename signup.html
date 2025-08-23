@@ -24,23 +24,24 @@
   </style>
 </head>
 <body>
-  <!-- Replace the src URL with your actual JotForm link -->
+  <!-- Replace with your actual JotForm link -->
   <iframe 
-    src="https://form.jotform.com/your-form-id" 
-    frameborder="0"
-    onload="setupFormRedirect()">
+    id="signupForm"
+    src="https://form.jotform.com/your-form-id">
   </iframe>
 
   <script>
-    function setupFormRedirect() {
-      // This trick works by listening for the JotForm "thank you" redirect
-      window.addEventListener("message", function(e) {
-        if (e.data.type === "submission-completed") {
+    // Listen for JotForm "thank you" after submission
+    window.addEventListener("message", function(e) {
+      try {
+        if (e.data && e.data.type === "submission-completed") {
           localStorage.setItem("signedUp", "true"); 
           window.location.href = "home2.html";
         }
-      });
-    }
+      } catch (err) {
+        console.log("JotForm event listener error:", err);
+      }
+    });
   </script>
 </body>
 </html>
