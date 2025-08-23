@@ -10,24 +10,31 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: black;
-      color: white;
+      margin: 0;
       font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
     }
+    h1 { color: #f00; }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      if (localStorage.getItem("signedUp") === "true") {
-        // Already signed up → go to homepage
-        window.location.href = "home2.html";
-      } else {
-        // Not signed up → go to signup page
-        window.location.href = "signup.html";
-      }
-    });
-  </script>
 </head>
 <body>
-  <h1>Loading VO ENT...</h1>
+  <h1>Welcome to VO ENT — Redirecting...</h1>
+
+  <script>
+    function getCookie(name) {
+      let value = "; " + document.cookie;
+      let parts = value.split("; " + name + "=");
+      if (parts.length === 2) return parts.pop().split(";").shift();
+    }
+
+    // Redirect logic
+    if (getCookie("signedUp") === "true") {
+      window.location.href = "home2.html"; // Returning users go to homepage
+    } else {
+      window.location.href = "signup.html"; // New users go to signup
+    }
+  </script>
 </body>
 </html>
