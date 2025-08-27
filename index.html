@@ -1,42 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VO ENT</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome — VO ENT</title>
   <style>
+    :root { --red:#f00; --bg:#000; --fg:#fff; }
+    html,body { height:100%; margin:0; }
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      text-align: center;
+      background:var(--bg);
+      color:var(--fg);
+      font-family: Arial, Helvetica, sans-serif;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:24px;
+      gap:20px;
     }
-    h1 { color: #f00; }
+    .logo {
+      width:130px;
+      height:130px;
+      background:url('logo3small.png') center/contain no-repeat;
+      filter: drop-shadow(0 0 14px rgba(255,0,0,.3));
+    }
+    h1 {
+      font-size:2rem;
+      color:var(--red);
+      margin:10px 0;
+    }
+    p { max-width:600px; opacity:.9; margin:0; }
+    a.btn {
+      display:inline-block;
+      padding:14px 28px;
+      border-radius:999px;
+      background:var(--red);
+      color:#000;
+      text-decoration:none;
+      font-weight:700;
+      box-shadow:0 6px 22px rgba(255,0,0,.25);
+      margin-top:12px;
+    }
+    .links { font-size:.95rem; margin-top:8px; }
+    .links a { color:var(--red); text-decoration:none; font-weight:600; }
+    #signedHint { display:none; font-size:.9rem; opacity:.75; }
   </style>
 </head>
 <body>
-  <h1>Welcome to VO ENT — Redirecting...</h1>
+  <div class="logo" aria-hidden="true"></div>
+  <h1>Welcome to VO ENT</h1>
+  <p>Discover new music, videos, and merch. Sign up anytime for drops & exclusives — totally optional.</p>
+
+  <a class="btn" href="home2.html">Enter Site</a>
+  <div class="links">
+    Or <a href="signup.html">sign up now</a>
+  </div>
+
+  <!-- Small note if they've already signed up -->
+  <div id="signedHint">🎵 Thanks for joining the list — enjoy the site!</div>
 
   <script>
-    window.onload = function() {
-      function getCookie(name) {
-        let value = "; " + document.cookie;
-        let parts = value.split("; " + name + "=");
-        if (parts.length === 2) return parts.pop().split(";").shift();
-        return null;
+    try {
+      if (localStorage.getItem("voent_signed_up") === "1") {
+        document.getElementById("signedHint").style.display = "block";
       }
-
-      if (getCookie("signedUp") === "true") {
-        window.location.href = "home2.html"; // Returning users
-      } else {
-        window.location.href = "signup.html"; // New users
-      }
-    };
+    } catch(e){}
   </script>
 </body>
 </html>
