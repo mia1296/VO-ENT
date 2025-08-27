@@ -2,70 +2,254 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome — VO ENT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VO ENT — Official</title>
+  <meta name="description" content="VO ENT • Music, Merch, and Sign-Up" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root { --red:#f00; --bg:#000; --fg:#fff; }
-    html,body { height:100%; margin:0; }
-    body {
-      background:var(--bg);
-      color:var(--fg);
-      font-family: Arial, Helvetica, sans-serif;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:24px;
-      gap:20px;
+    :root{
+      --bg:#000; --card:#0c0c0c; --muted:#c6c6c6; --text:#fff;
+      --accent:#e50914; --accent-2:#ff3b3b; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.5);
     }
-    .logo {
-      width:130px;
-      height:130px;
-      background:url('logo3small.png') center/contain no-repeat;
-      filter: drop-shadow(0 0 14px rgba(255,0,0,.3));
-    }
-    h1 {
-      font-size:2rem;
-      color:var(--red);
-      margin:10px 0;
-    }
-    p { max-width:600px; opacity:.9; margin:0; }
-    a.btn {
-      display:inline-block;
-      padding:14px 28px;
-      border-radius:999px;
-      background:var(--red);
-      color:#000;
-      text-decoration:none;
-      font-weight:700;
-      box-shadow:0 6px 22px rgba(255,0,0,.25);
-      margin-top:12px;
-    }
-    .links { font-size:.95rem; margin-top:8px; }
-    .links a { color:var(--red); text-decoration:none; font-weight:600; }
-    #signedHint { display:none; font-size:.9rem; opacity:.75; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);line-height:1.5;overflow-x:hidden}
+    a{color:inherit}
+    .container{width:min(1200px,92vw);margin-inline:auto}
+
+    /* NAV */
+    header.nav{position:fixed; inset-inline:0; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px); background:linear-gradient(180deg, rgba(0,0,0,.75), rgba(0,0,0,.35) 70%, transparent); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+    .brand img{height:28px; filter:drop-shadow(0 0 20px rgba(255,255,255,.25));}
+    .nav-links{display:flex;gap:16px}
+    .nav-links a{padding:8px 14px;border-radius:999px;text-decoration:none;color:#eaeaea;border:1px solid rgba(255,255,255,.08)}
+    .nav-links a.cta{background:var(--accent);border-color:transparent;color:#fff;font-weight:700}
+
+    /* HERO */
+    .hero{position:relative; display:grid; place-items:center; text-align:center; min-height:88svh; padding:120px 16px 64px; background: radial-gradient(1200px 520px at 50% -10%, rgba(229,9,20,.18), transparent 60%), radial-gradient(1000px 500px at 80% 20%, rgba(229,9,20,.12), transparent 60%), #000; isolation:isolate}
+    .hero .logo-wrap{position:relative; display:inline-block; margin-bottom:24px}
+    .hero .logo{width:min(320px,60vw);height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.8));display:block}
+    .logo-wrap::after{content:""; position:absolute; inset:0; pointer-events:none; border-radius:12px; background: linear-gradient(115deg, rgba(255,255,255,.0) 0%, rgba(255,255,255,.55) 22%, rgba(255,255,255,0) 38%, rgba(255,255,255,.35) 55%, rgba(255,255,255,0) 75%) ; mix-blend-mode:overlay; opacity:.85; filter:blur(.3px); animation:sheen 6s ease-in-out infinite}
+    @keyframes sheen{ 0%{transform:translateX(-60%) rotate(4deg)} 50%{transform:translateX(60%) rotate(0deg)} 100%{transform:translateX(-60%) rotate(4deg)} }
+    .hero h1{font-size:clamp(28px,4.2vw,52px);margin:0 0 12px;letter-spacing:.6px}
+    .hero p{color:var(--muted);margin:0 0 26px}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .btn{background:#111;border:1px solid rgba(255,255,255,.14);color:#fff;padding:14px 22px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .2s ease, background .2s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--accent);border-color:transparent}
+
+    /* SECTIONS */
+    section{padding:64px 0}
+    .section-title{font-size:clamp(22px,3.4vw,36px);margin:0 0 22px}
+    .muted{color:var(--muted)}
+
+    /* GRID + CARDS */
+    .grid{display:grid; gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:620px){.grid.cols-3{grid-template-columns:1fr}}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
+    .card .media{position:relative; aspect-ratio:1/1; background:#070707; display:grid; place-items:center}
+    .card .media img{width:60%; height:auto; filter:drop-shadow(0 4px 12px rgba(0,0,0,.7))}
+    .badge{position:absolute; top:10px; left:10px; background:var(--accent); color:#fff; padding:6px 10px; font-size:12px; border-radius:999px}
+    .card .content{padding:14px 14px 16px}
+    .title{font-weight:700}
+    .price{color:#ddd}
+    .actions{display:flex; gap:10px; margin-top:10px}
+    .actions .btn{padding:10px 14px}
+
+    /* MERCH */
+    .merch .media{background:linear-gradient(180deg,#0b0b0b,#060606)}
+
+    /* MUSIC EMBEDS */
+    .music-embeds{display:grid; gap:18px; grid-template-columns:1fr 1fr}
+    @media (max-width:980px){.music-embeds{grid-template-columns:1fr}}
+    .embed-card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); padding:16px}
+    .embed-title{font-weight:800; margin:4px 0 12px}
+    .yt-wrap{position:relative; width:100%; aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden}
+    .yt-wrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+    .am-wrap iframe{width:100%; height:450px; border:0; overflow:hidden; border-radius:12px}
+
+    /* SIGNUP */
+    .signup{background:radial-gradient(600px 220px at 15% 10%, rgba(229,9,20,.25), transparent 60%), radial-gradient(600px 220px at 85% 90%, rgba(229,9,20,.18), transparent 60%), #060606; border-top:1px solid rgba(255,255,255,.06); border-bottom:1px solid rgba(255,255,255,.06)}
+    .signup iframe{width:100%;min-height:600px;border:none;border-radius:var(--radius)}
+
+    /* FOOTER */
+    footer{padding:38px 0; color:#bdbdbd; text-align:center; font-size:14px}
+    footer a{color:#fff; text-decoration:none}
+
+    html{scroll-behavior:smooth}
   </style>
 </head>
 <body>
-  <div class="logo" aria-hidden="true"></div>
-  <h1>Welcome to VO ENT</h1>
-  <p>Discover new music, videos, and merch. Sign up anytime for drops & exclusives — totally optional.</p>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner container">
+      <div class="brand">
+        <img src="logo1small.png" alt="VO ENT logo" />
+        <span>VO&nbsp;ENT</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#music">Music</a>
+        <a href="#merch">Merch</a>
+        <a href="#signup" class="cta">Join Now</a>
+      </nav>
+    </div>
+  </header>
 
-  <a class="btn" href="home2.html">Enter Site</a>
-  <div class="links">
-    Or <a href="signup.html">sign up now</a>
-  </div>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="logo-wrap">
+        <img class="logo" src="logo3small.png" alt="VO ENT metallic logo" />
+      </div>
+      <h1>WELCOME TO VO ENT</h1>
+      <p class="muted">Music • Merch • Community</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank" rel="noopener">Apple Music</a>
+        <a class="btn" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </section>
 
-  <!-- Small note if they've already signed up -->
-  <div id="signedHint">🎵 Thanks for joining the list — enjoy the site!</div>
+  <!-- YOUR SONGS (self-hosted) -->
+  <section id="music" class="container">
+    <h2 class="section-title">Your Songs</h2>
+    <div class="grid cols-3">
+      <article class="card">
+        <div class="media"><span class="badge">New</span><img src="logo1small.png" alt="Focus Full cover"/></div>
+        <div class="content">
+          <div class="title">Focus Full</div>
+          <div class="price">$1.29</div>
+          <audio controls style="width:100%; margin-top:10px">
+            <source src="tracks/focus_full.mp3" type="audio/mpeg" />
+          </audio>
+          <div class="actions">
+            <a class="btn btn-primary" href="tracks/focus_full.mp3" download>Download</a>
+            <a class="btn" href="#">Add to Playlist</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media"><span class="badge">New</span><img src="logo3small.png" alt="Vito R8 cover"/></div>
+        <div class="content">
+          <div class="title">Vito R8</div>
+          <div class="price">$1.29</div>
+          <audio controls style="width:100%; margin-top:10px">
+            <source src="tracks/vito_r8.mp3" type="audio/mpeg" />
+          </audio>
+          <div class="actions">
+            <a class="btn btn-primary" href="tracks/vito_r8.mp3" download>Download</a>
+            <a class="btn" href="#">Add to Playlist</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
 
+  <!-- STREAMING EMBEDS -->
+  <section class="container">
+    <h2 class="section-title">Stream VO ENT</h2>
+    <div class="music-embeds">
+      <!-- Apple Music Artist Embed -->
+      <div class="embed-card">
+        <div class="embed-title">Apple Music</div>
+        <div class="am-wrap">
+          <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://embed.music.apple.com/us/artist/vito-gwuap/1504520516">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- YouTube Playlist Embed (uses your playlist link) -->
+      <div class="embed-card">
+        <div class="embed-title">YouTube Playlist</div>
+        <div class="yt-wrap">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=RDEM-9iAf3ma2Wp8VUDcb8fSig" title="VO ENT YouTube Playlist" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MERCH -->
+  <section id="merch" class="container">
+    <h2 class="section-title">Merch</h2>
+    <p class="muted" style="margin-bottom:18px">Rep VO ENT with premium gear.</p>
+    <div class="grid cols-3 merch">
+      <article class="card">
+        <div class="media"><img src="whitehoodiesmall.jpeg" alt="VO ENT Hoodie"/></div>
+        <div class="content">
+          <div class="title">Signature Hoodie</div>
+          <div class="price">$20</div>
+          <div class="actions">
+            <a class="btn btn-primary" href="#">Buy Now</a>
+            <a class="btn" href="#">Details</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media"><img src="blackhoodiesmall.jpeg" alt="VO ENT Hoodie Black"/></div>
+        <div class="content">
+          <div class="title">Blackout Hoodie</div>
+          <div class="price">$20</div>
+          <div class="actions">
+            <a class="btn btn-primary" href="#">Buy Now</a>
+            <a class="btn" href="#">Details</a>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt="VO ENT Cap"/></div>
+        <div class="content">
+          <div class="title">Classic Cap</div>
+          <div class="price">$20</div>
+          <div class="actions">
+            <a class="btn btn-primary" href="#">Buy Now</a>
+            <a class="btn" href="#">Details</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SIGNUP (JotForm) -->
+  <section id="signup" class="signup">
+    <div class="container">
+      <h2 class="section-title">Join the VO ENT Community</h2>
+      <p class="muted" style="margin-bottom:16px">Get drops first. No spam. Unsubscribe anytime.</p>
+      <div style="border:1px solid rgba(255,255,255,.08); border-radius:18px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.5)">
+        <iframe
+          id="JotFormIFrame-252085628910156"
+          title="VO ENT Sign Up Form"
+          allowtransparency="true"
+          allow="geolocation; microphone; camera; fullscreen; payment"
+          src="https://form.jotform.com/252085628910156"
+          style="width:100%; height:780px; border:0; display:block; background:#000;"
+          scrolling="no"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
   <script>
-    try {
-      if (localStorage.getItem("voent_signed_up") === "1") {
-        document.getElementById("signedHint").style.display = "block";
-      }
-    } catch(e){}
+    // Auto-resize the JotForm iframe
+    window.addEventListener("message", function(e){
+      if(!e.data) return;
+      try{
+        var data = JSON.parse(e.data);
+        if(data && data.event === "resize" && data.iframeId === "JotFormIFrame-252085628910156"){
+          var iframe = document.getElementById("JotFormIFrame-252085628910156");
+          if(iframe && data.height){ iframe.style.height = data.height + "px"; }
+        }
+      }catch(err){}
+    });
   </script>
-</body>
-</html>
+
+  <footer>
+    <div class="container">© <span id="y"></span> VO ENT • <a href="#home">Back to top</a></div>
+  </footer>
+  <script>document
