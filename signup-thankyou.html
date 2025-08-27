@@ -16,9 +16,10 @@
       background-color: #000;
       color: #fff;
       text-align: center;
+      padding: 20px;
     }
     h1 { color: #f00; margin-bottom: 20px; }
-    p { font-size: 1.2rem; }
+    p { font-size: 1.2rem; margin: 6px 0; }
     a {
       color: #f00;
       text-decoration: none;
@@ -29,14 +30,16 @@
 </head>
 <body>
   <h1>Thank You for Signing Up!</h1>
-  <p>You’re officially part of the VO ENT community. 🎵</p>
+  <p>You’re officially part of the VO ENT community 🎵</p>
   <p>You will be redirected to the homepage shortly...</p>
   <a href="home2.html">Click here if you are not redirected</a>
 
   <script>
     window.onload = function() {
-      // Set cookie for 30 days
-      document.cookie = "signedUp=true; path=/; max-age=" + 30*24*60*60;
+      // Mark this user as signed up
+      try {
+        localStorage.setItem("voent_signed_up", "1");
+      } catch(e) {}
 
       // Redirect to homepage after 3 seconds
       setTimeout(function() {
