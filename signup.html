@@ -13,16 +13,25 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
       text-align: center;
+      padding: 20px;
     }
-    h1 { color: #f00; margin-bottom: 20px; }
+    h1 { color: #f00; margin: 10px 0; }
+    p { margin: 0 0 20px; }
     iframe {
       width: 100%;
       max-width: 500px;
       height: 700px;
       border: none;
+    }
+    .back-link {
+      margin-top: 20px;
+    }
+    .back-link a {
+      color: #f00;
+      font-weight: bold;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -30,8 +39,18 @@
   <h1>Join VO ENT Today</h1>
   <p>Sign up to get exclusive access to music and merch!</p>
 
-  <!-- Embed your JotForm -->
-  <iframe id="jotform-iframe" src="https://form.jotform.com/252085628910156"></iframe>
-  <!-- In JotForm settings, set Thank You redirect URL to signup-thankyou.html -->
+  <!-- JotForm embed -->
+  <iframe 
+    id="jotform-iframe" 
+    title="VO ENT Signup Form"
+    src="https://form.jotform.com/252085628910156">
+  </iframe>
+
+  <div class="back-link">
+    <a href="home2.html">← Back to Homepage</a>
+  </div>
+
+  <!-- In JotForm settings, set Thank You Page redirect URL to:
+       https://voonline.shop/signup-thankyou.html -->
 </body>
 </html>
