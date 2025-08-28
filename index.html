@@ -9,15 +9,57 @@
     :root{
       --bg:#000; --fg:#fff; --muted:#C6C6C6; --red:#E50914; --border:#222;
     }
-    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--fg);}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--fg);}
+
+    /* Dramatic animated glow background */
+    body::before{
+      content:"";
+      position:fixed; inset:-20% -10% -10% -10%;
+      background:
+        radial-gradient(60vw 60vw at 70% -10%, rgba(229,9,20,.25), transparent 60%),
+        radial-gradient(45vw 45vw at -10% 20%, rgba(229,9,20,.18), transparent 55%),
+        radial-gradient(25vw 25vw at 90% 80%, rgba(229,9,20,.14), transparent 60%);
+      filter:blur(28px);
+      z-index:-2; opacity:.8; animation:pulse 6s ease-in-out infinite alternate;
+    }
+    @keyframes pulse {
+      0%{transform:scale(1)}
+      100%{transform:scale(1.05)}
+    }
+
+    /* Centered container */
     .wrap{min-height:100dvh;display:grid;place-items:center;padding:24px}
-    .card{width:min(720px,100%);border:1px solid var(--border);border-radius:20px;padding:28px;text-align:center;background:#000}
-    .logo{height:64px;margin:0 auto 14px;display:block;filter:drop-shadow(0 0 12px rgba(229,9,20,.35))}
-    h1{margin:6px 0 6px;font-size:28px}
+
+    /* Glass card */
+    .card{
+      width:min(720px,100%);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:28px;
+      text-align:center;
+      background:rgba(0,0,0,.75);
+      backdrop-filter:blur(14px);
+      box-shadow:0 0 0 1px rgba(255,255,255,.02), 0 25px 80px rgba(229,9,20,.10);
+      animation:fadeUp .8s ease;
+    }
+
+    @keyframes fadeUp {
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .logo{height:64px;margin:0 auto 14px;display:block;filter:drop-shadow(0 0 12px rgba(229,9,20,.45))}
+    h1{margin:6px 0;font-size:28px}
     p{margin:6px 0;color:var(--muted)}
+
     .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:18px}
-    .btn{display:inline-block;padding:12px 18px;border-radius:12px;text-decoration:none;background:var(--red);color:#fff}
+    .btn{
+      display:inline-block;padding:12px 18px;
+      border-radius:12px;text-decoration:none;background:var(--red);color:#fff
+    }
     .btn.ghost{background:transparent;border:1px solid var(--border);color:#fff}
+
     footer{margin-top:14px;color:var(--muted);font-size:12px}
   </style>
 </head>
