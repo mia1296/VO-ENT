@@ -2,77 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You – VO ENT</title>
-  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#000; --fg:#fff; --muted:#C6C6C6; --red:#E50914; --border:#222;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--fg);}
-
-    /* Dramatic animated glow background */
-    body::before{
-      content:"";
-      position:fixed; inset:-20% -10% -10% -10%;
-      background:
-        radial-gradient(60vw 60vw at 70% -10%, rgba(229,9,20,.25), transparent 60%),
-        radial-gradient(45vw 45vw at -10% 20%, rgba(229,9,20,.18), transparent 55%),
-        radial-gradient(25vw 25vw at 90% 80%, rgba(229,9,20,.14), transparent 60%);
-      filter:blur(28px);
-      z-index:-2; opacity:.8; animation:pulse 6s ease-in-out infinite alternate;
-    }
-    @keyframes pulse { 0%{transform:scale(1)} 100%{transform:scale(1.05)} }
-
-    .wrap{min-height:100dvh;display:grid;place-items:center;padding:24px}
-    .card{
-      width:min(720px,100%);
-      border:1px solid var(--border);
-      border-radius:20px;
-      padding:28px;
-      text-align:center;
-      background:rgba(0,0,0,.75);
-      backdrop-filter:blur(14px);
-      box-shadow:0 0 0 1px rgba(255,255,255,.02), 0 25px 80px rgba(229,9,20,.10);
-      animation:fadeUp .8s ease;
-    }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-
-    .logo{height:64px;margin:0 auto 14px;display:block;filter:drop-shadow(0 0 12px rgba(229,9,20,.45))}
-    h1{margin:6px 0 10px;font-size:26px}
-    p{margin:6px 0;color:var(--muted)}
-
-    .btn{
-      display:inline-block;margin-top:16px;background:var(--red);color:#fff;
-      text-decoration:none;padding:12px 18px;border-radius:12px
-    }
-    footer{margin-top:14px;color:var(--muted);font-size:12px}
+    :root{ --bg:#000; --muted:#c6c6c6; --text:#fff; --accent:#e50914; --radius:14px; --border:rgba(255,255,255,.08) }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+    .container{width:min(1200px,92vw);margin-inline:auto}
+    header.nav{position:fixed; inset-inline:0; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px); -webkit-backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.35) 70%, transparent);
+      border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex;align-items:center;gap:8px;padding:8px 16px}
+    .brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.5px;font-size:15px}
+    .brand img{height:22px; filter:drop-shadow(0 0 15px rgba(255,255,255,.25))}
+    .wrap{padding-top:90px;text-align:center}
+    .card{background:#0c0c0c;border:1px solid var(--border);border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.45);padding:20px;margin:24px auto;width:min(720px,94%)}
+    h1{margin:6px 0 8px}
+    p{color:var(--muted);margin:6px 0}
+    .btn{display:inline-block;margin-top:12px;background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700}
   </style>
 </head>
 <body>
+  <header class="nav">
+    <div class="nav-inner container">
+      <div class="brand">
+        <img src="logo1small.png" alt="VO ENT logo" />
+        <span>VO&nbsp;ENT</span>
+      </div>
+    </div>
+  </header>
+
   <main class="wrap">
     <div class="card">
-      <img src="logo3small.png" alt="VO ENT" class="logo" />
       <h1>Thank You for Signing Up!</h1>
-      <p>You’re officially part of the VO ENT community.</p>
       <p>Redirecting to the homepage in <span id="sec">5</span>…</p>
       <a class="btn" id="go" href="home2.html">Go to Homepage Now</a>
-      <footer>© <span id="y"></span> VO ENT</footer>
     </div>
   </main>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // 5-second countdown + redirect
-    let s = 5;
-    const sec = document.getElementById('sec');
-    const go = document.getElementById('go');
-    const timer = setInterval(() => {
-      s -= 1; sec.textContent = s;
-      if (s <= 0) { clearInterval(timer); window.location.href = go.href; }
-    }, 1000);
+    let s=5; const sec=document.getElementById('sec'); const go=document.getElementById('go');
+    const t=setInterval(()=>{ s--; sec.textContent=s; if(s<=0){ clearInterval(t); location.href=go.href; }},1000);
   </script>
 </body>
 </html>
