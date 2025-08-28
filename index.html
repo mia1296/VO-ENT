@@ -9,16 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#000; --card:#0c0c0c; --muted:#c6c6c6; --text:#fff;
-      --accent:#e50914; --radius:14px; --shadow:0 6px 18px rgba(0,0,0,.45);
-      --border: rgba(255,255,255,.08);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);line-height:1.5;overflow-x:hidden}
+    :root{ --bg:#000; --muted:#c6c6c6; --text:#fff; --accent:#e50914; --border:rgba(255,255,255,.08) }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
     .container{width:min(1200px,92vw);margin-inline:auto}
-    /* NAV to match main.html */
     header.nav{position:fixed; inset-inline:0; top:0; z-index:50;
       backdrop-filter:saturate(140%) blur(10px); -webkit-backdrop-filter:saturate(140%) blur(10px);
       background:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.35) 70%, transparent);
@@ -26,16 +20,15 @@
     .nav-inner{display:flex;align-items:center;justify-content:center;padding:8px 16px}
     .brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.5px;font-size:15px}
     .brand img{height:22px; filter:drop-shadow(0 0 15px rgba(255,255,255,.25))}
-    /* HERO */
     .hero{display:grid;place-items:center;text-align:center;min-height:92svh;padding:120px 16px 48px;
       background: radial-gradient(1200px 520px at 50% -10%, rgba(229,9,20,.18), transparent 60%),
                   radial-gradient(1000px 500px at 80% 20%, rgba(229,9,20,.12), transparent 60%),
                   #000}
     .logo{width:min(320px,70vw);height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.8))}
     h1{font-size:clamp(28px,5vw,52px);margin:14px 0 8px}
-    p{color:#c6c6c6;margin:0 0 18px}
+    p{color:var(--muted);margin:0 0 18px}
     .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .btn{background:#111;border:1px solid var(--border);color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;box-shadow:var(--shadow);font-size:15px}
+    .btn{background:#111;border:1px solid var(--border);color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;font-size:15px}
     .btn-primary{background:var(--accent);border-color:transparent}
   </style>
 </head>
