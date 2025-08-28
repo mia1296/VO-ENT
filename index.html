@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to VO ENT</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VO ENT</title>
+  <meta name="color-scheme" content="dark">
   <style>
-    body{margin:0;height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;background:#000;color:#fff;font-family:Inter,Arial,sans-serif;text-align:center}
-    h1{font-size:clamp(28px,5vw,56px);margin-bottom:20px;color:#e50914}
-    p{color:#c6c6c6;margin-bottom:32px;font-size:18px}
-    .btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
-    .btn{padding:14px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:#111;color:#fff;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:transform .15s ease}
-    .btn:hover{transform:translateY(-2px)}
-    .btn.primary{background:#e50914;border-color:transparent}
-    img{max-width:200px;margin-bottom:20px;filter:drop-shadow(0 0 20px rgba(255,255,255,.3))}
+    :root{
+      --bg:#000; --fg:#fff; --muted:#C6C6C6; --red:#E50914; --border:#222;
+    }
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--fg);}
+    .wrap{min-height:100dvh;display:grid;place-items:center;padding:24px}
+    .card{width:min(720px,100%);border:1px solid var(--border);border-radius:20px;padding:28px;text-align:center;background:#000}
+    .logo{height:64px;margin:0 auto 14px;display:block;filter:drop-shadow(0 0 12px rgba(229,9,20,.35))}
+    h1{margin:6px 0 6px;font-size:28px}
+    p{margin:6px 0;color:var(--muted)}
+    .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:18px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;text-decoration:none;background:var(--red);color:#fff}
+    .btn.ghost{background:transparent;border:1px solid var(--border);color:#fff}
+    footer{margin-top:14px;color:var(--muted);font-size:12px}
   </style>
 </head>
 <body>
-  <img src="logo3small.png" alt="VO ENT Logo">
-  <h1>WELCOME TO VO ENT</h1>
-  <p>Music • Merch • Community — Choose how you want to enter.</p>
-  <div class="btns">
-    <a class="btn primary" href="signup.html">Sign Up</a>
-    <a class="btn" href="main.html">Enter Site</a>
-  </div>
+  <main class="wrap">
+    <div class="card">
+      <img src="logo3small.png" alt="VO ENT" class="logo" />
+      <h1>Welcome to VO ENT</h1>
+      <p>Music • Merch • Community</p>
+      <div class="actions">
+        <a class="btn" href="home2.html">Enter Site</a>
+        <a class="btn ghost" href="signup.html">Sign Up</a>
+      </div>
+      <footer>© <span id="y"></span> VO ENT</footer>
+    </div>
+  </main>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
