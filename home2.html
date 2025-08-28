@@ -2,199 +2,198 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VO ENT — Music & Merch</title>
-  <meta name="color-scheme" content="dark">
+  <meta name="description" content="VO ENT • Latest releases and merch" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#000; --fg:#fff; --muted:#C6C6C6; --red:#E50914; --border:#222;
-      --radius:18px;
+      --bg:#000; --card:#0c0c0c; --muted:#c6c6c6; --text:#fff;
+      --accent:#e50914; --radius:14px; --shadow:0 6px 18px rgba(0,0,0,.45);
+      --border: rgba(255,255,255,.08);
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--fg);}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);line-height:1.5;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1200px,92vw);margin-inline:auto}
+    html{scroll-behavior:smooth}
 
-    /* ===== Dramatic background ===== */
-    body::before{
-      content:"";
-      position:fixed; inset:-20% -10% -10% -10%;
-      background:
-        radial-gradient(60vw 60vw at 70% -10%, rgba(229,9,20,.25), transparent 60%),
-        radial-gradient(45vw 45vw at -10% 20%, rgba(229,9,20,.18), transparent 55%),
-        radial-gradient(25vw 25vw at 90% 80%, rgba(229,9,20,.14), transparent 60%);
-      filter:blur(28px);
-      z-index:-2; opacity:.8; animation:pulse 6s ease-in-out infinite alternate;
+    /* NAV (same as main.html) */
+    header.nav{position:fixed; inset-inline:0; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      -webkit-backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.35) 70%, transparent);
+      border-bottom:1px solid rgba(255,255,255,.06)
     }
-    @keyframes pulse {
-      0%{transform:scale(1)}
-      100%{transform:scale(1.04)}
-    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:8px 16px}
+    .brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.5px;font-size:15px}
+    .brand img{height:22px; filter:drop-shadow(0 0 15px rgba(255,255,255,.25))}
+    .nav-links{display:flex;gap:12px}
+    .nav-links a{padding:6px 12px;border-radius:999px;border:1px solid var(--border);color:#eaeaea;font-size:14px}
+    .nav-links a.cta{background:var(--accent);border-color:transparent;color:#fff;font-weight:700}
 
-    /* ===== Header (glass, slim) ===== */
-    header{
-      position:sticky; top:0; z-index:50;
-      background:rgba(0,0,0,.65); backdrop-filter: blur(10px);
-      border-bottom:1px solid var(--border);
-    }
-    .bar{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;gap:12px;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:10px}
-    .brand img{height:40px; filter: drop-shadow(0 0 14px rgba(229,9,20,.45));}
-    .brand h1{margin:0;font-size:18px;letter-spacing:.5px}
+    /* HERO (same glow structure) */
+    .hero{position:relative; display:grid; place-items:center; text-align:center; min-height:58svh; padding:100px 16px 32px;
+      background: radial-gradient(1200px 520px at 50% -10%, rgba(229,9,20,.18), transparent 60%),
+                  radial-gradient(1000px 500px at 80% 20%, rgba(229,9,20,.12), transparent 60%),
+                  #000}
+    .hero .logo-wrap{position:relative; display:inline-block; margin-bottom:16px}
+    .hero .logo{width:min(220px,50vw);height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.8))}
+    .hero h1{font-size:clamp(22px,4vw,40px);margin:0 0 8px}
+    .hero p{color:var(--muted);margin:0 0 16px}
+    .btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .btn{background:#111;border:1px solid var(--border);color:#fff;padding:10px 18px;border-radius:999px;font-weight:600;box-shadow:var(--shadow);font-size:14px}
+    .btn-primary{background:var(--accent);border-color:transparent}
 
-    nav{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{
-      display:inline-block;padding:8px 12px;border-radius:999px;
-      border:1px solid var(--border); text-decoration:none; color:#fff;
-      transition:transform .12s ease, background .2s ease;
-    }
-    .chip:hover{transform:translateY(-1px);}
-    .cta{background:var(--red);border-color:transparent}
+    /* Sections */
+    section{padding:40px 0}
+    .section-title{font-size:clamp(22px,3.2vw,34px);margin:0 0 18px;text-align:center}
+    .muted{color:var(--muted);text-align:center}
 
-    main{max-width:1100px;margin:0 auto;padding:0 14px;}
+    /* Grids + cards (same language as main) */
+    .grid{display:grid; gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:620px){.grid.cols-3{grid-template-columns:1fr}}
 
-    /* ===== Hero (dramatic card) ===== */
-    .hero{
-      margin:16px 0 12px; padding:22px; border-radius:22px;
-      border:1px solid var(--border); position:relative; overflow:hidden;
-      background:rgba(0,0,0,.8);
-      box-shadow:0 0 0 1px rgba(255,255,255,.02), 0 25px 80px rgba(229,9,20,.10);
-    }
-    .hero::after{
-      content:""; position:absolute; inset:-40% -10% auto -10%; height:60%;
-      background:radial-gradient(55vw 55vw at 50% 0, rgba(229,9,20,.22), transparent 70%);
-      filter:blur(20px); z-index:-1;
-    }
-    .heroTop{display:flex; align-items:center; gap:12px;}
-    .heroTop img{height:56px; filter: drop-shadow(0 0 16px rgba(229,9,20,.55));}
-    .hero h2{margin:0; font-size:24px}
-    .tag{color:var(--muted); margin:6px 0 0 0; font-size:14px}
-    .pillbar{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
-    .pill{background:var(--red); color:#fff; text-decoration:none; padding:10px 14px; border-radius:12px}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); text-align:center; padding:12px; display:flex; flex-direction:column; align-items:center}
+    .card .media{aspect-ratio:1/1; background:#070707; display:grid; place-items:center; margin-bottom:10px; width:80%; max-width:160px; border-radius:var(--radius)}
+    .card .media img{width:60%; height:auto}
+    .title{font-weight:700; margin:4px 0}
+    .price{color:#ddd; margin:4px 0}
 
-    /* ===== Section shells ===== */
-    section{
-      margin:16px 0; padding:16px; border:1px solid var(--border);
-      border-radius:var(--radius); background:rgba(0,0,0,.82);
-    }
-    h3{margin:0 0 10px}
-
-    /* ===== Compact song cards ===== */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-    .card{border:1px solid var(--border);border-radius:14px;padding:12px;background:#000}
-    .title{margin:0 0 4px;font-size:15px}
-    .meta{margin:0 0 8px;font-size:13px;color:var(--muted)}
-    audio{width:100%;height:30px}
-    .btn{display:inline-block;margin-top:8px;background:var(--red);color:#fff;text-decoration:none;padding:8px 12px;border-radius:10px;font-size:14px}
-
-    /* ===== Merch ===== */
-    .merch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-    .merch img{width:100%;border-radius:12px;border:1px solid var(--border)}
-    .price{color:var(--muted);margin:6px 0}
-
-    footer{margin:28px 0 16px;color:var(--muted);text-align:center;font-size:12px}
+    /* Compact audio + actions (exact sizing from main.html) */
+    audio{width:80%; max-width:220px; margin:8px auto; display:block}
+    .actions{display:flex; flex-direction:column; gap:6px; margin-top:6px; width:80%; max-width:220px}
+    .actions .btn{padding:8px 12px; font-size:13px; border-radius:8px; width:100%}
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="bar">
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner container">
       <div class="brand">
-        <img src="logo3small.png" alt="VO ENT logo">
-        <h1>VO ENT</h1>
+        <img src="logo1small.png" alt="VO ENT logo" />
+        <span>VO&nbsp;ENT</span>
       </div>
-      <nav>
-        <a class="chip" href="#social">Social</a>
-        <a class="chip" href="#music">Music</a>
-        <a class="chip" href="#merch">Merch</a>
-        <a class="chip cta" href="signup.html">Sign Up</a>
+      <nav class="nav-links">
+        <a href="index.html">Welcome</a>
+        <a href="#music">Music</a>
+        <a href="#merch">Merch</a>
+        <a href="signup.html" class="cta">Join Now</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <!-- Dramatic hero -->
-    <section class="hero">
-      <div class="heroTop">
-        <img src="logo3small.png" alt="VO ENT">
-        <div>
-          <h2>Welcome to VO ENT</h2>
-          <p class="tag">Music • Merch • Community</p>
-        </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="logo-wrap">
+        <img class="logo" src="logo3small.png" alt="VO ENT metallic logo" />
       </div>
-      <div class="pillbar" style="margin-top:12px;">
-        <a class="pill" href="#music">Listen</a>
-        <a class="pill" href="#merch">Shop</a>
-        <a class="pill" href="https://payhip.com/VoENT" target="_blank" rel="noopener">Payhip Store</a>
+      <h1>WELCOME TO VO ENT</h1>
+      <p class="muted">Music • Merch • Community</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="#music">Listen</a>
+        <a class="btn" href="#merch">Shop</a>
+        <a class="btn" href="https://payhip.com/VoENT" target="_blank">Payhip Store</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Social -->
-    <section id="social">
-      <h3>Follow VO ENT</h3>
-      <div class="pillbar">
-        <a class="pill" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank" rel="noopener">Apple Music</a>
-        <a class="pill" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank" rel="noopener">YouTube</a>
-        <a class="pill" href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank" rel="noopener">Instagram</a>
-      </div>
-    </section>
+  <!-- SOCIAL -->
+  <section class="container">
+    <h2 class="section-title">Follow VO ENT</h2>
+    <p class="muted" style="margin-bottom:14px">Stay tapped in across platforms</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank">Apple Music</a>
+      <a class="btn" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank">YouTube</a>
+      <a class="btn" href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank">Instagram</a>
+    </div>
+  </section>
 
-    <!-- Music (compact & neat) -->
-    <section id="music">
-      <h3>Latest Releases</h3>
-      <div class="grid">
-        <!-- Track 1 -->
-        <div class="card">
-          <p class="title">Harder</p>
-          <p class="meta">Vito Gwuap ft. Kiing Charles • $2.50</p>
-          <audio controls preload="none">
-            <source src="vito_gwuap_ft_kiing_charles-_harder.mp3" type="audio/mpeg">
-          </audio>
-          <a class="btn" href="https://payhip.com/VoENT" target="_blank" rel="noopener">Download for $2.50</a>
+  <!-- SONGS -->
+  <section id="music" class="container">
+    <h2 class="section-title">Latest Releases</h2>
+    <div class="grid cols-3">
+      <!-- Track 1 -->
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt="Harder cover"></div>
+        <div class="title">Harder</div>
+        <div class="price">Vito Gwuap ft. Kiing Charles • $2.50</div>
+        <audio controls preload="none">
+          <source src="vito_gwuap_ft_kiing_charles-_harder.mp3" type="audio/mpeg">
+        </audio>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://payhip.com/VoENT" target="_blank">Download for $2.50</a>
         </div>
+      </article>
 
-        <!-- Track 2 -->
-        <div class="card">
-          <p class="title">Coupe in the Slums</p>
-          <p class="meta">Vito Gwuap ft. Veo Dinero & Kiing Charles • $2.50</p>
-          <audio controls preload="none">
-            <source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums.mp3" type="audio/mpeg">
-          </audio>
-          <a class="btn" href="https://payhip.com/VoENT" target="_blank" rel="noopener">Download for $2.50</a>
+      <!-- Track 2 -->
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt="Coupe in the Slums cover"></div>
+        <div class="title">Coupe in the Slums</div>
+        <div class="price">Vito Gwuap ft. Veo Dinero &amp; Kiing Charles • $2.50</div>
+        <audio controls preload="none">
+          <source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums.mp3" type="audio/mpeg">
+        </audio>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://payhip.com/VoENT" target="_blank">Download for $2.50</a>
         </div>
+      </article>
 
-        <!-- Track 3 -->
-        <div class="card">
-          <p class="title">Ohhhhhhhh</p>
-          <p class="meta">Veo Dinero • $2.50</p>
-          <audio controls preload="none">
-            <source src="veo_dinero-ohhhhhhhh.mp3" type="audio/mpeg">
-          </audio>
-          <a class="btn" href="https://payhip.com/VoENT" target="_blank" rel="noopener">Download for $2.50</a>
+      <!-- Track 3 -->
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt="Ohhhhhhhh cover"></div>
+        <div class="title">Ohhhhhhhh</div>
+        <div class="price">Veo Dinero • $2.50</div>
+        <audio controls preload="none">
+          <source src="veo_dinero-ohhhhhhhh.mp3" type="audio/mpeg">
+        </audio>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://payhip.com/VoENT" target="_blank">Download for $2.50</a>
         </div>
-      </div>
-    </section>
+      </article>
+    </div>
+  </section>
 
-    <!-- Merch -->
-    <section id="merch">
-      <h3>Merch</h3>
-      <div class="merch-grid">
-        <div class="card merch">
-          <img src="whitehoodiesmall.jpeg" alt="VO ENT White Hoodie">
-          <p class="title">VO ENT Hoodie (White)</p>
-          <p class="price">$100</p>
-          <a class="btn" href="https://payhip.com/VoENT" target="_blank" rel="noopener">Buy on Payhip</a>
+  <!-- MERCH -->
+  <section id="merch" class="container">
+    <h2 class="section-title">Merch</h2>
+    <div class="grid cols-3">
+      <article class="card">
+        <div class="media"><img src="whitehoodiesmall.jpeg" alt="VO ENT Hoodie White"/></div>
+        <div class="title">Signature Hoodie (White)</div>
+        <div class="price">$100</div>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://payhip.com/VoENT" target="_blank">Buy on Payhip</a>
         </div>
-        <div class="card merch">
-          <img src="blackhoodiesmall.jpeg" alt="VO ENT Black Hoodie">
-          <p class="title">VO ENT Hoodie (Black)</p>
-          <p class="price">$100</p>
-          <a class="btn" href="https://payhip.com/VoENT" target="_blank" rel="noopener">Buy on Payhip</a>
+      </article>
+      <article class="card">
+        <div class="media"><img src="blackhoodiesmall.jpeg" alt="VO ENT Hoodie Black"/></div>
+        <div class="title">Blackout Hoodie</div>
+        <div class="price">$100</div>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://payhip.com/VoENT" target="_blank">Buy on Payhip</a>
         </div>
-      </div>
-    </section>
+      </article>
+      <article class="card">
+        <div class="media"><img src="logo3small.png" alt="VO ENT Tee"/></div>
+        <div class="title">Classic Tee</div>
+        <div class="price">$100</div>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://payhip.com/VoENT" target="_blank">Buy on Payhip</a>
+        </div>
+      </article>
+    </div>
+  </section>
 
-    <footer>© <span id="y"></span> VO ENT</footer>
-  </main>
-
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <footer style="padding:24px 0; color:#bdbdbd; text-align:center; font-size:13px">
+    <div class="container">© <span id="y"></span> VO ENT • <a href="#top">Back to top</a></div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
