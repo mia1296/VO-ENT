@@ -2,80 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VO ENT</title>
-  <meta name="color-scheme" content="dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VO ENT — Welcome</title>
+  <meta name="description" content="VO ENT • Music, Merch, and Sign-Up" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#000; --fg:#fff; --muted:#C6C6C6; --red:#E50914; --border:#222;
+      --bg:#000; --card:#0c0c0c; --muted:#c6c6c6; --text:#fff;
+      --accent:#e50914; --radius:14px; --shadow:0 6px 18px rgba(0,0,0,.45);
+      --border: rgba(255,255,255,.08);
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--fg);}
-
-    /* Dramatic animated glow background */
-    body::before{
-      content:"";
-      position:fixed; inset:-20% -10% -10% -10%;
-      background:
-        radial-gradient(60vw 60vw at 70% -10%, rgba(229,9,20,.25), transparent 60%),
-        radial-gradient(45vw 45vw at -10% 20%, rgba(229,9,20,.18), transparent 55%),
-        radial-gradient(25vw 25vw at 90% 80%, rgba(229,9,20,.14), transparent 60%);
-      filter:blur(28px);
-      z-index:-2; opacity:.8; animation:pulse 6s ease-in-out infinite alternate;
-    }
-    @keyframes pulse {
-      0%{transform:scale(1)}
-      100%{transform:scale(1.05)}
-    }
-
-    /* Centered container */
-    .wrap{min-height:100dvh;display:grid;place-items:center;padding:24px}
-
-    /* Glass card */
-    .card{
-      width:min(720px,100%);
-      border:1px solid var(--border);
-      border-radius:20px;
-      padding:28px;
-      text-align:center;
-      background:rgba(0,0,0,.75);
-      backdrop-filter:blur(14px);
-      box-shadow:0 0 0 1px rgba(255,255,255,.02), 0 25px 80px rgba(229,9,20,.10);
-      animation:fadeUp .8s ease;
-    }
-
-    @keyframes fadeUp {
-      from{opacity:0;transform:translateY(20px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-
-    .logo{height:64px;margin:0 auto 14px;display:block;filter:drop-shadow(0 0 12px rgba(229,9,20,.45))}
-    h1{margin:6px 0;font-size:28px}
-    p{margin:6px 0;color:var(--muted)}
-
-    .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:18px}
-    .btn{
-      display:inline-block;padding:12px 18px;
-      border-radius:12px;text-decoration:none;background:var(--red);color:#fff
-    }
-    .btn.ghost{background:transparent;border:1px solid var(--border);color:#fff}
-
-    footer{margin-top:14px;color:var(--muted);font-size:12px}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:var(--bg);line-height:1.5;overflow-x:hidden}
+    .container{width:min(1200px,92vw);margin-inline:auto}
+    /* NAV to match main.html */
+    header.nav{position:fixed; inset-inline:0; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px); -webkit-backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.35) 70%, transparent);
+      border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-inner{display:flex;align-items:center;justify-content:center;padding:8px 16px}
+    .brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.5px;font-size:15px}
+    .brand img{height:22px; filter:drop-shadow(0 0 15px rgba(255,255,255,.25))}
+    /* HERO */
+    .hero{display:grid;place-items:center;text-align:center;min-height:92svh;padding:120px 16px 48px;
+      background: radial-gradient(1200px 520px at 50% -10%, rgba(229,9,20,.18), transparent 60%),
+                  radial-gradient(1000px 500px at 80% 20%, rgba(229,9,20,.12), transparent 60%),
+                  #000}
+    .logo{width:min(320px,70vw);height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.8))}
+    h1{font-size:clamp(28px,5vw,52px);margin:14px 0 8px}
+    p{color:#c6c6c6;margin:0 0 18px}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .btn{background:#111;border:1px solid var(--border);color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;box-shadow:var(--shadow);font-size:15px}
+    .btn-primary{background:var(--accent);border-color:transparent}
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <div class="card">
-      <img src="logo3small.png" alt="VO ENT" class="logo" />
-      <h1>Welcome to VO ENT</h1>
-      <p>Music • Merch • Community</p>
-      <div class="actions">
-        <a class="btn" href="home2.html">Enter Site</a>
-        <a class="btn ghost" href="signup.html">Sign Up</a>
+  <header class="nav">
+    <div class="nav-inner container">
+      <div class="brand">
+        <img src="logo1small.png" alt="VO ENT logo" />
+        <span>VO&nbsp;ENT</span>
       </div>
-      <footer>© <span id="y"></span> VO ENT</footer>
     </div>
-  </main>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <img class="logo" src="logo3small.png" alt="VO ENT metallic logo" />
+      <h1>WELCOME TO VO ENT</h1>
+      <p>Music • Merch • Community</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="home2.html">Enter Site</a>
+        <a class="btn" href="signup.html">Sign Up</a>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
