@@ -1,51 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thank You – VO ENT</title>
+  <meta name="color-scheme" content="dark">
   <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
+    :root{
+      --bg:#000; --fg:#fff; --muted:#C6C6C6; --red:#E50914; --border:#222;
     }
-    h1 { color: #f00; margin-bottom: 20px; }
-    p { font-size: 1.2rem; margin: 6px 0; }
-    a {
-      color: #f00;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 20px;
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--fg);}
+
+    /* Dramatic animated glow background */
+    body::before{
+      content:"";
+      position:fixed; inset:-20% -10% -10% -10%;
+      background:
+        radial-gradient(60vw 60vw at 70% -10%, rgba(229,9,20,.25), transparent 60%),
+        radial-gradient(45vw 45vw at -10% 20%, rgba(229,9,20,.18), transparent 55%),
+        radial-gradient(25vw 25vw at 90% 80%, rgba(229,9,20,.14), transparent 60%);
+      filter:blur(28px);
+      z-index:-2; opacity:.8; animation:pulse 6s ease-in-out infinite alternate;
     }
+    @keyframes pulse { 0%{transform:scale(1)} 100%{transform:scale(1.05)} }
+
+    .wrap{min-height:100dvh;display:grid;place-items:center;padding:24px}
+    .card{
+      width:min(720px,100%);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:28px;
+      text-align:center;
+      background:rgba(0,0,0,.75);
+      backdrop-filter:blur(14px);
+      box-shadow:0 0 0 1px rgba(255,255,255,.02), 0 25px 80px rgba(229,9,20,.10);
+      animation:fadeUp .8s ease;
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+    .logo{height:64px;margin:0 auto 14px;display:block;filter:drop-shadow(0 0 12px rgba(229,9,20,.45))}
+    h1{margin:6px 0 10px;font-size:26px}
+    p{margin:6px 0;color:var(--muted)}
+
+    .btn{
+      display:inline-block;margin-top:16px;background:var(--red);color:#fff;
+      text-decoration:none;padding:12px 18px;border-radius:12px
+    }
+    footer{margin-top:14px;color:var(--muted);font-size:12px}
   </style>
 </head>
 <body>
-  <h1>Thank You for Signing Up!</h1>
-  <p>You’re officially part of the VO ENT community 🎵</p>
-  <p>You will be redirected to the homepage shortly...</p>
-  <a href="home2.html">Click here if you are not redirected</a>
+  <main class="wrap">
+    <div class="card">
+      <img src="logo3small.png" alt="VO ENT" class="logo" />
+      <h1>Thank You for Signing Up!</h1>
+      <p>You’re officially part of the VO ENT community.</p>
+      <p>Redirecting to the homepage in <span id="sec">5</span>…</p>
+      <a class="btn" id="go" href="home2.html">Go to Homepage Now</a>
+      <footer>© <span id="y"></span> VO ENT</footer>
+    </div>
+  </main>
 
   <script>
-    window.onload = function() {
-      // Mark this user as signed up
-      try {
-        localStorage.setItem("voent_signed_up", "1");
-      } catch(e) {}
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-      // Redirect to homepage after 3 seconds
-      setTimeout(function() {
-        window.location.href = "home2.html";
-      }, 3000);
-    };
+    // 5-second countdown + redirect
+    let s = 5;
+    const sec = document.getElementById('sec');
+    const go = document.getElementById('go');
+    const timer = setInterval(() => {
+      s -= 1; sec.textContent = s;
+      if (s <= 0) { clearInterval(timer); window.location.href = go.href; }
+    }, 1000);
   </script>
 </body>
 </html>
