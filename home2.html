@@ -12,63 +12,134 @@
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--fg);}
-    a{color:inherit}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border);position:sticky;top:0;background:#000;z-index:10}
+
+    /* ===== Dramatic background ===== */
+    body::before{
+      content:"";
+      position:fixed; inset:-20% -10% -10% -10%;
+      background:
+        radial-gradient(60vw 60vw at 70% -10%, rgba(229,9,20,.25), transparent 60%),
+        radial-gradient(45vw 45vw at -10% 20%, rgba(229,9,20,.18), transparent 55%),
+        radial-gradient(25vw 25vw at 90% 80%, rgba(229,9,20,.14), transparent 60%);
+      filter:blur(28px);
+      z-index:-2; opacity:.8; animation:pulse 6s ease-in-out infinite alternate;
+    }
+    @keyframes pulse {
+      0%{transform:scale(1)}
+      100%{transform:scale(1.04)}
+    }
+
+    /* ===== Header (glass, slim) ===== */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(0,0,0,.65); backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .bar{max-width:1100px;margin:0 auto;padding:10px 14px;display:flex;align-items:center;gap:12px;justify-content:space-between}
     .brand{display:flex;align-items:center;gap:10px}
-    .brand img{height:44px;filter:drop-shadow(0 0 10px rgba(229,9,20,.35))}
-    .brand h1{font-size:18px;margin:0}
+    .brand img{height:40px; filter: drop-shadow(0 0 14px rgba(229,9,20,.45));}
+    .brand h1{margin:0;font-size:18px;letter-spacing:.5px}
+
     nav{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{display:inline-block;padding:8px 12px;border-radius:12px;border:1px solid var(--border);text-decoration:none}
-    .cta{background:var(--red);border:none;color:#fff}
-    main{max-width:1100px;margin:0 auto;padding:18px}
-    section{margin:22px 0;padding:18px;border:1px solid var(--border);border-radius:var(--radius);background:#000}
-    h2{margin:0 0 12px}
-    /* Social buttons */
-    .pillbar{display:flex;flex-wrap:wrap;gap:10px}
-    .pill{background:var(--red);color:#fff;text-decoration:none;padding:10px 14px;border-radius:12px}
-    /* Song grid — compact cards */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-    .card{border:1px solid var(--border);border-radius:14px;padding:14px;background:#000}
-    .meta{margin:0 0 8px;font-size:14px;color:var(--muted)}
-    .title{margin:0 0 4px;font-size:16px}
-    audio{width:100%;height:32px} /* smaller control height */
-    .btn{display:inline-block;margin-top:10px;background:var(--red);color:#fff;text-decoration:none;padding:8px 12px;border-radius:10px;font-size:14px}
-    /* Merch */
-    .merch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .chip{
+      display:inline-block;padding:8px 12px;border-radius:999px;
+      border:1px solid var(--border); text-decoration:none; color:#fff;
+      transition:transform .12s ease, background .2s ease;
+    }
+    .chip:hover{transform:translateY(-1px);}
+    .cta{background:var(--red);border-color:transparent}
+
+    main{max-width:1100px;margin:0 auto;padding:0 14px;}
+
+    /* ===== Hero (dramatic card) ===== */
+    .hero{
+      margin:16px 0 12px; padding:22px; border-radius:22px;
+      border:1px solid var(--border); position:relative; overflow:hidden;
+      background:rgba(0,0,0,.8);
+      box-shadow:0 0 0 1px rgba(255,255,255,.02), 0 25px 80px rgba(229,9,20,.10);
+    }
+    .hero::after{
+      content:""; position:absolute; inset:-40% -10% auto -10%; height:60%;
+      background:radial-gradient(55vw 55vw at 50% 0, rgba(229,9,20,.22), transparent 70%);
+      filter:blur(20px); z-index:-1;
+    }
+    .heroTop{display:flex; align-items:center; gap:12px;}
+    .heroTop img{height:56px; filter: drop-shadow(0 0 16px rgba(229,9,20,.55));}
+    .hero h2{margin:0; font-size:24px}
+    .tag{color:var(--muted); margin:6px 0 0 0; font-size:14px}
+    .pillbar{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .pill{background:var(--red); color:#fff; text-decoration:none; padding:10px 14px; border-radius:12px}
+
+    /* ===== Section shells ===== */
+    section{
+      margin:16px 0; padding:16px; border:1px solid var(--border);
+      border-radius:var(--radius); background:rgba(0,0,0,.82);
+    }
+    h3{margin:0 0 10px}
+
+    /* ===== Compact song cards ===== */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+    .card{border:1px solid var(--border);border-radius:14px;padding:12px;background:#000}
+    .title{margin:0 0 4px;font-size:15px}
+    .meta{margin:0 0 8px;font-size:13px;color:var(--muted)}
+    audio{width:100%;height:30px}
+    .btn{display:inline-block;margin-top:8px;background:var(--red);color:#fff;text-decoration:none;padding:8px 12px;border-radius:10px;font-size:14px}
+
+    /* ===== Merch ===== */
+    .merch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
     .merch img{width:100%;border-radius:12px;border:1px solid var(--border)}
     .price{color:var(--muted);margin:6px 0}
+
     footer{margin:28px 0 16px;color:var(--muted);text-align:center;font-size:12px}
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <div class="brand">
-      <img src="logo3small.png" alt="VO ENT logo">
-      <h1>VO ENT</h1>
+    <div class="bar">
+      <div class="brand">
+        <img src="logo3small.png" alt="VO ENT logo">
+        <h1>VO ENT</h1>
+      </div>
+      <nav>
+        <a class="chip" href="#social">Social</a>
+        <a class="chip" href="#music">Music</a>
+        <a class="chip" href="#merch">Merch</a>
+        <a class="chip cta" href="signup.html">Sign Up</a>
+      </nav>
     </div>
-    <nav>
-      <a class="chip" href="#social">Social</a>
-      <a class="chip" href="#music">Music</a>
-      <a class="chip" href="#merch">Merch</a>
-      <a class="chip cta" href="signup.html">Sign Up</a>
-    </nav>
   </header>
 
   <main>
+    <!-- Dramatic hero -->
+    <section class="hero">
+      <div class="heroTop">
+        <img src="logo3small.png" alt="VO ENT">
+        <div>
+          <h2>Welcome to VO ENT</h2>
+          <p class="tag">Music • Merch • Community</p>
+        </div>
+      </div>
+      <div class="pillbar" style="margin-top:12px;">
+        <a class="pill" href="#music">Listen</a>
+        <a class="pill" href="#merch">Shop</a>
+        <a class="pill" href="https://payhip.com/VoENT" target="_blank" rel="noopener">Payhip Store</a>
+      </div>
+    </section>
+
     <!-- Social -->
     <section id="social">
-      <h2>Follow VO ENT</h2>
+      <h3>Follow VO ENT</h3>
       <div class="pillbar">
         <a class="pill" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank" rel="noopener">Apple Music</a>
         <a class="pill" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank" rel="noopener">YouTube</a>
-        <!-- Restored Instagram button -->
         <a class="pill" href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank" rel="noopener">Instagram</a>
       </div>
     </section>
 
-    <!-- Music (compact cards) -->
+    <!-- Music (compact & neat) -->
     <section id="music">
-      <h2>Latest Releases</h2>
+      <h3>Latest Releases</h3>
       <div class="grid">
         <!-- Track 1 -->
         <div class="card">
@@ -104,7 +175,7 @@
 
     <!-- Merch -->
     <section id="merch">
-      <h2>Merch</h2>
+      <h3>Merch</h3>
       <div class="merch-grid">
         <div class="card merch">
           <img src="whitehoodiesmall.jpeg" alt="VO ENT White Hoodie">
@@ -121,7 +192,7 @@
       </div>
     </section>
 
-    <footer>© <span id="y"></span> VO ENT • Site by VO ENT</footer>
+    <footer>© <span id="y"></span> VO ENT</footer>
   </main>
 
   <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
