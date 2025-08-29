@@ -40,26 +40,13 @@
     .nav-links a{padding:8px 14px;border-radius:999px;border:1px solid var(--border);font-size:14px}
     .nav-links a.cta{background:var(--accent);border-color:transparent;color:#fff;font-weight:700}
 
-    /* HERO (matches the mock) */
-    .hero{
-      padding:128px 16px 56px;
-      text-align:center;
-      position:relative;
-    }
-    .hero .hero-logo{
-      width:min(120px,28vw);height:auto;display:block;margin:0 auto 16px;
-      filter:drop-shadow(0 8px 24px rgba(0,0,0,.8))
-    }
-    .hero h1{
-      font-size:clamp(28px,5vw,52px);
-      letter-spacing:.4px;
-      margin:8px 0 8px;
-      text-shadow:0 0 12px rgba(229,9,20,.45);
-    }
+    /* HERO */
+    .hero{padding:128px 16px 56px;text-align:center}
+    .hero .hero-logo{width:min(120px,28vw);height:auto;display:block;margin:0 auto 16px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.8))}
+    .hero h1{font-size:clamp(28px,5vw,52px);letter-spacing:.4px;margin:8px 0 8px;text-shadow:0 0 12px rgba(229,9,20,.45)}
     .hero .sub{color:var(--muted);font-size:clamp(16px,2.2vw,20px);margin-bottom:22px}
-    .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-    .btn{display:inline-block;background:#111;border:1px solid var(--border);color:#fff;
-      padding:12px 22px;border-radius:999px;font-weight:700;text-align:center}
+    .row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+    .btn{display:inline-block;background:#111;border:1px solid var(--border);color:#fff;padding:12px 22px;border-radius:999px;font-weight:700;text-align:center}
     .btn-lg{padding:14px 28px;font-size:16px}
     .btn-primary{background:var(--accent);border-color:transparent;box-shadow:0 0 18px rgba(229,9,20,.35)}
     .btn-ghost{background:#121212;border-color:rgba(255,255,255,.12);color:#eee}
@@ -75,8 +62,7 @@
     @media (max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:620px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr}}
 
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-      box-shadow:var(--shadow);text-align:center;padding:16px;display:flex;flex-direction:column;align-items:center;gap:10px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);text-align:center;padding:16px;display:flex;flex-direction:column;align-items:center;gap:10px}
     .media{aspect-ratio:1/1;background:#070707;display:grid;place-items:center;width:80%;max-width:180px;border-radius:var(--radius)}
     .media img{width:60%}
     .title{font-weight:800;margin-top:6px}
@@ -84,10 +70,7 @@
     .actions{width:100%;max-width:260px}
     .actions .btn{width:100%}
 
-    /* Social row */
-    .social-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-
-    /* Signup button section */
+    /* Signup */
     #signup{background:#060606;border-top:1px solid rgba(255,255,255,.06);text-align:center;padding:60px 0}
     footer{padding:24px 0;color:#bdbdbd;text-align:center;font-size:13px}
   </style>
@@ -105,26 +88,24 @@
     </div>
   </header>
 
-  <!-- HERO (mock-style) -->
+  <!-- HERO (with social buttons) -->
   <section class="hero">
     <div class="container">
       <img class="hero-logo" src="logo3small.png" alt="VO ENT mark"/>
       <h1>WELCOME TO VO ENT</h1>
       <div class="sub">Music • Merch • Community</div>
-      <div class="cta-row">
+
+      <div class="row">
         <a class="btn btn-primary btn-lg" href="signup.html">Join Now</a>
         <a class="btn btn-ghost btn-lg" href="#merch">Shop Merch</a>
       </div>
-    </div>
-  </section>
 
-  <!-- SOCIAL -->
-  <section class="container" id="social">
-    <h2 class="section-title">Follow VO ENT</h2>
-    <div class="social-row">
-      <a class="btn btn-primary" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank" rel="noopener">Apple Music</a>
-      <a class="btn" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank" rel="noopener">YouTube</a>
-      <a class="btn" href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank" rel="noopener">Instagram</a>
+      <!-- Socials directly under the CTAs -->
+      <div class="row" style="margin-top:18px">
+        <a class="btn" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank" rel="noopener">Apple Music</a>
+        <a class="btn" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank" rel="noopener">YouTube</a>
+        <a class="btn" href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank" rel="noopener">Instagram</a>
+      </div>
     </div>
   </section>
 
@@ -186,13 +167,13 @@
     </div>
   </section>
 
-  <!-- SIGNUP (button) -->
+  <!-- SIGNUP BUTTON -->
   <section id="signup">
     <h2 class="section-title">Join the VO ENT Community</h2>
     <a class="btn btn-primary btn-lg" href="signup.html">Sign Up</a>
   </section>
 
-  <footer>© <span id="y"></span> VO ENT • <a href="#top">Back to top</a></footer>
+  <footer>© <span id="y"></span> VO ENT • <a href="#songs">Back to top</a></footer>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
