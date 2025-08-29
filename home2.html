@@ -9,31 +9,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#000; --card:#0c0c0c; --muted:#c6c6c6; --text:#fff;
-      --accent:#E50914; --radius:16px; --shadow:0 6px 18px rgba(0,0,0,.45); --border:rgba(255,255,255,.08)
-    }
+    :root{--bg:#000;--card:#0c0c0c;--muted:#c6c6c6;--text:#fff;--accent:#E50914;--radius:16px;--shadow:0 6px 18px rgba(0,0,0,.45);--border:rgba(255,255,255,.08)}
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:#000}
-
     header{text-align:center;padding:20px}
-    header img{width:100px;margin-bottom:10px}
-
-    .socials{display:flex;justify-content:center;gap:12px;margin-bottom:30px}
+    header img{width:100px;margin-bottom:10px;filter:drop-shadow(0 0 12px rgba(255,255,255,.15))}
+    .socials{display:flex;justify-content:center;gap:12px;margin-bottom:30px;flex-wrap:wrap}
     .socials a{padding:10px 16px;background:#111;border:1px solid var(--border);border-radius:999px;color:#fff;font-weight:600;text-decoration:none}
     .socials a:hover{background:var(--accent)}
-
     section{padding:40px 20px}
-    .section-title{text-align:center;font-size:28px;margin-bottom:20px;color:#fff}
-
+    .section-title{text-align:center;font-size:28px;margin-bottom:20px}
     .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;text-align:center}
-    .media{aspect-ratio:1/1;background:#070707;display:grid;place-items:center;border-radius:var(--radius);margin-bottom:12px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;text-align:center;display:flex;flex-direction:column;gap:10px}
+    .media{aspect-ratio:1/1;background:#070707;display:grid;place-items:center;border-radius:var(--radius)}
     .media img{width:60%}
-    .title{font-weight:700;margin:8px 0}
+    .title{font-weight:800;margin-top:4px}
     audio{width:100%}
-    .actions{margin-top:10px}
-    .btn{display:inline-block;width:100%;padding:10px 20px;background:var(--accent);border:none;border-radius:999px;color:#fff;font-weight:700;text-decoration:none}
+    .actions{margin-top:6px}
+    .btn{display:inline-block;width:100%;padding:12px 20px;background:var(--accent);border:none;border-radius:999px;color:#fff;font-weight:700;text-decoration:none}
     .btn:hover{opacity:.9}
   </style>
 </head>
@@ -45,31 +38,63 @@
 
   <!-- SOCIALS -->
   <div class="socials">
-    <a href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank">Apple Music</a>
-    <a href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank">YouTube</a>
-    <a href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank">Instagram</a>
+    <a href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank" rel="noopener">Apple Music</a>
+    <a href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank" rel="noopener">Instagram</a>
   </div>
 
   <!-- SONGS -->
   <section id="songs">
     <h2 class="section-title">Songs</h2>
     <div class="grid">
-      <!-- Example existing songs -->
       <article class="card">
         <div class="media"><img src="logo3small.png" alt="No Coat cover"></div>
         <div class="title">Vito Gwuap — No Coat ft Kiing Charles</div>
-        <audio controls><source src="no_coat.mp3?v=4" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/FNAEB" target="_blank">Buy Now</a></div>
+        <audio controls preload="metadata"><source src="no_coat.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn" href="https://payhip.com/b/FNAEB" target="_blank" rel="noopener">Buy Now</a></div>
       </article>
 
-      <!-- ... other songs ... -->
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt="Coupe in the Slums cover"></div>
+        <div class="title">Vito Gwuap — Coupe in the Slums ft Veo Dinero &amp; Kiing Charles</div>
+        <audio controls preload="metadata"><source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn" href="https://payhip.com/b/Jouvz" target="_blank" rel="noopener">Buy Now</a></div>
+      </article>
 
-      <!-- Vito R8 -->
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt="Harder cover"></div>
+        <div class="title">Vito Gwuap — Harder ft Kiing Charles</div>
+        <audio controls preload="metadata"><source src="vito_gwuap_ft_kiing_charles-_harder.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn" href="https://payhip.com/b/T2rRj" target="_blank" rel="noopener">Buy Now</a></div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt="Ohhhhhh cover"></div>
+        <div class="title">Veo Dinero — Ohhhhhh</div>
+        <audio controls preload="metadata"><source src="veo_dinero-ohhhhhhhh.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn" href="https://payhip.com/b/vb6q9" target="_blank" rel="noopener">Buy Now</a></div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt="Body cover"></div>
+        <div class="title">Vito Gwuap — Body</div>
+        <audio controls preload="metadata"><source src="focus_full.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn" href="https://payhip.com/b/CmV5D" target="_blank" rel="noopener">Buy Now</a></div>
+      </article>
+
+      <article class="card">
+        <div class="media"><img src="logo3small.png" alt="Boss Up cover"></div>
+        <div class="title">Vito Gwuap — Boss Up (classy)</div>
+        <audio controls preload="metadata"><source src="boss_up.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn" href="https://payhip.com/b/3kfzP" target="_blank" rel="noopener">Buy Now</a></div>
+      </article>
+
+      <!-- R8 -->
       <article class="card">
         <div class="media"><img src="logo3small.png" alt="Vito R8 cover"></div>
         <div class="title">Vito Gwuap — R8</div>
-        <audio controls><source src="vito_r8.mp3?v=4" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/mSiYJ" target="_blank">Buy Now</a></div>
+        <audio controls preload="metadata"><source src="vito_r8.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn" href="https://payhip.com/b/mSiYJ" target="_blank" rel="noopener">Buy Now</a></div>
       </article>
     </div>
   </section>
@@ -86,11 +111,11 @@
     <div class="grid">
       <article class="card">
         <div class="media"><img src="whitehoodiesmall.jpeg" alt="White Hoodie"></div>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/I6lbt" target="_blank">Buy Now</a></div>
+        <div class="actions"><a class="btn" href="https://payhip.com/b/I6lbt" target="_blank" rel="noopener">Buy Now</a></div>
       </article>
       <article class="card">
         <div class="media"><img src="blackhoodiesmall.jpeg" alt="Black Hoodie"></div>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/hTA0a" target="_blank">Buy Now</a></div>
+        <div class="actions"><a class="btn" href="https://payhip.com/b/hTA0a" target="_blank" rel="noopener">Buy Now</a></div>
       </article>
     </div>
   </section>
