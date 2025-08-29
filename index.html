@@ -2,56 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VO ENT — Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VO ENT — Official</title>
   <meta name="description" content="VO ENT • Music, Merch, and Sign-Up" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{ --bg:#000; --muted:#c6c6c6; --text:#fff; --accent:#e50914; --border:rgba(255,255,255,.08) }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-    .container{width:min(1200px,92vw);margin-inline:auto}
-    header.nav{position:fixed; inset-inline:0; top:0; z-index:50;
-      backdrop-filter:saturate(140%) blur(10px); -webkit-backdrop-filter:saturate(140%) blur(10px);
-      background:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.35) 70%, transparent);
-      border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav-inner{display:flex;align-items:center;justify-content:center;padding:8px 16px}
-    .brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.5px;font-size:15px}
-    .brand img{height:22px; filter:drop-shadow(0 0 15px rgba(255,255,255,.25))}
-    .hero{display:grid;place-items:center;text-align:center;min-height:92svh;padding:120px 16px 48px;
-      background: radial-gradient(1200px 520px at 50% -10%, rgba(229,9,20,.18), transparent 60%),
-                  radial-gradient(1000px 500px at 80% 20%, rgba(229,9,20,.12), transparent 60%),
-                  #000}
-    .logo{width:min(320px,70vw);height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.8))}
-    h1{font-size:clamp(28px,5vw,52px);margin:14px 0 8px}
-    p{color:var(--muted);margin:0 0 18px}
-    .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .btn{background:#111;border:1px solid var(--border);color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;font-size:15px}
-    .btn-primary{background:var(--accent);border-color:transparent}
+    :root{
+      --bg:#000; --text:#fff; --muted:#c6c6c6; --accent:#E50914; --border:#222;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui, Arial, sans-serif}
+    header{padding:40px 16px;text-align:center;border-bottom:1px solid var(--border)}
+    header img{max-width:110px;display:block;margin:0 auto 14px auto}
+    h1{margin:6px 0 6px;font-weight:800;letter-spacing:.6px}
+    p.sub{color:var(--muted);margin:0}
+    .wrap{max-width:1000px;margin:24px auto;padding:0 16px}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:560px;margin:0 auto}
+    a.btn{
+      display:inline-block;text-align:center;padding:14px 18px;border-radius:12px;
+      background:var(--accent);color:#fff;text-decoration:none;font-weight:800;
+      border:1px solid var(--border);box-shadow:0 0 16px rgba(229,9,20,.35);
+      transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    }
+    a.btn:hover{transform:translateY(-1px);box-shadow:0 0 22px rgba(229,9,20,.55);opacity:.96}
+    footer{border-top:1px solid var(--border);padding:24px 16px;color:var(--muted);text-align:center}
   </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="nav-inner container">
-      <div class="brand">
-        <img src="logo1small.png" alt="VO ENT logo" />
-        <span>VO&nbsp;ENT</span>
-      </div>
-    </div>
+  <header>
+    <img src="logo3small.png" alt="VO ENT logo">
+    <h1>VO ENT</h1>
+    <p class="sub">Music • Merch • Community</p>
   </header>
 
-  <section class="hero">
-    <div class="container">
-      <img class="logo" src="logo3small.png" alt="VO ENT metallic logo" />
-      <h1>WELCOME TO VO ENT</h1>
-      <p>Music • Merch • Community</p>
-      <div class="btns">
-        <a class="btn btn-primary" href="home2.html">Enter Site</a>
-        <a class="btn" href="signup.html">Sign Up</a>
-      </div>
+  <main class="wrap">
+    <div class="grid">
+      <a class="btn" href="home2.html">Enter Site</a>
+      <a class="btn" href="signup.html" target="_blank" rel="noopener">Sign Up</a>
     </div>
-  </section>
+  </main>
+
+  <footer>© VO ENT</footer>
 </body>
 </html>
