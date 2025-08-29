@@ -1,136 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VO ENT — Home</title>
-  <meta name="description" content="VO ENT • Music, Merch, and Community" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#000;--card:#0c0c0c;--muted:#c6c6c6;--text:#fff;--accent:#E50914;--radius:16px;--shadow:0 6px 18px rgba(0,0,0,.45);--border:rgba(255,255,255,.08)}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:#000}
-    header{text-align:center;padding:20px}
-    header img{width:100px;margin-bottom:10px;filter:drop-shadow(0 0 12px rgba(255,255,255,.15))}
-    .socials{display:flex;justify-content:center;gap:12px;margin-bottom:30px;flex-wrap:wrap}
-    .socials a{padding:10px 16px;background:#111;border:1px solid var(--border);border-radius:999px;color:#fff;font-weight:600;text-decoration:none}
-    .socials a:hover{background:var(--accent)}
-    section{padding:40px 20px}
-    .section-title{text-align:center;font-size:28px;margin-bottom:20px}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;text-align:center;display:flex;flex-direction:column;gap:10px}
-    .media{aspect-ratio:1/1;background:#070707;display:grid;place-items:center;border-radius:var(--radius)}
-    .media img{width:60%}
-    .title{font-weight:800;margin-top:4px}
-    audio{width:100%}
-    .actions{margin-top:6px}
-    .btn{display:inline-block;width:100%;padding:12px 20px;background:var(--accent);border:none;border-radius:999px;color:#fff;font-weight:700;text-decoration:none}
-    .btn:hover{opacity:.9}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VO ENT — Music & Merch</title>
+<meta name="description" content="VO ENT • Latest releases and merch" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#000; --card:#0c0c0c; --muted:#c6c6c6; --text:#fff; --accent:#E50914; --radius:16px; --shadow:0 6px 18px rgba(0,0,0,.45); --border:rgba(255,255,255,.08) }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:#000;overflow-x:hidden;
+    background:
+      radial-gradient(1400px 600px at 50% -5%, rgba(229,9,20,.22), transparent 60%),
+      radial-gradient(1100px 520px at 80% 12%, rgba(229,9,20,.12), transparent 60%),
+      #000;
+  }
+  a{color:inherit;text-decoration:none}
+  .container{width:min(1200px,92vw);margin-inline:auto}
+
+  header.nav{position:fixed; inset-inline:0; top:0; z-index:60;
+    backdrop-filter:saturate(140%) blur(10px);
+    background:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.35) 70%, transparent);
+    border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:800}
+  .brand img{height:24px}
+  .nav-links{display:flex;gap:12px}
+  .nav-links a{padding:8px 14px;border-radius:999px;border:1px solid var(--border);font-size:14px}
+  .nav-links a.cta{background:var(--accent);border-color:transparent;color:#fff;font-weight:700}
+
+  .hero{padding:128px 16px 56px;text-align:center}
+  .hero .hero-logo{width:min(120px,28vw);margin:0 auto 16px;display:block}
+  .hero h1{font-size:clamp(28px,5vw,52px);margin:8px 0 8px;text-shadow:0 0 12px rgba(229,9,20,.45)}
+  .sub{color:var(--muted);font-size:clamp(16px,2.2vw,20px);margin-bottom:22px}
+  .row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .btn{display:inline-block;background:#111;border:1px solid var(--border);color:#fff;padding:12px 22px;border-radius:999px;font-weight:700}
+  .btn-lg{padding:14px 28px;font-size:16px}
+  .btn-primary{background:var(--accent);border-color:transparent;box-shadow:0 0 18px rgba(229,9,20,.35)}
+  .btn-ghost{background:#121212;border-color:rgba(255,255,255,.12)}
+
+  section{padding:44px 0}
+  .section-title{text-align:center;font-size:clamp(22px,3.2vw,32px);margin:0 0 18px;text-shadow:0 0 10px rgba(229,9,20,.35)}
+  .grid{display:grid;gap:16px}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+  @media (max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:620px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);text-align:center;padding:16px;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .media{aspect-ratio:1/1;background:#070707;display:grid;place-items:center;width:80%;max-width:180px;border-radius:var(--radius)}
+  .media img{width:60%}
+  .title{font-weight:800;margin-top:6px}
+  audio{width:100%;max-width:260px}
+  .actions{width:100%;max-width:260px}
+  .actions .btn{width:100%}
+  footer{padding:24px 0;color:#bdbdbd;text-align:center;font-size:13px}
+</style>
 </head>
 <body>
-  <!-- LOGO -->
-  <header>
-    <img src="logo1small.png" alt="VO ENT Logo"/>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner container">
+      <div class="brand"><img src="logo1small.png" alt="VO ENT logo"/><span>VO&nbsp;ENT</span></div>
+      <nav class="nav-links">
+        <a href="#songs">Music</a>
+        <a href="#merch">Merch</a>
+        <a href="signup.html" class="cta">Join Now</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- SOCIALS -->
-  <div class="socials">
-    <a href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank" rel="noopener">Apple Music</a>
-    <a href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank" rel="noopener">YouTube</a>
-    <a href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank" rel="noopener">Instagram</a>
-  </div>
-
-  <!-- SONGS -->
-  <section id="songs">
-    <h2 class="section-title">Songs</h2>
-    <div class="grid">
-      <article class="card">
-        <div class="media"><img src="logo3small.png" alt="No Coat cover"></div>
-        <div class="title">Vito Gwuap — No Coat ft Kiing Charles</div>
-        <audio controls preload="metadata"><source src="no_coat.mp3?v=4" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/FNAEB" target="_blank" rel="noopener">Buy Now</a></div>
-      </article>
-
-      <article class="card">
-        <div class="media"><img src="logo1small.png" alt="Coupe in the Slums cover"></div>
-        <div class="title">Vito Gwuap — Coupe in the Slums ft Veo Dinero &amp; Kiing Charles</div>
-        <audio controls preload="metadata"><source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3?v=4" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/Jouvz" target="_blank" rel="noopener">Buy Now</a></div>
-      </article>
-
-      <article class="card">
-        <div class="media"><img src="logo1small.png" alt="Harder cover"></div>
-        <div class="title">Vito Gwuap — Harder ft Kiing Charles</div>
-        <audio controls preload="metadata"><source src="vito_gwuap_ft_kiing_charles-_harder.mp3?v=4" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/T2rRj" target="_blank" rel="noopener">Buy Now</a></div>
-      </article>
-
-      <article class="card">
-        <div class="media"><img src="logo1small.png" alt="Ohhhhhh cover"></div>
-        <div class="title">Veo Dinero — Ohhhhhh</div>
-        <audio controls preload="metadata"><source src="veo_dinero-ohhhhhhhh.mp3?v=4" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/vb6q9" target="_blank" rel="noopener">Buy Now</a></div>
-      </article>
-
-      <article class="card">
-        <div class="media"><img src="logo1small.png" alt="Body cover"></div>
-        <div class="title">Vito Gwuap — Body</div>
-        <audio controls preload="metadata"><source src="focus_full.mp3?v=4" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/CmV5D" target="_blank" rel="noopener">Buy Now</a></div>
-      </article>
-
-      <article class="card">
-        <div class="media"><img src="logo3small.png" alt="Boss Up cover"></div>
-        <div class="title">Vito Gwuap — Boss Up (classy)</div>
-        <audio controls preload="metadata"><source src="boss_up.mp3?v=4" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/3kfzP" target="_blank" rel="noopener">Buy Now</a></div>
-      </article>
-
-      <!-- R8 -->
-      <article class="card">
-        <div class="media"><img src="logo3small.png" alt="Vito R8 cover"></div>
-        <div class="title">Vito Gwuap — R8</div>
-        <audio controls preload="metadata"><source src="vito_r8.mp3?v=4" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/mSiYJ" target="_blank" rel="noopener">Buy Now</a></div>
-      </article>
+  <!-- HERO with socials -->
+  <section class="hero">
+    <div class="container">
+      <img class="hero-logo" src="logo3small.png" alt="VO ENT mark"/>
+      <h1>WELCOME TO VO ENT</h1>
+      <div class="sub">Music • Merch • Community</div>
+      <div class="row">
+        <a class="btn btn-primary btn-lg" href="signup.html">Join Now</a>
+        <a class="btn btn-ghost btn-lg" href="#merch">Shop Merch</a>
+      </div>
+      <div class="row" style="margin-top:18px">
+        <a class="btn" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank" rel="noopener">Apple Music</a>
+        <a class="btn" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank" rel="noopener">YouTube</a>
+        <a class="btn" href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank" rel="noopener">Instagram</a>
+      </div>
     </div>
   </section>
 
-  <!-- SIGNUP -->
-  <section id="signup" style="text-align:center">
-    <h2 class="section-title">Join the VO ENT Community</h2>
-    <a class="btn" href="signup.html">Sign Up</a>
+  <!-- SONGS -->
+  <section class="container" id="songs">
+    <h2 class="section-title">YOUR SONGS</h2>
+    <div class="grid cols-3">
+      <!-- No Coat -->
+      <article class="card">
+        <div class="media"><img src="logo3small.png" alt=""></div>
+        <div class="title">Vito Gwuap — No Coat ft Kiing Charles</div>
+        <audio controls preload="metadata"><source src="no_coat.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/FNAEB" target="_blank">Buy Now</a></div>
+      </article>
+
+      <!-- Coupe in the Slums -->
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt=""></div>
+        <div class="title">Vito Gwuap — Coupe in the Slums ft Veo Dinero &amp; Kiing Charles</div>
+        <audio controls preload="metadata"><source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/Jouvz" target="_blank">Buy Now</a></div>
+      </article>
+
+      <!-- Harder -->
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt=""></div>
+        <div class="title">Vito Gwuap — Harder ft Kiing Charles</div>
+        <audio controls preload="metadata"><source src="vito_gwuap_ft_kiing_charles-_harder.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/T2rRj" target="_blank">Buy Now</a></div>
+      </article>
+
+      <!-- Ohhhhhh -->
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt=""></div>
+        <div class="title">Veo Dinero — Ohhhhhh</div>
+        <audio controls preload="metadata"><source src="veo_dinero-ohhhhhhhh.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/vb6q9" target="_blank">Buy Now</a></div>
+      </article>
+
+      <!-- Body -->
+      <article class="card">
+        <div class="media"><img src="logo1small.png" alt=""></div>
+        <div class="title">Vito Gwuap — Body</div>
+        <audio controls preload="metadata"><source src="focus_full.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/CmV5D" target="_blank">Buy Now</a></div>
+      </article>
+
+      <!-- Boss Up (classy) -->
+      <article class="card">
+        <div class="media"><img src="logo3small.png" alt=""></div>
+        <div class="title">Vito Gwuap — Boss Up (classy)</div>
+        <audio controls preload="metadata"><source src="boss_up.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/3kfzP" target="_blank">Buy Now</a></div>
+      </article>
+
+      <!-- Vito R8 (updated) -->
+      <article class="card">
+        <div class="media"><img src="logo3small.png" alt=""></div>
+        <div class="title">Vito Gwuap — R8</div>
+        <audio controls preload="metadata"><source src="vito_r8.mp3?v=4" type="audio/mpeg"></audio>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/mSiYJ" target="_blank">Buy Now</a></div>
+      </article>
+    </div>
   </section>
 
   <!-- MERCH -->
-  <section id="merch">
-    <h2 class="section-title">Merch</h2>
-    <div class="grid">
+  <section class="container" id="merch">
+    <h2 class="section-title">MERCH</h2>
+    <div class="grid cols-2">
       <article class="card">
-        <div class="media"><img src="whitehoodiesmall.jpeg" alt="White Hoodie"></div>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/I6lbt" target="_blank" rel="noopener">Buy Now</a></div>
+        <div class="media"><img src="whitehoodiesmall.jpeg" alt=""></div>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/I6lbt" target="_blank">Buy Now</a></div>
       </article>
       <article class="card">
-        <div class="media"><img src="blackhoodiesmall.jpeg" alt="Black Hoodie"></div>
-        <div class="actions"><a class="btn" href="https://payhip.com/b/hTA0a" target="_blank" rel="noopener">Buy Now</a></div>
+        <div class="media"><img src="blackhoodiesmall.jpeg" alt=""></div>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/hTA0a" target="_blank">Buy Now</a></div>
       </article>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section>
-    <h2 class="section-title">About VO ENT</h2>
-    <p style="text-align:center;color:#c6c6c6;max-width:600px;margin:auto">
-      VO ENT is a movement — music, merch, and community all in one. Join the family and support independent creativity.
-    </p>
-  </section>
-
-  <footer style="text-align:center;padding:20px;color:#888">
-    © <span id="y"></span> VO ENT • All Rights Reserved
-  </footer>
+  <footer>© <span id="y"></span> VO ENT • <a href="#songs">Back to top</a></footer>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
