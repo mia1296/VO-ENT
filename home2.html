@@ -17,10 +17,10 @@
   *{box-sizing:border-box}
   html,body{height:100%}
   body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:#000;line-height:1.5;overflow-x:hidden}
-  a, a:link, a:visited{color:inherit;text-decoration:none}
-  .btn, .btn:link, .btn:visited{ text-decoration:none !important }
+  a{color:inherit;text-decoration:none}
+  .btn{background:#111;border:1px solid var(--border);color:#fff;padding:10px 18px;border-radius:10px;font-weight:700;display:inline-block;text-align:center}
+  .btn-primary{background:var(--accent);border-color:transparent;box-shadow:0 0 16px rgba(229,9,20,.35)}
 
-  /* Dramatic background */
   body{background:
     radial-gradient(1200px 520px at 50% -10%, rgba(229,9,20,.18), transparent 60%),
     radial-gradient(1000px 500px at 80% 20%, rgba(229,9,20,.12), transparent 60%),
@@ -51,8 +51,6 @@
   .title{font-weight:800; margin:6px 0}
   audio{width:80%; max-width:260px; margin:8px auto; display:block}
   .actions{display:flex; flex-direction:column; gap:6px; margin-top:6px; width:80%; max-width:260px}
-  .btn{background:#111;border:1px solid var(--border);color:#fff;padding:10px 18px;border-radius:10px;font-weight:700}
-  .btn-primary{background:var(--accent);border-color:transparent;box-shadow:0 0 16px rgba(229,9,20,.35)}
   footer{padding:24px 0;color:#bdbdbd;text-align:center;font-size:13px}
 </style>
 </head>
@@ -60,10 +58,7 @@
   <!-- NAV -->
   <header class="nav">
     <div class="nav-inner container">
-      <div class="brand">
-        <img src="logo1small.png" alt="VO ENT logo" />
-        <span>VO&nbsp;ENT</span>
-      </div>
+      <div class="brand"><img src="logo1small.png" alt="VO ENT logo" /><span>VO&nbsp;ENT</span></div>
       <nav class="nav-links">
         <a href="#music">Music</a>
         <a href="#merch">Merch</a>
@@ -80,37 +75,37 @@
         <div class="media"><img src="logo3small.png" alt="No Coat cover"></div>
         <div class="title">Vito Gwuap — No Coat ft Kiing Charles</div>
         <audio controls preload="metadata"><source src="no_coat.mp3" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/FNAEB" target="_blank" rel="noopener">Buy Now</a></div>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/FNAEB" target="_blank">Buy Now</a></div>
       </article>
       <article class="card">
-        <div class="media"><img src="logo1small.png" alt="Coupe in the Slums cover"></div>
+        <div class="media"><img src="logo1small.png" alt="Coupe cover"></div>
         <div class="title">Vito Gwuap — Coupe in the Slums ft Veo Dinero &amp; Kiing Charles</div>
         <audio controls preload="metadata"><source src="coupe_in_slums.mp3" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/Jouvz" target="_blank" rel="noopener">Buy Now</a></div>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/Jouvz" target="_blank">Buy Now</a></div>
       </article>
       <article class="card">
         <div class="media"><img src="logo1small.png" alt="Harder cover"></div>
         <div class="title">Vito Gwuap — Harder ft Kiing Charles</div>
         <audio controls preload="metadata"><source src="harder.mp3" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/T2rRj" target="_blank" rel="noopener">Buy Now</a></div>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/T2rRj" target="_blank">Buy Now</a></div>
       </article>
       <article class="card">
         <div class="media"><img src="logo1small.png" alt="Ohhhhhh cover"></div>
         <div class="title">Veo Dinero — Ohhhhhh</div>
         <audio controls preload="metadata"><source src="veo.mp3" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/vb6q9" target="_blank" rel="noopener">Buy Now</a></div>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/vb6q9" target="_blank">Buy Now</a></div>
       </article>
       <article class="card">
         <div class="media"><img src="logo1small.png" alt="Body cover"></div>
         <div class="title">Vito Gwuap — Body</div>
         <audio controls preload="metadata"><source src="focus_full.mp3" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/VoENT" target="_blank" rel="noopener">Buy Now</a></div>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/CmV5D" target="_blank">Buy Now</a></div>
       </article>
       <article class="card">
         <div class="media"><img src="logo3small.png" alt="Boss Up cover"></div>
         <div class="title">Vito Gwuap — Boss Up (classy)</div>
         <audio controls preload="metadata"><source src="boss_up.mp3" type="audio/mpeg"></audio>
-        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/3kfzP" target="_blank" rel="noopener">Buy Now</a></div>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/3kfzP" target="_blank">Buy Now</a></div>
       </article>
     </div>
   </section>
@@ -121,24 +116,19 @@
     <div class="grid cols-3">
       <article class="card">
         <div class="media"><img src="whitehoodiesmall.jpeg" alt="White Hoodie"></div>
-        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/I6lbt" target="_blank" rel="noopener">Buy Now</a></div>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/I6lbt" target="_blank">Buy Now</a></div>
       </article>
       <article class="card">
         <div class="media"><img src="blackhoodiesmall.jpeg" alt="Black Hoodie"></div>
-        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/hTA0a" target="_blank" rel="noopener">Buy Now</a></div>
+        <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/hTA0a" target="_blank">Buy Now</a></div>
       </article>
     </div>
   </section>
 
-  <!-- SIGNUP -->
-  <section id="signup" style="background:#060606;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)">
-    <div class="container">
-      <h2 class="section-title">Join the VO ENT Community</h2>
-      <iframe id="JotFormIFrame-252085628910156" title="VO ENT Sign Up Form"
-        src="https://form.jotform.com/252085628910156"
-        allow="geolocation; microphone; camera; fullscreen; payment" scrolling="no"
-        style="width:100%;min-height:520px;border:none;border-radius:14px"></iframe>
-    </div>
+  <!-- SIGNUP BUTTON -->
+  <section id="signup" style="text-align:center;padding:60px 0;background:#060606;border-top:1px solid rgba(255,255,255,.06)">
+    <h2 class="section-title">Join the VO ENT Community</h2>
+    <a class="btn btn-primary" href="signup.html">Sign Up</a>
   </section>
 
   <footer>© <span id="y"></span> VO ENT • <a href="#music">Back to top</a></footer>
