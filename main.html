@@ -19,7 +19,6 @@
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:#000;overflow-x:hidden}
     a{color:inherit;text-decoration:none}
 
-    /* Dramatic background */
     body{
       background:
         radial-gradient(1400px 600px at 50% -5%, rgba(229,9,20,.22), transparent 60%),
@@ -27,7 +26,6 @@
         #000;
     }
 
-    /* NAV */
     header.nav{position:fixed; inset-inline:0; top:0; z-index:60;
       backdrop-filter:saturate(140%) blur(10px);
       background:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.35) 70%, transparent);
@@ -40,7 +38,6 @@
     .nav-links a{padding:8px 14px;border-radius:999px;border:1px solid var(--border);font-size:14px}
     .nav-links a.cta{background:var(--accent);border-color:transparent;color:#fff;font-weight:700}
 
-    /* HERO */
     .hero{padding:128px 16px 56px;text-align:center}
     .hero .hero-logo{width:min(120px,28vw);height:auto;display:block;margin:0 auto 16px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.8))}
     .hero h1{font-size:clamp(28px,5vw,52px);letter-spacing:.4px;margin:8px 0 8px;text-shadow:0 0 12px rgba(229,9,20,.45)}
@@ -51,11 +48,9 @@
     .btn-primary{background:var(--accent);border-color:transparent;box-shadow:0 0 18px rgba(229,9,20,.35)}
     .btn-ghost{background:#121212;border-color:rgba(255,255,255,.12);color:#eee}
 
-    /* Sections */
     section{padding:44px 0}
     .section-title{text-align:center;font-size:clamp(22px,3.2vw,32px);margin:0 0 18px;text-shadow:0 0 10px rgba(229,9,20,.35)}
 
-    /* Grids & cards */
     .grid{display:grid;gap:16px}
     .grid.cols-2{grid-template-columns:repeat(2,1fr)}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
@@ -70,13 +65,11 @@
     .actions{width:100%;max-width:260px}
     .actions .btn{width:100%}
 
-    /* Signup */
     #signup{background:#060606;border-top:1px solid rgba(255,255,255,.06);text-align:center;padding:60px 0}
     footer{padding:24px 0;color:#bdbdbd;text-align:center;font-size:13px}
   </style>
 </head>
 <body>
-  <!-- NAV -->
   <header class="nav">
     <div class="nav-inner container">
       <div class="brand"><img src="logo1small.png" alt="VO ENT"/><span>VO&nbsp;ENT</span></div>
@@ -88,7 +81,7 @@
     </div>
   </header>
 
-  <!-- HERO (with social buttons) -->
+  <!-- HERO with socials -->
   <section class="hero">
     <div class="container">
       <img class="hero-logo" src="logo3small.png" alt="VO ENT mark"/>
@@ -99,8 +92,6 @@
         <a class="btn btn-primary btn-lg" href="signup.html">Join Now</a>
         <a class="btn btn-ghost btn-lg" href="#merch">Shop Merch</a>
       </div>
-
-      <!-- Socials directly under the CTAs -->
       <div class="row" style="margin-top:18px">
         <a class="btn" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank" rel="noopener">Apple Music</a>
         <a class="btn" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank" rel="noopener">YouTube</a>
@@ -119,30 +110,41 @@
         <audio controls preload="metadata"><source src="no_coat.mp3" type="audio/mpeg"></audio>
         <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/FNAEB" target="_blank" rel="noopener">Buy Now</a></div>
       </article>
+
       <article class="card">
         <div class="media"><img src="logo1small.png" alt="Coupe in the Slums cover"></div>
         <div class="title">Vito Gwuap — Coupe in the Slums ft Veo Dinero &amp; Kiing Charles</div>
-        <audio controls preload="metadata"><source src="coupe_in_slums.mp3" type="audio/mpeg"></audio>
+        <audio controls preload="metadata">
+          <source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3" type="audio/mpeg">
+        </audio>
         <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/Jouvz" target="_blank" rel="noopener">Buy Now</a></div>
       </article>
+
       <article class="card">
         <div class="media"><img src="logo1small.png" alt="Harder cover"></div>
         <div class="title">Vito Gwuap — Harder ft Kiing Charles</div>
-        <audio controls preload="metadata"><source src="harder.mp3" type="audio/mpeg"></audio>
+        <audio controls preload="metadata">
+          <source src="vito_gwuap_ft_kiing_charles-_harder.mp3" type="audio/mpeg">
+        </audio>
         <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/T2rRj" target="_blank" rel="noopener">Buy Now</a></div>
       </article>
+
       <article class="card">
         <div class="media"><img src="logo1small.png" alt="Ohhhhhh cover"></div>
         <div class="title">Veo Dinero — Ohhhhhh</div>
-        <audio controls preload="metadata"><source src="veo.mp3" type="audio/mpeg"></audio>
+        <audio controls preload="metadata">
+          <source src="veo_dinero-ohhhhhhhh.mp3" type="audio/mpeg">
+        </audio>
         <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/vb6q9" target="_blank" rel="noopener">Buy Now</a></div>
       </article>
+
       <article class="card">
         <div class="media"><img src="logo1small.png" alt="Body cover"></div>
         <div class="title">Vito Gwuap — Body</div>
         <audio controls preload="metadata"><source src="focus_full.mp3" type="audio/mpeg"></audio>
         <div class="actions"><a class="btn btn-primary" href="https://payhip.com/b/CmV5D" target="_blank" rel="noopener">Buy Now</a></div>
       </article>
+
       <article class="card">
         <div class="media"><img src="logo3small.png" alt="Boss Up cover"></div>
         <div class="title">Vito Gwuap — Boss Up (classy)</div>
@@ -167,7 +169,7 @@
     </div>
   </section>
 
-  <!-- SIGNUP BUTTON -->
+  <!-- SIGNUP -->
   <section id="signup">
     <h2 class="section-title">Join the VO ENT Community</h2>
     <a class="btn btn-primary btn-lg" href="signup.html">Sign Up</a>
