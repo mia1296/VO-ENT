@@ -6,42 +6,79 @@
   <title>VO ENT — Home</title>
   <meta name="description" content="VO ENT • Music, Merch, and Sign-Up" />
   <style>
-    :root{
-      --bg:#000; --text:#fff; --muted:#c6c6c6; --accent:#E50914; --border:#222;
-    }
+    :root{ --bg:#000; --text:#fff; --muted:#C6C6C6; --accent:#E50914; --border:#222; }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui, Arial, sans-serif}
-    header{padding:36px 16px;text-align:center;border-bottom:1px solid var(--border)}
-    header img{max-width:120px;display:block;margin:0 auto 12px auto}
+
+    /* === DRAMATIC THEME (VO ENT) === */
+    body.dramatic{
+      background: radial-gradient(1200px 600px at 50% -10%, rgba(229,9,20,0.20), transparent 60%),
+                  radial-gradient(900px 500px at -10% 30%, rgba(229,9,20,0.12), transparent 60%),
+                  radial-gradient(900px 500px at 110% 70%, rgba(229,9,20,0.12), transparent 60%),
+                  #000;
+      position:relative; overflow-x:hidden;
+    }
+    body.dramatic::before{
+      content:""; position:fixed; inset:-20% -20% -20% -20%;
+      background: radial-gradient(800px 400px at 50% 0%, rgba(229,9,20,0.16), transparent 70%);
+      pointer-events:none; z-index:-1; animation:voPulse 5.5s ease-in-out infinite alternate;
+    }
+    @keyframes voPulse { 0%{filter:blur(0px) opacity(.8)} 100%{filter:blur(2px) opacity(1)} }
+
+    .neon-title{ text-shadow:0 0 10px rgba(229,9,20,.6),0 0 20px rgba(229,9,20,.35); letter-spacing:.6px }
+    .vo-divider{
+      height:2px; width:120px; margin:8px auto 18px;
+      background: radial-gradient(closest-side, rgba(229,9,20,.9), rgba(229,9,20,.2) 70%, transparent);
+      box-shadow:0 0 16px rgba(229,9,20,.45), inset 0 0 10px rgba(229,9,20,.55); border-radius:999px;
+    }
+
+    header{
+      padding:36px 16px;text-align:center;border-bottom:1px solid var(--border);
+      background:linear-gradient(to bottom, rgba(255,255,255,.02), rgba(255,255,255,0));
+      backdrop-filter:blur(4px);
+    }
+    header img{max-width:120px;display:block;margin:0 auto 12px;filter: drop-shadow(0 0 18px rgba(229,9,20,.35));}
     h1{margin:0 0 8px;font-weight:900;letter-spacing:.6px}
+
     .wrap{max-width:1100px;margin:0 auto;padding:18px 16px 60px}
-    .row{display:grid;gap:16px}
     .cta-bar{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:14px 0 28px}
     a.btn,a.small{
       display:inline-block;padding:12px 16px;border-radius:12px;text-decoration:none;
-      border:1px solid var(--border);font-weight:800;transition:.12s ease;
+      border:1px solid var(--border);font-weight:800;transition:.12s ease; color:#fff;
+      position:relative; isolation:isolate; box-shadow:0 0 16px rgba(229,9,20,.35);
     }
-    a.btn{background:var(--accent);color:#fff;box-shadow:0 0 16px rgba(229,9,20,.35)}
-    a.btn:hover{transform:translateY(-1px);box-shadow:0 0 22px rgba(229,9,20,.55)}
-    a.small{background:#111;color:#fff}
-    section{margin:28px 0 18px}
+    a.btn{background:var(--accent)}
+    a.btn::after, .buy a::after{
+      content:""; position:absolute; inset:-12px;
+      background: radial-gradient(220px 90px at 50% 50%, rgba(229,9,20,.35), transparent 60%);
+      z-index:-1; filter: blur(18px); opacity:.75;
+    }
+    a.btn:hover{transform:translateY(-1px); box-shadow:0 0 26px rgba(229,9,20,.55)}
+    a.small{background:#111}
+
+    section{margin:28px 0 18px; padding:16px; border:1px solid var(--border); border-radius:16px; background:rgba(255,255,255,.02)}
     h2{margin:0 0 14px}
+
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-    .card{border:1px solid var(--border);border-radius:16px;padding:14px;background:#0a0a0a}
-    .card img{width:100%;border-radius:12px;border:1px solid var(--border)}
-    .buy{margin-top:10px}
+    .card{border:1px solid var(--border);border-radius:16px;padding:14px;background:#0a0a0a;transition:.18s ease}
+    .card:hover{box-shadow:0 0 24px rgba(229,9,20,.25), inset 0 0 2px rgba(229,9,20,.8); transform:translateY(-2px)}
+    .card img{width:100%;border-radius:12px;border:1px solid var(--border);transition:.18s ease}
+    .card:hover img{filter: drop-shadow(0 0 16px rgba(229,9,20,.45));}
+
+    .track{display:flex;flex-direction:column;gap:8px;border:1px solid var(--border);border-radius:14px;padding:12px;background:#0a0a0a;transition:.18s ease}
+    .track:hover{box-shadow:0 0 24px rgba(229,9,20,.25), inset 0 0 2px rgba(229,9,20,.8); transform:translateY(-2px)}
     .buy a{display:inline-block;background:var(--accent);color:#fff;border:1px solid var(--border);
-           padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800}
+           padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800; position:relative; isolation:isolate; box-shadow:0 0 16px rgba(229,9,20,.35)}
     .buy a:hover{opacity:.95}
-    .track{display:flex;flex-direction:column;gap:8px;border:1px solid var(--border);border-radius:14px;padding:12px;background:#0a0a0a}
     .muted{color:var(--muted)}
     footer{border-top:1px solid var(--border);padding:24px 16px;color:var(--muted);text-align:center;margin-top:30px}
   </style>
 </head>
-<body>
+<body class="dramatic">
   <header>
     <img src="logo3small.png" alt="VO ENT logo">
-    <h1>VO ENT — Official</h1>
+    <h1 class="neon-title">VO ENT — Official</h1>
+    <div class="vo-divider"></div>
     <div class="cta-bar">
       <a class="small" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank" rel="noopener">Apple Music</a>
       <a class="small" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank" rel="noopener">YouTube</a>
@@ -53,44 +90,69 @@
   <main class="wrap">
     <!-- MUSIC -->
     <section id="music">
-      <h2>Latest Music</h2>
-      <div class="row cards">
+      <h2 class="neon-title" style="margin-bottom:6px">Latest Music</h2>
+      <div class="vo-divider"></div>
+      <div class="cards">
         <div class="track">
           <strong>No Coat</strong>
-          <audio controls preload="metadata" style="width:100%">
+          <audio controls preload="metadata">
             <source src="no_coat.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
           </audio>
-          <div><a class="btn" href="https://payhip.com/b/FNAEB" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <div class="buy"><a href="https://payhip.com/b/FNAEB" target="_blank" rel="noopener">Buy on Payhip</a></div>
           <span class="muted">Preview above • Full track on Payhip</span>
         </div>
 
         <div class="track">
           <strong>Coupe in Slums</strong>
-          <div><a class="btn" href="https://payhip.com/b/Jouvz" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <audio controls preload="metadata">
+            <source src="coupe_in_slums.mp3" type="audio/mpeg">
+          </audio>
+          <div class="buy"><a href="https://payhip.com/b/Jouvz" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <span class="muted">Preview above • Full track on Payhip</span>
         </div>
+
         <div class="track">
           <strong>Harder</strong>
-          <div><a class="btn" href="https://payhip.com/b/T2rRj" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <audio controls preload="metadata">
+            <source src="harder.mp3" type="audio/mpeg">
+          </audio>
+          <div class="buy"><a href="https://payhip.com/b/T2rRj" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <span class="muted">Preview above • Full track on Payhip</span>
         </div>
+
         <div class="track">
           <strong>Veo</strong>
-          <div><a class="btn" href="https://payhip.com/b/vb6q9" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <audio controls preload="metadata">
+            <source src="veo.mp3" type="audio/mpeg">
+          </audio>
+          <div class="buy"><a href="https://payhip.com/b/vb6q9" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <span class="muted">Preview above • Full track on Payhip</span>
         </div>
+
         <div class="track">
           <strong>Focus</strong>
-          <div><a class="btn" href="https://payhip.com/b/CmV5D" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <audio controls preload="metadata">
+            <source src="focus.mp3" type="audio/mpeg">
+          </audio>
+          <div class="buy"><a href="https://payhip.com/b/CmV5D" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <span class="muted">Preview above • Full track on Payhip</span>
         </div>
+
         <div class="track">
           <strong>Boss Up</strong>
-          <div><a class="btn" href="https://payhip.com/b/3kfzP" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <audio controls preload="metadata">
+            <source src="boss_up.mp3" type="audio/mpeg">
+          </audio>
+          <div class="buy"><a href="https://payhip.com/b/3kfzP" target="_blank" rel="noopener">Buy on Payhip</a></div>
+          <span class="muted">Preview above • Full track on Payhip</span>
         </div>
       </div>
     </section>
 
     <!-- MERCH -->
     <section id="merch">
-      <h2>Merch</h2>
+      <h2 class="neon-title" style="margin-bottom:6px">Merch</h2>
+      <div class="vo-divider"></div>
       <div class="cards">
         <div class="card">
           <a href="https://payhip.com/b/I6lbt" target="_blank" rel="noopener">
@@ -110,7 +172,8 @@
 
     <!-- ABOUT -->
     <section id="about">
-      <h2>About VO ENT</h2>
+      <h2 class="neon-title" style="margin-bottom:6px">About VO ENT</h2>
+      <div class="vo-divider"></div>
       <p class="muted">Independent music and exclusive merch. Tap in for drops, shows, and more.</p>
     </section>
   </main>
