@@ -1,105 +1,92 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #000;
-  color: #fff;
-  text-align: center;
+/* === DRAMATIC THEME (VO ENT) === */
+:root{
+  --bg:#000; --text:#fff; --muted:#C6C6C6; --accent:#E50914; --border:#222;
 }
 
-header {
-  background: #111;
-  padding: 20px;
+/* Global backdrop with red vignette + subtle pulse */
+body.dramatic{
+  background: radial-gradient(1200px 600px at 50% -10%, rgba(229,9,20,0.20), transparent 60%),
+              radial-gradient(900px 500px at -10% 30%, rgba(229,9,20,0.12), transparent 60%),
+              radial-gradient(900px 500px at 110% 70%, rgba(229,9,20,0.12), transparent 60%),
+              #000;
+  color: var(--text);
+  position: relative;
+  overflow-x: hidden;
+}
+body.dramatic::before{
+  content:"";
+  position: fixed; inset:-20% -20% -20% -20%;
+  background: radial-gradient(800px 400px at 50% 0%, rgba(229,9,20,0.16), transparent 70%);
+  pointer-events:none; z-index:-1;
+  animation: voPulse 5.5s ease-in-out infinite alternate;
+}
+@keyframes voPulse {
+  0%   { filter: blur(0px) opacity(.8); }
+  100% { filter: blur(2px) opacity(1); }
 }
 
-header img {
-  max-width: 80px;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+/* Neon title + divider */
+.neon-title{
+  text-shadow: 0 0 10px rgba(229,9,20,.6), 0 0 20px rgba(229,9,20,.35);
+  letter-spacing:.6px;
+}
+.vo-divider{
+  height:2px; width:120px; margin:8px auto 18px;
+  background: radial-gradient(closest-side, rgba(229,9,20,.9), rgba(229,9,20,.2) 70%, transparent);
+  box-shadow: 0 0 16px rgba(229,9,20,.45), inset 0 0 10px rgba(229,9,20,.55);
+  border-radius:999px;
 }
 
-header h1 {
-  font-size: 3rem;
-  margin: 0;
+/* Glassy header + hero vibe */
+header{
+  background: linear-gradient(to bottom, rgba(255,255,255,0.02), rgba(255,255,255,0)) !important;
+  border-bottom: 1px solid var(--border) !important;
+  backdrop-filter: blur(4px);
+}
+header img{ filter: drop-shadow(0 0 18px rgba(229,9,20,.35)); }
+
+/* Cards/Tracks: darker panels + glow on hover */
+.card, .track, section{
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.card:hover, .track:hover{
+  box-shadow: 0 0 24px rgba(229,9,20,.25), 0 0 2px rgba(229,9,20,.8) inset;
+  transform: translateY(-2px);
+  transition: .18s ease;
 }
 
-section {
-  margin: 30px auto;
-  padding: 20px;
-  max-width: 600px;
-  background: #222;
-  border-radius: 10px;
+/* Buttons: stronger neon */
+a.btn, .buy a, a.small{
+  position: relative;
+  isolation: isolate;
+  box-shadow: 0 0 16px rgba(229,9,20,.35);
+}
+a.btn::after, .buy a::after{
+  content:"";
+  position:absolute; inset:-12px;
+  background: radial-gradient(220px 90px at 50% 50%, rgba(229,9,20,.35), transparent 60%);
+  z-index:-1; filter: blur(18px); opacity:.75;
+}
+a.btn:hover, .buy a:hover{ box-shadow: 0 0 26px rgba(229,9,20,.55); }
+
+/* Images: subtle red outer glow on hover */
+.card img{
+  transition: .18s ease;
+  border:1px solid var(--border);
+}
+.card:hover img{
+  filter: drop-shadow(0 0 16px rgba(229,9,20,.45));
 }
 
-a.button,
-.buy-button,
-button {
-  display: inline-block;
-  margin: 1rem;
-  padding: 1rem 2rem;
-  background: #f00;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
+/* Audio player container */
+.track audio{
+  width:100%;
+  border-radius:12px;
+  background:#0a0a0a;
+  outline: none;
 }
 
-a.button:hover,
-.buy-button:hover,
-button:hover {
-  background: #c00;
-}
-
-.footer {
-  background: #111;
-  padding: 15px;
-  font-size: 0.9rem;
-  margin-top: 50px;
-}
-
-.item {
-  margin: 2rem auto;
-  max-width: 300px;
-}
-
-.item img {
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-.item h3,
-.item p {
-  margin: 0.5rem 0;
-}
-
-.about-logo {
-  max-width: 80px;
-  margin-top: 1rem;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-}
-
-.signup-container {
-  margin-top: 100px;
-  padding: 20px;
-}
-
-input,
-button {
-  padding: 10px;
-  margin: 10px;
-  border: none;
-  border-radius: 5px;
-}
-
-button {
-  background-color: #1db954;
-  color: #fff;
-  cursor: pointer;
-}
-
-a.signup-button img {
-  max-width: 100px;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-}
+/* Sections spacing tidy-up if needed */
+section{ padding: 16px; }
