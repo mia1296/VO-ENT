@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VO ENT Admin</title>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabase = createClient(
+  "https://dlssxyetewziingcwajz.supabase.co",
+  "YOUR_SUPABASE_ANON_KEY"
+);
+
+window.login = function(){
+  const pass = document.getElementById("pass").value;
+
+  if(pass === "voent123"){
+    document.getElementById("login").style.display="none";
+    document.getElementById("panel").style.display="block";
+  } else {
+    alert("Wrong password");
+  }
+};
+
+window.upload = async function(){
+  const title = document.getElementById("title").value;
+  const audio = document.getElementById("audio").files[0];
+  const cover = document.getElementById("cover").files[0];
+
+  const audioPath = `songs/${Date.now()}-${audio.name}`;
+  const coverPath = `covers/${Date.now()}-${cover.name}`;
+
+  await supabase.storage.from("songs").upload(audioPath,audio);
+  await supabase.storage.from("covers").upload(coverPath,cover);
+
+  const audioUrl = supabase.storage.from("songs").getPublicUrl(audioPath).data.publicUrl;
+  const coverUrl = supabase.storage.from("covers").getPublicUrl(coverPath).data.publicUrl;
+
+  await supabase.from("songs").insert([{
+    title,
+    song_url: audioUrl,
+    cover_url: coverUrl,
+    created_at: new Date().toISOString()
+  }]);
+
+  alert("Uploaded to VO ENT 🔥");
+};
+</script>
+
+<style>
+body{margin:0;font-family:Arial;background:#000;color:#fff}
+.center{display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column}
+.box{background:#111;padding:20px;border:1px solid #222;width:300px;text-align:center}
+input,button{width:100%;margin:5px 0;padding:10px}
+button{background:#E50914;color:#fff;border:none}
+#panel{display:none;padding:20px}
+</style>
+</head>
+
+<body>
+
+<div id="login" class="center">
+  <div class="box">
+    <h2>VO ENT ADMIN</h2>
+    <input id="pass" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<div id="panel">
+  <h2>Upload Song</h2>
+
+  <input id="title" placeholder="Song Title">
+  <input id="audio" type="file" accept="audio/*">
+  <input id="cover" type="file" accept="image/*">
+
+  <button onclick="upload()">Upload</button>
+</div>
+
+</body>
+</html>
