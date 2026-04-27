@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>VO ENT — Music & Merch</title>
 <meta name="description" content="VO ENT • Latest releases and merch" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -15,69 +16,119 @@
     --accent:#E50914; --radius:16px; --shadow:0 6px 18px rgba(0,0,0,.45);
     --border:rgba(255,255,255,.08)
   }
+
   *{box-sizing:border-box}
-  html,body{height:100%}
   body{
-    margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
-    color:var(--text);background:#000;overflow-x:hidden;
-    background:
-      radial-gradient(1400px 600px at 50% -5%, rgba(229,9,20,.22), transparent 60%),
-      #000;
+    margin:0;
+    font-family:Inter,system-ui,Arial;
+    color:var(--text);
+    background:#000;
   }
+
   a{color:inherit;text-decoration:none}
-  .container{width:min(1200px,92vw);margin-inline:auto}
+  .container{width:min(1200px,92vw);margin:auto}
 
-  header.nav{position:fixed; inset-inline:0; top:0; z-index:60;
-    backdrop-filter:saturate(140%) blur(10px);
-    background:rgba(0,0,0,.8);
-    border-bottom:1px solid rgba(255,255,255,.06)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
-  .brand{display:flex;align-items:center;gap:8px;font-weight:800}
+  /* NAV */
+  header.nav{
+    position:fixed;
+    inset-inline:0;
+    top:0;
+    z-index:60;
+    background:rgba(0,0,0,.85);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+
+  .nav-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 16px;
+  }
+
+  .brand{display:flex;gap:8px;align-items:center;font-weight:800}
   .brand img{height:24px}
+
   .nav-links{display:flex;gap:12px}
-  .nav-links a{padding:8px 14px;border-radius:999px;border:1px solid var(--border);font-size:14px}
-  .nav-links a.cta{background:var(--accent);border-color:transparent;font-weight:700}
+  .nav-links a{
+    padding:8px 14px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    font-size:14px;
+  }
 
-  .hero{padding:128px 16px 56px;text-align:center}
-  .hero .hero-logo{width:min(120px,28vw);margin:0 auto 16px}
-  .hero h1{font-size:clamp(28px,5vw,52px)}
-  .sub{color:var(--muted);margin-bottom:22px}
+  .cta{
+    background:var(--accent);
+    border:none !important;
+    font-weight:700;
+  }
 
-  .row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-  .btn{display:inline-block;background:#111;border:1px solid var(--border);
-    padding:12px 22px;border-radius:999px;font-weight:700}
-  .btn-primary{background:var(--accent);border:none}
+  /* HERO */
+  .hero{
+    padding:130px 16px 50px;
+    text-align:center;
+  }
 
-  section{padding:44px 0}
-  .section-title{text-align:center}
+  .hero-logo{width:120px;margin:auto;display:block}
+  .hero h1{font-size:40px;margin:10px 0}
+  .sub{color:var(--muted)}
 
-  .grid{display:grid;gap:16px}
+  /* GRID */
+  .grid{
+    display:grid;
+    gap:16px;
+  }
+
   .grid.cols-3{grid-template-columns:repeat(3,1fr)}
   .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-  @media(max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:620px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
 
-  .card{background:var(--card);border:1px solid var(--border);
-    border-radius:var(--radius);text-align:center;padding:16px}
+  @media(max-width:900px){
+    .grid.cols-3{grid-template-columns:repeat(2,1fr)}
+  }
 
-  .media{aspect-ratio:1/1;display:grid;place-items:center}
-  .media img{width:60%}
+  @media(max-width:600px){
+    .grid.cols-3,.grid.cols-2{grid-template-columns:1fr}
+  }
 
-  audio{width:100%;max-width:260px}
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:16px;
+    text-align:center;
+  }
 
-  /* 🔐 LOGIN OVERLAY */
+  audio{width:100%}
+
+  /* LOGIN OVERLAY */
   #loginBox{
-    position:fixed;inset:0;
+    display:none; /* IMPORTANT FIX */
+    position:fixed;
+    inset:0;
     background:rgba(0,0,0,.95);
-    display:flex;align-items:center;justify-content:center;
+    justify-content:center;
+    align-items:center;
     z-index:9999;
   }
+
   #loginBox div{
-    background:#111;padding:20px;border:1px solid #222;
-    width:300px;text-align:center;border-radius:12px;
+    background:#111;
+    padding:20px;
+    border:1px solid #222;
+    width:300px;
+    text-align:center;
+    border-radius:12px;
   }
 
-  /* 🔒 ADMIN PANEL (HIDDEN) */
+  #loginBox input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    background:#000;
+    border:1px solid #333;
+    color:#fff;
+  }
+
+  /* ADMIN PANEL */
   #adminPanel{
     display:none;
     position:fixed;
@@ -90,19 +141,24 @@
     z-index:9998;
     border-radius:12px;
   }
+
   #adminPanel input{
-    width:100%;margin:5px 0;padding:8px;background:#000;
-    border:1px solid #333;color:#fff;
+    width:100%;
+    margin:5px 0;
+    padding:8px;
+    background:#000;
+    border:1px solid #333;
+    color:#fff;
   }
 </style>
 </head>
 
 <body>
 
-<!-- 🔐 LOGIN -->
+<!-- 🔐 LOGIN POPUP -->
 <div id="loginBox">
   <div>
-    <h2>VO ENT ADMIN</h2>
+    <h3>VO ENT Admin</h3>
     <input id="pass" type="password" placeholder="Enter password">
     <button onclick="login()">Login</button>
     <p id="msg"></p>
@@ -112,99 +168,104 @@
 <!-- NAV -->
 <header class="nav">
   <div class="nav-inner container">
-    <div class="brand"><img src="logo1small.png"><span>VO ENT</span></div>
+    <div class="brand">
+      <img src="logo1small.png">
+      <span>VO ENT</span>
+    </div>
+
     <nav class="nav-links">
       <a href="#songs">Music</a>
       <a href="#merch">Merch</a>
       <a class="cta" href="signup.html">Join Now</a>
+
+      <!-- ✅ ADMIN BUTTON -->
+      <a class="cta" href="javascript:void(0)" onclick="openAdmin()">Admin</a>
     </nav>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="container">
-    <img class="hero-logo" src="logo3small.png">
-    <h1>WELCOME TO VO ENT</h1>
-    <div class="sub">Music • Merch • Community</div>
-  </div>
+  <img class="hero-logo" src="logo3small.png">
+  <h1>WELCOME TO VO ENT</h1>
+  <div class="sub">Music • Merch • Community</div>
 </section>
 
 <!-- SONGS (UNCHANGED) -->
 <section class="container" id="songs">
-<h2 class="section-title">YOUR SONGS</h2>
+<h2 style="text-align:center">YOUR SONGS</h2>
 
 <div class="grid cols-3">
 
-<article class="card">
-<div class="media"><img src="logo3small.png"></div>
-<div>Vito Gwuap — No Coat ft Kiing Charles</div>
-<audio controls><source src="no_coat.mp3?v=4"></audio>
-</article>
+  <div class="card">
+    <div>No Coat</div>
+    <audio controls><source src="no_coat.mp3?v=4"></audio>
+  </div>
 
-<article class="card">
-<div class="media"><img src="logo1small.png"></div>
-<div>Coupe in the Slums ft Veo Dinero & Kiing Charles</div>
-<audio controls><source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3?v=4"></audio>
-</article>
+  <div class="card">
+    <div>Coupe in the Slums</div>
+    <audio controls><source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3?v=4"></audio>
+  </div>
 
-<article class="card">
-<div class="media"><img src="logo1small.png"></div>
-<div>Harder ft Kiing Charles</div>
-<audio controls><source src="vito_gwuap_ft_kiing_charles-_harder.mp3?v=4"></audio>
-</article>
+  <div class="card">
+    <div>Harder</div>
+    <audio controls><source src="vito_gwuap_ft_kiing_charles-_harder.mp3?v=4"></audio>
+  </div>
 
-<article class="card">
-<div class="media"><img src="logo1small.png"></div>
-<div>Ohhhhhh</div>
-<audio controls><source src="veo_dinero-ohhhhhhhh.mp3?v=4"></audio>
-</article>
+  <div class="card">
+    <div>Ohhhhhh</div>
+    <audio controls><source src="veo_dinero-ohhhhhhhh.mp3?v=4"></audio>
+  </div>
 
-<article class="card">
-<div class="media"><img src="logo1small.png"></div>
-<div>Body</div>
-<audio controls><source src="focus_full.mp3?v=4"></audio>
-</article>
+  <div class="card">
+    <div>Body</div>
+    <audio controls><source src="focus_full.mp3?v=4"></audio>
+  </div>
 
-<article class="card">
-<div class="media"><img src="logo3small.png"></div>
-<div>Boss Up (classy)</div>
-<audio controls><source src="boss_up.mp3?v=4"></audio>
-</article>
+  <div class="card">
+    <div>Boss Up</div>
+    <audio controls><source src="boss_up.mp3?v=4"></audio>
+  </div>
 
-<article class="card">
-<div class="media"><img src="logo3small.png"></div>
-<div>R8</div>
-<audio controls><source src="vito_r8.mp3?v=4"></audio>
-</article>
+  <div class="card">
+    <div>R8</div>
+    <audio controls><source src="vito_r8.mp3?v=4"></audio>
+  </div>
 
 </div>
 </section>
 
-<!-- MERCH (UNCHANGED) -->
+<!-- MERCH -->
 <section class="container" id="merch">
-<h2 class="section-title">MERCH</h2>
+<h2 style="text-align:center">MERCH</h2>
+
 <div class="grid cols-2">
-  <div class="card"><img src="whitehoodiesmall.jpeg"><a class="btn btn-primary" href="#">Buy Now</a></div>
-  <div class="card"><img src="blackhoodiesmall.jpeg"><a class="btn btn-primary" href="#">Buy Now</a></div>
+  <div class="card"><img src="whitehoodiesmall.jpeg" width="150"><br><a href="#">Buy</a></div>
+  <div class="card"><img src="blackhoodiesmall.jpeg" width="150"><br><a href="#">Buy</a></div>
 </div>
 </section>
 
 <!-- 🔒 ADMIN PANEL -->
 <div id="adminPanel">
-  <h4>UPLOAD SONG</h4>
+  <h4>UPLOAD</h4>
   <input placeholder="Title">
   <input type="file">
   <input type="file">
   <button>Upload</button>
 </div>
 
-<!-- LOGIN SCRIPT -->
 <script>
 const ADMIN_PASS = "voent123";
 
+/* ✅ OPEN LOGIN ONLY WHEN BUTTON CLICKED */
+function openAdmin(){
+  document.getElementById("loginBox").style.display="flex";
+}
+
+/* LOGIN CHECK */
 function login(){
   const val = document.getElementById("pass").value;
+
   if(val === ADMIN_PASS){
     document.getElementById("loginBox").style.display="none";
     document.getElementById("adminPanel").style.display="block";
