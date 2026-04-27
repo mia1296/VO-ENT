@@ -28,7 +28,6 @@ header {
   margin:40px 0;
 }
 
-/* Merch styling (from original layout style) */
 .merch-item {
   margin:20px 0;
   text-align:center;
@@ -46,7 +45,7 @@ button:hover {
   opacity:0.9;
 }
 
-/* Music grid for uploaded songs */
+/* MUSIC GRID */
 .music-grid {
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
@@ -59,16 +58,12 @@ button:hover {
   padding:15px;
   border-radius:10px;
   text-align:center;
+  cursor:pointer;
 }
 
 .card img {
   width:100%;
   border-radius:8px;
-}
-
-audio {
-  width:100%;
-  margin-top:10px;
 }
 
 .upload-box {
@@ -87,6 +82,26 @@ input {
   color:#fff;
 }
 
+/* 🎧 GLOBAL PLAYER */
+#playerBar {
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#111;
+  border-top:1px solid #222;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+}
+
+#playerBar img {
+  width:50px;
+  height:50px;
+  object-fit:cover;
+  border-radius:6px;
+}
 </style>
 </head>
 
@@ -99,13 +114,13 @@ input {
 
 <div class="container">
 
-<!-- ================= ORIGINAL MUSIC SECTION (RESTORED) ================= -->
+<!-- MUSIC -->
 <div class="section">
   <h2>Music</h2>
   <div id="musicList" class="music-grid"></div>
 </div>
 
-<!-- ================= MERCH SECTION (RESTORED) ================= -->
+<!-- MERCH -->
 <div class="section">
   <h2>Merch</h2>
 
@@ -120,16 +135,15 @@ input {
     <br>
     <button>Buy Now</button>
   </div>
-
 </div>
 
-<!-- ================= ABOUT SECTION (RESTORED) ================= -->
+<!-- ABOUT -->
 <div class="section">
   <h2>About VO ENT</h2>
   <p>Your brand, your sound, your movement.</p>
 </div>
 
-<!-- ================= UPLOAD SECTION (ADDED) ================= -->
+<!-- UPLOAD -->
 <div class="upload-box">
   <h2>Upload Song (Admin)</h2>
 
@@ -144,17 +158,25 @@ input {
 
 </div>
 
-<!-- ================= SUPABASE SCRIPT ================= -->
+<!-- 🎧 GLOBAL PLAYER -->
+<div id="playerBar">
+  <img id="playerCover">
+  <div style="flex:1;">
+    <div id="playerTitle">No song playing</div>
+    <audio id="audioPlayer" controls style="width:100%;"></audio>
+  </div>
+</div>
+
+<!-- SUPABASE -->
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-// 🔑 SUPABASE CONFIG
 const supabaseUrl = "https://dlssxyetewziingcwajz.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs";
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// 🚀 UPLOAD SONG
+/* 🚀 UPLOAD */
 window.uploadSong = async function () {
   const title = document.getElementById("title").value;
   const cover = document.getElementById("cover").files[0];
@@ -168,59 +190,57 @@ window.uploadSong = async function () {
 
   status.innerText = "Uploading...";
 
-  try {
-    const coverPath = `covers/${Date.now()}-${cover.name}`;
-    const songPath = `songs/${Date.now()}-${song.name}`;
+  const coverPath = `covers/${Date.now()}-${cover.name}`;
+  const songPath = `songs/${Date.now()}-${song.name}`;
 
-    await supabase.storage.from("covers").upload(coverPath, cover);
-    await supabase.storage.from("songs").upload(songPath, song);
+  await supabase.storage.from("covers").upload(coverPath, cover);
+  await supabase.storage.from("songs").upload(songPath, song);
 
-    const coverUrl = supabase.storage.from("covers").getPublicUrl(coverPath).data.publicUrl;
-    const songUrl = supabase.storage.from("songs").getPublicUrl(songPath).data.publicUrl;
+  const coverUrl = supabase.storage.from("covers").getPublicUrl(coverPath).data.publicUrl;
+  const songUrl = supabase.storage.from("songs").getPublicUrl(songPath).data.publicUrl;
 
-    await supabase.from("songs").insert([
-      {
-        title,
-        cover_url: coverUrl,
-        song_url: songUrl,
-        created_at: new Date()
-      }
-    ]);
+  await supabase.from("songs").insert([
+    {
+      title,
+      cover_url: coverUrl,
+      song_url: songUrl,
+      created_at: new Date()
+    }
+  ]);
 
-    status.innerText = "Upload successful 🔥";
-
-    loadSongs();
-
-  } catch (err) {
-    status.innerText = "Error: " + err.message;
-  }
+  status.innerText = "Upload successful 🔥";
+  loadSongs();
 };
 
-// 🎧 LOAD SONGS
+/* 🎧 STREAMING LOAD */
 async function loadSongs() {
   const musicList = document.getElementById("musicList");
-  if (!musicList) return;
-
-  musicList.innerHTML = "";
 
   const { data } = await supabase.from("songs").select("*");
 
-  if (!data) return;
+  musicList.innerHTML = "";
 
   data.forEach(song => {
     musicList.innerHTML += `
-      <div class="card">
+      <div class="card" onclick="playSong('${song.song_url}','${song.cover_url}','${song.title}')">
         <img src="${song.cover_url}">
         <h3>${song.title}</h3>
-        <audio controls src="${song.song_url}"></audio>
-        <button>Buy Now</button>
+        <button>Play</button>
       </div>
     `;
   });
 }
 
-loadSongs();
+/* ▶️ PLAYER */
+window.playSong = function(url, cover, title) {
+  document.getElementById("audioPlayer").src = url;
+  document.getElementById("playerCover").src = cover;
+  document.getElementById("playerTitle").innerText = title;
 
+  document.getElementById("audioPlayer").play();
+};
+
+loadSongs();
 </script>
 
 </body>
