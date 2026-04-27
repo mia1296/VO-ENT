@@ -2,80 +2,174 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>VO ENT Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VO ENT — Admin</title>
 
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
 const supabase = createClient(
   "https://dlssxyetewziingcwajz.supabase.co",
-  "YOUR_SUPABASE_ANON_KEY"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs"
 );
 
-window.login = function(){
+// 🔐 LOGIN
+window.login = function () {
   const pass = document.getElementById("pass").value;
 
-  if(pass === "voent123"){
-    document.getElementById("login").style.display="none";
-    document.getElementById("panel").style.display="block";
+  if (pass === "voent123") {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("panel").style.display = "block";
   } else {
     alert("Wrong password");
   }
 };
 
-window.upload = async function(){
+// 🚀 UPLOAD SONG
+window.uploadSong = async function () {
   const title = document.getElementById("title").value;
   const audio = document.getElementById("audio").files[0];
   const cover = document.getElementById("cover").files[0];
+  const status = document.getElementById("status");
 
-  const audioPath = `songs/${Date.now()}-${audio.name}`;
-  const coverPath = `covers/${Date.now()}-${cover.name}`;
+  if (!title || !audio || !cover) {
+    status.innerText = "Fill all fields ❌";
+    return;
+  }
 
-  await supabase.storage.from("songs").upload(audioPath,audio);
-  await supabase.storage.from("covers").upload(coverPath,cover);
+  status.innerText = "Uploading... ⏳";
 
-  const audioUrl = supabase.storage.from("songs").getPublicUrl(audioPath).data.publicUrl;
-  const coverUrl = supabase.storage.from("covers").getPublicUrl(coverPath).data.publicUrl;
+  try {
+    const audioPath = `songs/${Date.now()}-${audio.name}`;
+    const coverPath = `covers/${Date.now()}-${cover.name}`;
 
-  await supabase.from("songs").insert([{
-    title,
-    song_url: audioUrl,
-    cover_url: coverUrl,
-    created_at: new Date().toISOString()
-  }]);
+    // 🎧 Upload audio
+    const { error: audioError } = await supabase.storage
+      .from("songs")
+      .upload(audioPath, audio);
 
-  alert("Uploaded to VO ENT 🔥");
+    if (audioError) {
+      console.error(audioError);
+      status.innerText = "Audio upload failed ❌";
+      return;
+    }
+
+    // 🖼 Upload cover
+    const { error: coverError } = await supabase.storage
+      .from("covers")
+      .upload(coverPath, cover);
+
+    if (coverError) {
+      console.error(coverError);
+      status.innerText = "Cover upload failed ❌";
+      return;
+    }
+
+    const audioUrl = supabase.storage
+      .from("songs")
+      .getPublicUrl(audioPath).data.publicUrl;
+
+    const coverUrl = supabase.storage
+      .from("covers")
+      .getPublicUrl(coverPath).data.publicUrl;
+
+    // 💾 Insert into database
+    const { error: dbError } = await supabase.from("songs").insert([
+      {
+        title,
+        song_url: audioUrl,
+        cover_url: coverUrl,
+        created_at: new Date().toISOString()
+      }
+    ]);
+
+    if (dbError) {
+      console.error(dbError);
+      status.innerText = "Database insert failed ❌";
+      return;
+    }
+
+    status.innerText = "Upload successful 🔥";
+
+  } catch (err) {
+    console.error(err);
+    status.innerText = "Unexpected error ❌";
+  }
 };
 </script>
 
 <style>
-body{margin:0;font-family:Arial;background:#000;color:#fff}
-.center{display:flex;height:100vh;align-items:center;justify-content:center;flex-direction:column}
-.box{background:#111;padding:20px;border:1px solid #222;width:300px;text-align:center}
-input,button{width:100%;margin:5px 0;padding:10px}
-button{background:#E50914;color:#fff;border:none}
-#panel{display:none;padding:20px}
+body{
+  margin:0;
+  font-family:Arial;
+  background:#000;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+}
+
+/* login box */
+.box{
+  background:#111;
+  border:1px solid #222;
+  padding:20px;
+  width:300px;
+  text-align:center;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  background:#000;
+  border:1px solid #333;
+  color:#fff;
+}
+
+button{
+  width:100%;
+  padding:10px;
+  background:#E50914;
+  border:none;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+
+#panel{
+  display:none;
+  width:320px;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:10px;
+}
 </style>
 </head>
 
 <body>
 
-<div id="login" class="center">
-  <div class="box">
-    <h2>VO ENT ADMIN</h2>
-    <input id="pass" type="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-  </div>
+<!-- 🔐 LOGIN -->
+<div id="loginBox" class="box">
+  <h2>VO ENT ADMIN</h2>
+  <input id="pass" type="password" placeholder="Enter password">
+  <button onclick="login()">Login</button>
 </div>
 
-<div id="panel">
+<!-- 🎧 UPLOAD PANEL -->
+<div id="panel" class="box">
   <h2>Upload Song</h2>
 
   <input id="title" placeholder="Song Title">
   <input id="audio" type="file" accept="audio/*">
   <input id="cover" type="file" accept="image/*">
 
-  <button onclick="upload()">Upload</button>
+  <button onclick="uploadSong()">Upload</button>
+
+  <p id="status"></p>
 </div>
 
 </body>
