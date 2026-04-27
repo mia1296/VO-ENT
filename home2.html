@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VO ENT Music</title>
+<title>VO ENT</title>
 
 <style>
 body {
-  margin:0;
-  font-family: Arial, sans-serif;
   background:#000;
   color:#fff;
+  font-family:Arial, sans-serif;
+  margin:0;
 }
 
 header {
@@ -28,29 +28,17 @@ header {
   margin:40px 0;
 }
 
-/* Upload box */
-.upload-box {
-  border:1px solid #222;
-  padding:20px;
-  border-radius:10px;
-  background:#0a0a0a;
-}
-
-input {
-  width:100%;
-  padding:10px;
-  margin:10px 0;
-  background:#111;
-  border:1px solid #222;
-  color:#fff;
+/* Merch styling (from original layout style) */
+.merch-item {
+  margin:20px 0;
+  text-align:center;
 }
 
 button {
-  width:100%;
-  padding:12px;
   background:#E50914;
   color:#fff;
   border:none;
+  padding:10px 20px;
   cursor:pointer;
 }
 
@@ -58,6 +46,7 @@ button:hover {
   opacity:0.9;
 }
 
+/* Music grid for uploaded songs */
 .music-grid {
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
@@ -66,8 +55,8 @@ button:hover {
 
 .card {
   background:#111;
-  padding:15px;
   border:1px solid #222;
+  padding:15px;
   border-radius:10px;
   text-align:center;
 }
@@ -82,35 +71,67 @@ audio {
   margin-top:10px;
 }
 
-.buy {
-  display:block;
-  margin-top:10px;
-  padding:10px;
-  background:#E50914;
-  color:#fff;
-  text-decoration:none;
+.upload-box {
+  background:#0a0a0a;
+  border:1px solid #222;
+  padding:20px;
+  margin-top:40px;
 }
+
+input {
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  background:#111;
+  border:1px solid #222;
+  color:#fff;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>VO ENT Music</h1>
-  <p>Upload • Stream • Shop</p>
+  <h1>VO ENT</h1>
+  <p>Music • Merch • Brand</p>
 </header>
 
 <div class="container">
 
-<!-- 🎵 MUSIC DISPLAY -->
+<!-- ================= ORIGINAL MUSIC SECTION (RESTORED) ================= -->
 <div class="section">
-  <h2>Latest Music</h2>
-  <div class="music-grid" id="musicList"></div>
+  <h2>Music</h2>
+  <div id="musicList" class="music-grid"></div>
 </div>
 
-<!-- 🔼 UPLOAD SECTION (ADMIN) -->
-<div class="section upload-box">
-  <h2>Upload New Song</h2>
+<!-- ================= MERCH SECTION (RESTORED) ================= -->
+<div class="section">
+  <h2>Merch</h2>
+
+  <div class="merch-item">
+    <img src="whitehoodiesmall.jpeg" width="200">
+    <br>
+    <button>Buy Now</button>
+  </div>
+
+  <div class="merch-item">
+    <img src="blackhoodiesmall.jpeg" width="200">
+    <br>
+    <button>Buy Now</button>
+  </div>
+
+</div>
+
+<!-- ================= ABOUT SECTION (RESTORED) ================= -->
+<div class="section">
+  <h2>About VO ENT</h2>
+  <p>Your brand, your sound, your movement.</p>
+</div>
+
+<!-- ================= UPLOAD SECTION (ADDED) ================= -->
+<div class="upload-box">
+  <h2>Upload Song (Admin)</h2>
 
   <input id="title" placeholder="Song Title">
   <input type="file" id="cover" accept="image/*">
@@ -123,15 +144,15 @@ audio {
 
 </div>
 
-<!-- ⚙️ SUPABASE SCRIPT -->
+<!-- ================= SUPABASE SCRIPT ================= -->
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-// 🔑 REPLACE THESE
-const supabaseUrl = "dlssxyetewziingcwajz.";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs”;
+// 🔑 SUPABASE CONFIG
+const supabaseUrl = "https://dlssxyetewziingcwajz.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs";
 
-const supabase = createClient (dlssxyetewziingcwajz, eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs);
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 // 🚀 UPLOAD SONG
 window.uploadSong = async function () {
@@ -141,7 +162,7 @@ window.uploadSong = async function () {
   const status = document.getElementById("status");
 
   if (!title || !cover || !song) {
-    status.innerText = "Fill all fields";
+    status.innerText = "Please fill all fields";
     return;
   }
 
@@ -178,9 +199,13 @@ window.uploadSong = async function () {
 // 🎧 LOAD SONGS
 async function loadSongs() {
   const musicList = document.getElementById("musicList");
+  if (!musicList) return;
+
   musicList.innerHTML = "";
 
   const { data } = await supabase.from("songs").select("*");
+
+  if (!data) return;
 
   data.forEach(song => {
     musicList.innerHTML += `
@@ -188,13 +213,14 @@ async function loadSongs() {
         <img src="${song.cover_url}">
         <h3>${song.title}</h3>
         <audio controls src="${song.song_url}"></audio>
-        <a class="buy" href="#">Buy Now</a>
+        <button>Buy Now</button>
       </div>
     `;
   });
 }
 
 loadSongs();
+
 </script>
 
 </body>
