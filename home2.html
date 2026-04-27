@@ -1,246 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VO ENT</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VO ENT — Music & Merch</title>
+<meta name="description" content="VO ENT • Latest releases and merch" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-body {
-  background:#000;
-  color:#fff;
-  font-family:Arial, sans-serif;
-  margin:0;
-}
+  :root{
+    --bg:#000; --card:#0c0c0c; --muted:#c6c6c6; --text:#fff;
+    --accent:#E50914; --radius:16px; --shadow:0 6px 18px rgba(0,0,0,.45);
+    --border:rgba(255,255,255,.08)
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    color:var(--text);background:#000;overflow-x:hidden;
+    background:
+      radial-gradient(1400px 600px at 50% -5%, rgba(229,9,20,.22), transparent 60%),
+      #000;
+  }
+  a{color:inherit;text-decoration:none}
+  .container{width:min(1200px,92vw);margin-inline:auto}
 
-header {
-  text-align:center;
-  padding:20px;
-}
+  header.nav{position:fixed; inset-inline:0; top:0; z-index:60;
+    backdrop-filter:saturate(140%) blur(10px);
+    background:rgba(0,0,0,.8);
+    border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
+  .brand{display:flex;align-items:center;gap:8px;font-weight:800}
+  .brand img{height:24px}
+  .nav-links{display:flex;gap:12px}
+  .nav-links a{padding:8px 14px;border-radius:999px;border:1px solid var(--border);font-size:14px}
+  .nav-links a.cta{background:var(--accent);border-color:transparent;font-weight:700}
 
-.container {
-  max-width:1000px;
-  margin:auto;
-  padding:20px;
-}
+  .hero{padding:128px 16px 56px;text-align:center}
+  .hero .hero-logo{width:min(120px,28vw);margin:0 auto 16px}
+  .hero h1{font-size:clamp(28px,5vw,52px)}
+  .sub{color:var(--muted);margin-bottom:22px}
 
-.section {
-  margin:40px 0;
-}
+  .row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .btn{display:inline-block;background:#111;border:1px solid var(--border);
+    padding:12px 22px;border-radius:999px;font-weight:700}
+  .btn-primary{background:var(--accent);border:none}
 
-.merch-item {
-  margin:20px 0;
-  text-align:center;
-}
+  section{padding:44px 0}
+  .section-title{text-align:center}
 
-button {
-  background:#E50914;
-  color:#fff;
-  border:none;
-  padding:10px 20px;
-  cursor:pointer;
-}
+  .grid{display:grid;gap:16px}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
 
-button:hover {
-  opacity:0.9;
-}
+  .card{background:var(--card);border:1px solid var(--border);
+    border-radius:var(--radius);text-align:center;padding:16px}
 
-/* MUSIC GRID */
-.music-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  gap:20px;
-}
+  .media{aspect-ratio:1/1;display:grid;place-items:center}
+  .media img{width:60%}
 
-.card {
-  background:#111;
-  border:1px solid #222;
-  padding:15px;
-  border-radius:10px;
-  text-align:center;
-  cursor:pointer;
-}
+  audio{width:100%;max-width:260px}
 
-.card img {
-  width:100%;
-  border-radius:8px;
-}
+  /* 🔐 LOGIN OVERLAY */
+  #loginBox{
+    position:fixed;inset:0;
+    background:rgba(0,0,0,.95);
+    display:flex;align-items:center;justify-content:center;
+    z-index:9999;
+  }
+  #loginBox div{
+    background:#111;padding:20px;border:1px solid #222;
+    width:300px;text-align:center;border-radius:12px;
+  }
 
-.upload-box {
-  background:#0a0a0a;
-  border:1px solid #222;
-  padding:20px;
-  margin-top:40px;
-}
-
-input {
-  width:100%;
-  padding:10px;
-  margin:10px 0;
-  background:#111;
-  border:1px solid #222;
-  color:#fff;
-}
-
-/* 🎧 GLOBAL PLAYER */
-#playerBar {
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:#111;
-  border-top:1px solid #222;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:10px;
-}
-
-#playerBar img {
-  width:50px;
-  height:50px;
-  object-fit:cover;
-  border-radius:6px;
-}
+  /* 🔒 ADMIN PANEL (HIDDEN) */
+  #adminPanel{
+    display:none;
+    position:fixed;
+    right:20px;
+    bottom:100px;
+    background:#111;
+    border:1px solid #222;
+    padding:15px;
+    width:260px;
+    z-index:9998;
+    border-radius:12px;
+  }
+  #adminPanel input{
+    width:100%;margin:5px 0;padding:8px;background:#000;
+    border:1px solid #333;color:#fff;
+  }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>VO ENT</h1>
-  <p>Music • Merch • Brand</p>
+<!-- 🔐 LOGIN -->
+<div id="loginBox">
+  <div>
+    <h2>VO ENT ADMIN</h2>
+    <input id="pass" type="password" placeholder="Enter password">
+    <button onclick="login()">Login</button>
+    <p id="msg"></p>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner container">
+    <div class="brand"><img src="logo1small.png"><span>VO ENT</span></div>
+    <nav class="nav-links">
+      <a href="#songs">Music</a>
+      <a href="#merch">Merch</a>
+      <a class="cta" href="signup.html">Join Now</a>
+    </nav>
+  </div>
 </header>
 
-<div class="container">
-
-<!-- MUSIC -->
-<div class="section">
-  <h2>Music</h2>
-  <div id="musicList" class="music-grid"></div>
-</div>
-
-<!-- MERCH -->
-<div class="section">
-  <h2>Merch</h2>
-
-  <div class="merch-item">
-    <img src="whitehoodiesmall.jpeg" width="200">
-    <br>
-    <button>Buy Now</button>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <img class="hero-logo" src="logo3small.png">
+    <h1>WELCOME TO VO ENT</h1>
+    <div class="sub">Music • Merch • Community</div>
   </div>
+</section>
 
-  <div class="merch-item">
-    <img src="blackhoodiesmall.jpeg" width="200">
-    <br>
-    <button>Buy Now</button>
-  </div>
+<!-- SONGS (UNCHANGED) -->
+<section class="container" id="songs">
+<h2 class="section-title">YOUR SONGS</h2>
+
+<div class="grid cols-3">
+
+<article class="card">
+<div class="media"><img src="logo3small.png"></div>
+<div>Vito Gwuap — No Coat ft Kiing Charles</div>
+<audio controls><source src="no_coat.mp3?v=4"></audio>
+</article>
+
+<article class="card">
+<div class="media"><img src="logo1small.png"></div>
+<div>Coupe in the Slums ft Veo Dinero & Kiing Charles</div>
+<audio controls><source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3?v=4"></audio>
+</article>
+
+<article class="card">
+<div class="media"><img src="logo1small.png"></div>
+<div>Harder ft Kiing Charles</div>
+<audio controls><source src="vito_gwuap_ft_kiing_charles-_harder.mp3?v=4"></audio>
+</article>
+
+<article class="card">
+<div class="media"><img src="logo1small.png"></div>
+<div>Ohhhhhh</div>
+<audio controls><source src="veo_dinero-ohhhhhhhh.mp3?v=4"></audio>
+</article>
+
+<article class="card">
+<div class="media"><img src="logo1small.png"></div>
+<div>Body</div>
+<audio controls><source src="focus_full.mp3?v=4"></audio>
+</article>
+
+<article class="card">
+<div class="media"><img src="logo3small.png"></div>
+<div>Boss Up (classy)</div>
+<audio controls><source src="boss_up.mp3?v=4"></audio>
+</article>
+
+<article class="card">
+<div class="media"><img src="logo3small.png"></div>
+<div>R8</div>
+<audio controls><source src="vito_r8.mp3?v=4"></audio>
+</article>
+
+</div>
+</section>
+
+<!-- MERCH (UNCHANGED) -->
+<section class="container" id="merch">
+<h2 class="section-title">MERCH</h2>
+<div class="grid cols-2">
+  <div class="card"><img src="whitehoodiesmall.jpeg"><a class="btn btn-primary" href="#">Buy Now</a></div>
+  <div class="card"><img src="blackhoodiesmall.jpeg"><a class="btn btn-primary" href="#">Buy Now</a></div>
+</div>
+</section>
+
+<!-- 🔒 ADMIN PANEL -->
+<div id="adminPanel">
+  <h4>UPLOAD SONG</h4>
+  <input placeholder="Title">
+  <input type="file">
+  <input type="file">
+  <button>Upload</button>
 </div>
 
-<!-- ABOUT -->
-<div class="section">
-  <h2>About VO ENT</h2>
-  <p>Your brand, your sound, your movement.</p>
-</div>
+<!-- LOGIN SCRIPT -->
+<script>
+const ADMIN_PASS = "voent123";
 
-<!-- UPLOAD -->
-<div class="upload-box">
-  <h2>Upload Song (Admin)</h2>
-
-  <input id="title" placeholder="Song Title">
-  <input type="file" id="cover" accept="image/*">
-  <input type="file" id="song" accept="audio/*">
-
-  <button onclick="uploadSong()">Upload Song</button>
-
-  <p id="status"></p>
-</div>
-
-</div>
-
-<!-- 🎧 GLOBAL PLAYER -->
-<div id="playerBar">
-  <img id="playerCover">
-  <div style="flex:1;">
-    <div id="playerTitle">No song playing</div>
-    <audio id="audioPlayer" controls style="width:100%;"></audio>
-  </div>
-</div>
-
-<!-- SUPABASE -->
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-
-const supabaseUrl = "https://dlssxyetewziingcwajz.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs";
-
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-/* 🚀 UPLOAD */
-window.uploadSong = async function () {
-  const title = document.getElementById("title").value;
-  const cover = document.getElementById("cover").files[0];
-  const song = document.getElementById("song").files[0];
-  const status = document.getElementById("status");
-
-  if (!title || !cover || !song) {
-    status.innerText = "Please fill all fields";
-    return;
+function login(){
+  const val = document.getElementById("pass").value;
+  if(val === ADMIN_PASS){
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("adminPanel").style.display="block";
+  } else {
+    document.getElementById("msg").innerText="Wrong password";
   }
-
-  status.innerText = "Uploading...";
-
-  const coverPath = `covers/${Date.now()}-${cover.name}`;
-  const songPath = `songs/${Date.now()}-${song.name}`;
-
-  await supabase.storage.from("covers").upload(coverPath, cover);
-  await supabase.storage.from("songs").upload(songPath, song);
-
-  const coverUrl = supabase.storage.from("covers").getPublicUrl(coverPath).data.publicUrl;
-  const songUrl = supabase.storage.from("songs").getPublicUrl(songPath).data.publicUrl;
-
-  await supabase.from("songs").insert([
-    {
-      title,
-      cover_url: coverUrl,
-      song_url: songUrl,
-      created_at: new Date()
-    }
-  ]);
-
-  status.innerText = "Upload successful 🔥";
-  loadSongs();
-};
-
-/* 🎧 STREAMING LOAD */
-async function loadSongs() {
-  const musicList = document.getElementById("musicList");
-
-  const { data } = await supabase.from("songs").select("*");
-
-  musicList.innerHTML = "";
-
-  data.forEach(song => {
-    musicList.innerHTML += `
-      <div class="card" onclick="playSong('${song.song_url}','${song.cover_url}','${song.title}')">
-        <img src="${song.cover_url}">
-        <h3>${song.title}</h3>
-        <button>Play</button>
-      </div>
-    `;
-  });
 }
-
-/* ▶️ PLAYER */
-window.playSong = function(url, cover, title) {
-  document.getElementById("audioPlayer").src = url;
-  document.getElementById("playerCover").src = cover;
-  document.getElementById("playerTitle").innerText = title;
-
-  document.getElementById("audioPlayer").play();
-};
-
-loadSongs();
 </script>
 
 </body>
