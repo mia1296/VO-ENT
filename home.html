@@ -7,6 +7,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 body{
   margin:0;
@@ -16,7 +18,6 @@ body{
   overflow-x:hidden;
 }
 
-/* 🔥 cinematic background */
 .bg{
   position:fixed;
   inset:0;
@@ -24,39 +25,24 @@ body{
     radial-gradient(circle at 20% 20%, rgba(229,9,20,.18), transparent 40%),
     radial-gradient(circle at 80% 30%, rgba(229,9,20,.10), transparent 45%),
     radial-gradient(circle at 50% 80%, rgba(255,255,255,.05), transparent 60%);
-  animation:move 10s ease-in-out infinite alternate;
   z-index:-1;
-}
-
-@keyframes move{
-  from{transform:scale(1)}
-  to{transform:scale(1.1)}
 }
 
 .container{width:min(1200px,92vw);margin:auto}
 
-/* HEADER */
 header{
   text-align:center;
-  padding:80px 20px 40px;
+  padding:80px 20px 20px;
 }
 
-h1{
-  font-size:48px;
-  margin:0;
-  text-shadow:0 0 20px rgba(229,9,20,.4);
-  letter-spacing:2px;
-}
+h1{font-size:48px;margin:0}
 
-p{color:#bbb}
-
-/* SOCIALS */
 .socials{
-  margin-top:20px;
   display:flex;
   gap:10px;
   justify-content:center;
   flex-wrap:wrap;
+  margin-top:20px;
 }
 
 .btn{
@@ -64,45 +50,63 @@ p{color:#bbb}
   background:#111;
   border:1px solid #222;
   border-radius:999px;
-  text-decoration:none;
   color:#fff;
-  font-weight:600;
-  transition:.3s;
+  text-decoration:none;
+  cursor:pointer;
 }
 
-.btn:hover{
-  transform:scale(1.05);
-  border-color:#E50914;
+/* ADMIN */
+#adminPanel{
+  display:none;
+  background:#0d0d0d;
+  border:1px solid #222;
+  padding:20px;
+  margin-top:20px;
+  border-radius:12px;
 }
 
-/* SECTION */
-.section{
-  margin-top:40px;
+input{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border-radius:8px;
+  border:none;
 }
 
-/* GRID */
+.uploadBtn{
+  background:#E50914;
+  color:#fff;
+  padding:10px;
+  border:none;
+  width:100%;
+  margin-top:10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* SECTIONS */
+.section{margin-top:40px}
+
 .grid{
   display:grid;
-  gap:16px;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
 }
 
 .card{
-  background:rgba(12,12,12,.9);
-  border:1px solid #222;
+  background:#111;
   padding:16px;
+  border-radius:12px;
   text-align:center;
-  border-radius:14px;
-  backdrop-filter:blur(8px);
-  transition:.3s;
+  border:1px solid #222;
 }
 
-.card:hover{
-  transform:translateY(-5px);
-  border-color:#E50914;
+.cover{
+  width:140px;
+  height:140px;
+  object-fit:cover;
+  border-radius:10px;
 }
-
-audio{width:100%}
 
 .preview{
   color:#E50914;
@@ -111,14 +115,13 @@ audio{width:100%}
 }
 
 .buy{
-  display:inline-block;
   margin-top:10px;
-  padding:10px 16px;
   background:#E50914;
   color:#fff;
+  border:none;
+  padding:10px 14px;
   border-radius:999px;
-  text-decoration:none;
-  font-weight:700;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -129,114 +132,207 @@ audio{width:100%}
 
 <div class="container">
 
-<!-- HEADER -->
 <header>
   <h1>VO ENT</h1>
-  <p>Music • Merch • Movement</p>
 
-  <!-- 🔥 NAVIGATION (UPDATED WITH ADMIN BUTTON) -->
   <div class="socials">
-    <a class="btn" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank">Apple Music</a>
-    <a class="btn" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank">YouTube</a>
-    <a class="btn" href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank">Instagram</a>
-
-    <!-- 🔐 ADMIN BUTTON -->
-    <a class="btn" href="javascript:void(0)" onclick="openAdmin()">Admin</a>
+    <a class="btn" href="#">Apple Music</a>
+    <a class="btn" href="#">YouTube</a>
+    <a class="btn" href="#">Instagram</a>
+    <button class="btn" onclick="toggleAdmin()">Admin</button>
   </div>
 </header>
 
-<!-- MUSIC -->
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+  <h3>Upload New Song</h3>
+
+  <input id="songTitle" placeholder="Song Title">
+  <input type="file" id="songFile" accept="audio/*">
+  <input type="file" id="coverFile" accept="image/*">
+
+  <button class="uploadBtn" onclick="uploadSong()">Upload</button>
+</div>
+
+<!-- SUPABASE SONGS -->
 <div class="section">
-<h2 style="text-align:center">Music (PREVIEWS)</h2>
-
-<div class="grid">
-
-  <div class="card">
-    <div>No Coat</div>
-    <div class="preview">PREVIEW</div>
-    <audio controls><source src="no_coat.mp3?v=4"></audio>
-    <a class="buy" href="https://payhip.com/b/FNAEB" target="_blank">Buy Full Song</a>
-  </div>
-
-  <div class="card">
-    <div>Coupe in the Slums</div>
-    <div class="preview">PREVIEW</div>
-    <audio controls><source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3?v=4"></audio>
-    <a class="buy" href="https://payhip.com/b/Jouvz" target="_blank">Buy Full Song</a>
-  </div>
-
-  <div class="card">
-    <div>Harder</div>
-    <div class="preview">PREVIEW</div>
-    <audio controls><source src="vito_gwuap_ft_kiing_charles-_harder.mp3?v=4"></audio>
-    <a class="buy" href="https://payhip.com/b/T2rRj" target="_blank">Buy Full Song</a>
-  </div>
-
-  <div class="card">
-    <div>Ohhhhhh</div>
-    <div class="preview">PREVIEW</div>
-    <audio controls><source src="veo_dinero-ohhhhhhhh.mp3?v=4"></audio>
-    <a class="buy" href="https://payhip.com/b/vb6q9" target="_blank">Buy Full Song</a>
-  </div>
-
-  <div class="card">
-    <div>Body</div>
-    <div class="preview">PREVIEW</div>
-    <audio controls><source src="focus_full.mp3?v=4"></audio>
-    <a class="buy" href="https://payhip.com/b/CmV5D" target="_blank">Buy Full Song</a>
-  </div>
-
-  <div class="card">
-    <div>Boss Up</div>
-    <div class="preview">PREVIEW</div>
-    <audio controls><source src="boss_up.mp3?v=4"></audio>
-    <a class="buy" href="https://payhip.com/b/3kfzP" target="_blank">Buy Full Song</a>
-  </div>
-
-  <div class="card">
-    <div>R8</div>
-    <div class="preview">PREVIEW</div>
-    <audio controls><source src="vito_r8.mp3?v=4"></audio>
-    <a class="buy" href="https://payhip.com/b/mSiYJ" target="_blank">Buy Full Song</a>
-  </div>
-
-</div>
+<h2 style="text-align:center">Latest Drops</h2>
+<div class="grid" id="supabaseSongs"></div>
 </div>
 
-<!-- MERCH -->
+<!-- OLD SONGS -->
 <div class="section">
-<h2 style="text-align:center">Merch</h2>
-
-<div class="grid">
-
-  <div class="card">
-    <img src="whitehoodiesmall.jpeg" width="150">
-    <h3>White Hoodie</h3>
-    <a class="buy" href="https://payhip.com/b/I6lbt">Buy Now</a>
-  </div>
-
-  <div class="card">
-    <img src="blackhoodiesmall.jpeg" width="150">
-    <h3>Black Hoodie</h3>
-    <a class="buy" href="https://payhip.com/b/hTA0a">Buy Now</a>
-  </div>
-
-</div>
+<h2 style="text-align:center">Classic Tracks</h2>
+<div class="grid" id="oldSongs"></div>
 </div>
 
 </div>
 
-<!-- 🔐 ADMIN SCRIPT -->
+<audio id="player"></audio>
+
 <script>
-function openAdmin(){
-  const pass = prompt("Enter Admin Password:");
 
-  if(pass === "voent123"){
-    window.location.href = "admin.html";
-  } else {
-    alert("Access denied");
-  }
+/* ADMIN TOGGLE */
+function toggleAdmin(){
+  const panel = document.getElementById("adminPanel");
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
 }
+
+/* SUPABASE */
+const supabaseUrl = "https://dlssxyetewziingcwajz.supabase.co";
+
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs";
+
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+const player = document.getElementById("player");
+
+/* 30 SECOND PREVIEW */
+function playPreview(url){
+  player.src = url;
+  player.currentTime = 0;
+  player.play();
+
+  const limit = setInterval(() => {
+    if(player.currentTime >= 30){
+      player.pause();
+      clearInterval(limit);
+    }
+  }, 500);
+}
+
+/* UPLOAD SONG */
+async function uploadSong(){
+
+  const title = document.getElementById("songTitle").value;
+  const songFile = document.getElementById("songFile").files[0];
+  const coverFile = document.getElementById("coverFile").files[0];
+
+  if(!title || !songFile || !coverFile){
+    alert("Fill all fields");
+    return;
+  }
+
+  const songPath = `songs/${Date.now()}-${songFile.name}`;
+  await supabase.storage.from("songs").upload(songPath, songFile);
+
+  const { data: songUrl } = supabase.storage
+    .from("songs")
+    .getPublicUrl(songPath);
+
+  const coverPath = `covers/${Date.now()}-${coverFile.name}`;
+  await supabase.storage.from("covers").upload(coverPath, coverFile);
+
+  const { data: coverUrl } = supabase.storage
+    .from("covers")
+    .getPublicUrl(coverPath);
+
+  await supabase.from("songs").insert([{
+    title,
+    song_url: songUrl.publicUrl,
+    cover_url: coverUrl.publicUrl
+  }]);
+
+  alert("Uploaded!");
+  loadSupabase();
+}
+
+/* LOAD SUPABASE SONGS */
+async function loadSupabase(){
+
+  const grid = document.getElementById("supabaseSongs");
+  grid.innerHTML = "";
+
+  const { data } = await supabase
+    .from("songs")
+    .select("*")
+    .order("created_at", { ascending:false });
+
+  if(!data) return;
+
+  data.forEach(song => {
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img class="cover" src="${song.cover_url}">
+      <div>${song.title}</div>
+      <div class="preview">PREVIEW</div>
+      <button class="buy" onclick="playPreview('${song.song_url}')">
+        Play 30s
+      </button>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+/* OLD SONGS (NOW WITH SUPABASE LINKS) */
+function loadOldSongs(){
+
+  const oldSongs = [
+    {
+      title:"No Coat",
+      file:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/no_coat.mp3",
+      cover:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png"
+    },
+    {
+      title:"Coupe in the Slums",
+      file:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3",
+      cover:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png"
+    },
+    {
+      title:"Harder",
+      file:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_kiing_charles-_harder.mp3",
+      cover:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png"
+    },
+    {
+      title:"Ohhhhhh",
+      file:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/veo_dinero-ohhhhhhhh.mp3",
+      cover:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png"
+    },
+    {
+      title:"Body",
+      file:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/focus_full.mp3",
+      cover:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png"
+    },
+    {
+      title:"Boss Up",
+      file:"boss_up.mp3?v=4",
+      cover:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png"
+    },
+    {
+      title:"R8",
+      file:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_r8.mp3",
+      cover:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png"
+    }
+  ];
+
+  const grid = document.getElementById("oldSongs");
+  grid.innerHTML = "";
+
+  oldSongs.forEach(song => {
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img class="cover" src="${song.cover}">
+      <div>${song.title}</div>
+      <div class="preview">PREVIEW</div>
+      <button class="buy" onclick="playPreview('${song.file}')">
+        Play 30s
+      </button>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+loadSupabase();
+loadOldSongs();
+
 </script>
 
 </body>
