@@ -8,24 +8,121 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;font-family:Inter,Arial;background:#000;color:#fff}
+body{
+  margin:0;
+  font-family:Inter,Arial;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* 🔥 cinematic background */
+.bg{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(229,9,20,.18), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(229,9,20,.10), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,.05), transparent 60%);
+  animation:move 10s ease-in-out infinite alternate;
+  z-index:-1;
+}
+
+@keyframes move{
+  from{transform:scale(1)}
+  to{transform:scale(1.1)}
+}
+
 .container{width:min(1200px,92vw);margin:auto}
 
-header{text-align:center;padding:40px 20px}
+/* HEADER */
+header{
+  text-align:center;
+  padding:80px 20px 40px;
+  opacity:0;
+  animation:fadeUp 1s ease forwards;
+}
 
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+@keyframes fadeUp{
+  to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+  font-size:48px;
+  margin:0;
+  text-shadow:0 0 20px rgba(229,9,20,.4);
+  letter-spacing:2px;
+}
+
+p{color:#bbb}
+
+/* SOCIALS */
+.socials{
+  margin-top:20px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:10px 16px;
+  background:#111;
+  border:1px solid #222;
+  border-radius:999px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:600;
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+  border-color:#E50914;
+}
+
+/* SECTION FADE IN */
+.section{
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp 1s ease forwards;
+  animation-delay:.3s;
+}
+
+.section:nth-child(2){animation-delay:.4s}
+.section:nth-child(3){animation-delay:.6s}
+
+/* GRID */
+.grid{
+  display:grid;
+  gap:16px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
 
 .card{
-  background:#0c0c0c;
+  background:rgba(12,12,12,.9);
   border:1px solid #222;
   padding:16px;
   text-align:center;
-  border-radius:12px;
+  border-radius:14px;
+  backdrop-filter:blur(8px);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#E50914;
 }
 
 audio{width:100%}
 
-.btn{
+.preview{
+  color:#E50914;
+  font-size:12px;
+  margin:5px 0;
+}
+
+.buy{
   display:inline-block;
   margin-top:10px;
   padding:10px 16px;
@@ -35,28 +132,30 @@ audio{width:100%}
   text-decoration:none;
   font-weight:700;
 }
-
-.preview{color:#E50914;font-size:12px;margin:5px 0}
 </style>
 </head>
 
 <body>
 
+<div class="bg"></div>
+
+<div class="container">
+
+<!-- HEADER -->
 <header>
   <h1>VO ENT</h1>
-  <p>Music • Merch • Community</p>
+  <p>Music • Merch • Movement</p>
 
-  <!-- 🔥 SOCIALS RESTORED -->
-  <div style="margin-top:15px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+  <div class="socials">
     <a class="btn" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank">Apple Music</a>
     <a class="btn" href="https://youtube.com/@vitogwuap?si=PIHjBfMjoZlHWR4v" target="_blank">YouTube</a>
     <a class="btn" href="https://www.instagram.com/officialvitogwuap?igsh=MWNjNTY5eW16bXZlaA==" target="_blank">Instagram</a>
   </div>
 </header>
 
-<div class="container">
-
-<h2 style="text-align:center">Music (PREVIEWS ONLY)</h2>
+<!-- MUSIC -->
+<div class="section">
+<h2 style="text-align:center">Music (PREVIEWS)</h2>
 
 <div class="grid">
 
@@ -64,93 +163,76 @@ audio{width:100%}
     <div>No Coat</div>
     <div class="preview">PREVIEW</div>
     <audio controls><source src="no_coat.mp3?v=4"></audio>
-    <a class="btn" href="https://payhip.com/b/FNAEB" target="_blank">Buy Full Song</a>
+    <a class="buy" href="https://payhip.com/b/FNAEB" target="_blank">Buy Full Song</a>
   </div>
 
   <div class="card">
     <div>Coupe in the Slums</div>
     <div class="preview">PREVIEW</div>
     <audio controls><source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3?v=4"></audio>
-    <a class="btn" href="https://payhip.com/b/Jouvz" target="_blank">Buy Full Song</a>
+    <a class="buy" href="https://payhip.com/b/Jouvz" target="_blank">Buy Full Song</a>
   </div>
 
   <div class="card">
     <div>Harder</div>
     <div class="preview">PREVIEW</div>
     <audio controls><source src="vito_gwuap_ft_kiing_charles-_harder.mp3?v=4"></audio>
-    <a class="btn" href="https://payhip.com/b/T2rRj" target="_blank">Buy Full Song</a>
+    <a class="buy" href="https://payhip.com/b/T2rRj" target="_blank">Buy Full Song</a>
   </div>
 
   <div class="card">
     <div>Ohhhhhh</div>
     <div class="preview">PREVIEW</div>
     <audio controls><source src="veo_dinero-ohhhhhhhh.mp3?v=4"></audio>
-    <a class="btn" href="https://payhip.com/b/vb6q9" target="_blank">Buy Full Song</a>
+    <a class="buy" href="https://payhip.com/b/vb6q9" target="_blank">Buy Full Song</a>
   </div>
 
   <div class="card">
     <div>Body</div>
     <div class="preview">PREVIEW</div>
     <audio controls><source src="focus_full.mp3?v=4"></audio>
-    <a class="btn" href="https://payhip.com/b/CmV5D" target="_blank">Buy Full Song</a>
+    <a class="buy" href="https://payhip.com/b/CmV5D" target="_blank">Buy Full Song</a>
   </div>
 
   <div class="card">
     <div>Boss Up</div>
     <div class="preview">PREVIEW</div>
     <audio controls><source src="boss_up.mp3?v=4"></audio>
-    <a class="btn" href="https://payhip.com/b/3kfzP" target="_blank">Buy Full Song</a>
+    <a class="buy" href="https://payhip.com/b/3kfzP" target="_blank">Buy Full Song</a>
   </div>
 
   <div class="card">
     <div>R8</div>
     <div class="preview">PREVIEW</div>
     <audio controls><source src="vito_r8.mp3?v=4"></audio>
-    <a class="btn" href="https://payhip.com/b/mSiYJ" target="_blank">Buy Full Song</a>
+    <a class="buy" href="https://payhip.com/b/mSiYJ" target="_blank">Buy Full Song</a>
   </div>
 
 </div>
+</div>
 
-<!-- 🛒 MERCH RESTORED -->
-<section style="margin-top:60px">
-<h2 style="text-align:center">MERCH</h2>
+<!-- MERCH -->
+<div class="section" style="margin-top:60px">
+<h2 style="text-align:center">Merch</h2>
 
 <div class="grid">
 
   <div class="card">
     <img src="whitehoodiesmall.jpeg" width="150">
     <h3>White Hoodie</h3>
-    <a class="btn" href="https://payhip.com/b/I6lbt" target="_blank">Buy Now</a>
+    <a class="buy" href="https://payhip.com/b/I6lbt">Buy Now</a>
   </div>
 
   <div class="card">
     <img src="blackhoodiesmall.jpeg" width="150">
     <h3>Black Hoodie</h3>
-    <a class="btn" href="https://payhip.com/b/hTA0a" target="_blank">Buy Now</a>
+    <a class="buy" href="https://payhip.com/b/hTA0a">Buy Now</a>
   </div>
 
 </div>
-</section>
-
 </div>
 
-<!-- 🔐 ADMIN ACCESS -->
-<div style="text-align:center;margin:40px">
-  <a href="javascript:void(0)" onclick="openAdmin()" style="color:#555;font-size:12px">
-    Admin Access
-  </a>
 </div>
-
-<script>
-function openAdmin(){
-  const pass = prompt("Enter Admin Password:");
-  if(pass === "voent123"){
-    window.location.href = "admin.html";
-  } else {
-    alert("Wrong password");
-  }
-}
-</script>
 
 </body>
 </html>
