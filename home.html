@@ -16,7 +16,7 @@ body{
   overflow-x:hidden;
 }
 
-/* 🔥 CINEMATIC BACKGROUND */
+/* CINEMATIC BACKGROUND */
 .bg{
   position:fixed;
   inset:0;
@@ -36,11 +36,11 @@ body{
 /* HEADER */
 header{
   text-align:center;
-  padding:50px 20px;
+  padding:60px 20px;
 }
 
 h1{
-  font-size:44px;
+  font-size:48px;
   margin:0;
   text-shadow:0 0 25px rgba(229,9,20,.4);
 }
@@ -48,43 +48,33 @@ h1{
 .nav{
   display:flex;
   justify-content:center;
-  gap:8px;
+  gap:10px;
   flex-wrap:wrap;
-  margin-top:15px;
+  margin-top:20px;
 }
 
 .nav a,.nav button{
-  padding:8px 12px;
+  padding:10px 14px;
   background:#111;
   border:1px solid #222;
   color:#fff;
   border-radius:999px;
   cursor:pointer;
   text-decoration:none;
-  font-size:12px;
 }
 
-/* SECTION TITLES */
-h2{
-  text-align:center;
-  margin:25px 0 10px;
-  font-size:18px;
-  letter-spacing:1px;
-  opacity:.9;
-}
-
-/* GRID (SMALLER + TIGHTER) */
+/* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:10px;
-  padding:10px 20px 30px;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+  padding:20px;
 }
 
-/* CARD (SMALLER SPOTIFY STYLE) */
+/* CARD */
 .card{
   background:#111;
-  padding:10px;
+  padding:12px;
   border-radius:12px;
   text-align:center;
   border:1px solid #222;
@@ -94,53 +84,50 @@ h2{
 .card:hover{
   transform:translateY(-4px);
   border-color:#E50914;
-  box-shadow:0 8px 18px rgba(229,9,20,.2);
 }
 
-/* SMALLER COVER ART */
 .cover{
-  width:100px;
-  height:100px;
+  width:120px;
+  height:120px;
   object-fit:cover;
   border-radius:10px;
 }
 
-/* BUTTONS (SMALLER) */
+/* BUTTON */
 .buy{
-  margin-top:6px;
+  margin-top:8px;
   background:#E50914;
   color:#fff;
   border:none;
-  padding:7px 10px;
+  padding:8px 10px;
   border-radius:999px;
   cursor:pointer;
   width:100%;
-  font-size:11px;
+  font-size:12px;
 }
 
-/* MERCH INPUTS (SMALLER) */
+/* MERCH INPUTS */
 select,input{
   width:100%;
   padding:6px;
   margin-top:5px;
-  border-radius:6px;
+  border-radius:8px;
   border:none;
   background:#0d0d0d;
   color:#fff;
-  font-size:11px;
 }
 
-/* PLAYER (SMALLER CLEAN BAR) */
+/* PLAYER */
 .playerBar{
   position:fixed;
-  bottom:8px;
+  bottom:10px;
   left:50%;
   transform:translateX(-50%);
-  width:88%;
+  width:85%;
   max-width:520px;
   background:#111;
   border:1px solid #222;
-  border-radius:12px;
+  border-radius:14px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -166,51 +153,38 @@ select,input{
   </div>
 </header>
 
-<!-- MUSIC -->
-<h2>Featured Music</h2>
+<h2 style="text-align:center">Featured Music</h2>
 <div class="grid" id="songs"></div>
 
-<!-- MERCH -->
-<h2>Merch</h2>
+<h2 style="text-align:center">Merch</h2>
 
 <div class="grid">
 
   <div class="card">
     <img class="cover" src="whitehoodiesmall.jpeg">
-    <h3 style="font-size:13px;margin:6px 0;">White Hoodie</h3>
-
+    <h3>White Hoodie</h3>
     <select id="size1">
       <option>S</option><option>M</option><option>L</option><option>XL</option>
     </select>
-
     <input id="qty1" type="number" min="1" value="1">
-
-    <button class="buy" onclick="buyMerch('https://payhip.com/b/I6lbt','size1','qty1')">
-      Buy
-    </button>
+    <button class="buy" onclick="window.open('https://payhip.com/b/I6lbt','_blank')">Buy Now</button>
   </div>
 
   <div class="card">
     <img class="cover" src="blackhoodiesmall.jpeg">
-    <h3 style="font-size:13px;margin:6px 0;">Black Hoodie</h3>
-
+    <h3>Black Hoodie</h3>
     <select id="size2">
       <option>S</option><option>M</option><option>L</option><option>XL</option>
     </select>
-
     <input id="qty2" type="number" min="1" value="1">
-
-    <button class="buy" onclick="buyMerch('https://payhip.com/b/hTA0a','size2','qty2')">
-      Buy
-    </button>
+    <button class="buy" onclick="window.open('https://payhip.com/b/hTA0a','_blank')">Buy Now</button>
   </div>
 
 </div>
 
-<!-- PLAYER -->
 <div class="playerBar">
   <div id="now">Not Playing</div>
-  <button class="buy" onclick="togglePlay()" style="width:auto;padding:5px 8px;">Play</button>
+  <button class="buy" onclick="togglePlay()" style="width:auto;padding:5px 8px;">Play/Pause</button>
 </div>
 
 <audio id="audio"></audio>
@@ -219,7 +193,7 @@ select,input{
 
 const audio=document.getElementById("audio");
 
-/* PLAYER */
+/* PLAY FUNCTION */
 function play(url,title){
   document.getElementById("now").innerText=title;
   audio.src=url;
@@ -233,7 +207,7 @@ function togglePlay(){
   else audio.pause();
 }
 
-/* ADMIN */
+/* ADMIN (SINGLE SAFE LOGIN) */
 function toggleAdmin(){
   const pass=prompt("Enter Admin Password:");
   if(pass==="voent123"){
@@ -243,15 +217,58 @@ function toggleAdmin(){
   }
 }
 
-/* SONGS */
+/* ALL SONGS RESTORED */
 function loadSongs(){
 
 const songs=[
-{t:"Focus",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/focus_full.mp3",p:"#"},
-{t:"No Coat",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/no_coat.mp3",p:"https://payhip.com/b/FNAEB"},
-{t:"Harder",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_kiing_charles-_harder.mp3",p:"https://payhip.com/b/T2rRj"},
-{t:"Coupe in Slums",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3",p:"https://payhip.com/b/Jouvz"},
-{t:"R8",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_r8.mp3",p:"#"}
+{
+t:"Focus",
+c:"logo1small.png",
+u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/focus_full.mp3",
+p:"#"
+},
+{
+t:"No Coat ft Kiing Charles",
+c:"logo1small.png",
+u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/no_coat.mp3",
+p:"https://payhip.com/b/FNAEB"
+},
+{
+t:"Ohhhhhh",
+c:"logo1small.png",
+u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/veo_dinero-ohhhhhhhh.mp3",
+p:"https://payhip.com/b/vb6q9"
+},
+{
+t:"Harder ft Kiing Charles",
+c:"logo1small.png",
+u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_kiing_charles-_harder.mp3",
+p:"https://payhip.com/b/T2rRj"
+},
+{
+t:"Coupe in the Slums",
+c:"logo1small.png",
+u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3",
+p:"https://payhip.com/b/Jouvz"
+},
+{
+t:"Body",
+c:"logo1small.png",
+u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/focus_full.mp3",
+p:"https://payhip.com/b/CmV5D"
+},
+{
+t:"Boss Up (classy)",
+c:"logo3small.png",
+u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/boss_up.mp3",
+p:"https://payhip.com/b/3kfzP"
+},
+{
+t:"R8",
+c:"logo3small.png",
+u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_r8.mp3",
+p:"https://payhip.com/b/mSiYJ"
+}
 ];
 
 const grid=document.getElementById("songs");
@@ -262,12 +279,14 @@ c.className="card";
 
 c.innerHTML=`
 <img class="cover" src="${s.c}">
-<div style="font-size:12px;margin-top:5px;">${s.t}</div>
-<button class="buy">Play</button>
-<button class="buy" onclick="window.open('${s.p}','_blank')">Buy</button>
+<div>${s.t}</div>
+
+<button class="buy playBtn">Play 30s</button>
+<button class="buy" onclick="window.open('${s.p}','_blank')">Buy Full Song</button>
 `;
 
-c.onclick=()=>play(s.u,s.t);
+c.querySelector(".playBtn").onclick=()=>play(s.u,s.t);
+
 grid.appendChild(c);
 });
 }
