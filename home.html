@@ -6,6 +6,7 @@
 <title>VO ENT — Music & Merch</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 body{
@@ -13,14 +14,35 @@ body{
   font-family:Inter,Arial;
   background:#000;
   color:#fff;
+  overflow-x:hidden;
 }
 
+/* 🔥 CINEMATIC BACKGROUND */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(229,9,20,.35), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(229,9,20,.15), transparent 55%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,.06), transparent 60%);
+  animation:float 12s ease-in-out infinite alternate;
+}
+@keyframes float{
+  from{transform:scale(1)}
+  to{transform:scale(1.12)}
+}
+
+/* HEADER */
 header{
   text-align:center;
   padding:60px 20px;
 }
-
-h1{font-size:48px;margin:0}
+h1{
+  font-size:48px;
+  margin:0;
+  text-shadow:0 0 25px rgba(229,9,20,.4);
+}
 
 .nav{
   display:flex;
@@ -29,7 +51,6 @@ h1{font-size:48px;margin:0}
   flex-wrap:wrap;
   margin-top:20px;
 }
-
 .nav a,.nav button{
   padding:10px 14px;
   background:#111;
@@ -48,6 +69,7 @@ h1{font-size:48px;margin:0}
   padding:20px;
 }
 
+/* CARD */
 .card{
   background:#111;
   padding:16px;
@@ -55,13 +77,11 @@ h1{font-size:48px;margin:0}
   text-align:center;
   border:1px solid #222;
   transition:.25s;
-  position:relative;
 }
-
 .card:hover{
   transform:translateY(-6px) scale(1.02);
   border-color:#E50914;
-  box-shadow:0 10px 25px rgba(229,9,20,.2);
+  box-shadow:0 10px 25px rgba(229,9,20,.25);
 }
 
 .cover{
@@ -69,28 +89,6 @@ h1{font-size:48px;margin:0}
   height:140px;
   object-fit:cover;
   border-radius:10px;
-}
-
-/* MERCH */
-.badge{
-  position:absolute;
-  top:10px;
-  right:10px;
-  background:#E50914;
-  color:#fff;
-  font-size:10px;
-  padding:4px 8px;
-  border-radius:999px;
-}
-
-select,input{
-  width:100%;
-  padding:8px;
-  margin-top:6px;
-  border-radius:8px;
-  border:none;
-  background:#0d0d0d;
-  color:#fff;
 }
 
 .buy{
@@ -104,26 +102,44 @@ select,input{
   width:100%;
 }
 
+/* MERCH INPUTS */
+select,input{
+  width:100%;
+  padding:8px;
+  margin-top:6px;
+  border-radius:8px;
+  border:none;
+  background:#0d0d0d;
+  color:#fff;
+}
+
 /* PLAYER */
 .playerBar{
   position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#0d0d0d;
-  border-top:1px solid #222;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  max-width:650px;
+  background:#111;
+  border:1px solid #222;
+  border-radius:14px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:10px 20px;
+  align-items:center;
+  padding:8px 12px;
+  font-size:12px;
 }
 </style>
 </head>
 
 <body>
 
+<div class="bg"></div>
+
 <header>
   <h1>VO ENT</h1>
+  <div class="sub">Music • Merch • Motion</div>
 
   <div class="nav">
     <a href="https://music.apple.com/us/artist/vito-gwuap/1504520516">Apple</a>
@@ -133,23 +149,33 @@ select,input{
   </div>
 </header>
 
-<!-- SONGS -->
-<h2 style="text-align:center">Latest Drops</h2>
+<!-- MUSIC -->
+<h2 style="text-align:center">Featured Music</h2>
 <div class="grid" id="songs"></div>
 
-<h2 style="text-align:center">Classic Tracks</h2>
-<div class="grid" id="old"></div>
+<h2 style="text-align:center">Latest Uploads (Admin)</h2>
+<div class="grid" id="uploads"></div>
 
-<!-- MERCH -->
-<h2 style="text-align:center;margin-top:40px;">Merch</h2>
+<!-- 🔥 MERCH SECTION -->
+<h2 style="text-align:center">Merch</h2>
 
 <div class="grid">
 
-  <div class="card">
+<div class="card">
     <div class="badge">LIMITED DROP</div>
     <img class="cover" src="whitehoodiesmall.jpeg">
     <h3>White Hoodie</h3>
-    <button class="buy" onclick="window.open('https://payhip.com/b/I6lbt','_blank')">
+
+    <select id="size1">
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+    </select>
+
+    <input id="qty1" type="number" min="1" value="1">
+
+    <button class="buy" onclick="buyMerch('https://payhip.com/b/I6lbt','size1','qty1')">
       Buy Now
     </button>
   </div>
@@ -158,7 +184,17 @@ select,input{
     <div class="badge">LIMITED DROP</div>
     <img class="cover" src="blackhoodiesmall.jpeg">
     <h3>Black Hoodie</h3>
-    <button class="buy" onclick="window.open('https://payhip.com/b/hTA0a','_blank')">
+
+    <select id="size2">
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+    </select>
+
+    <input id="qty2" type="number" min="1" value="1">
+
+    <button class="buy" onclick="buyMerch('https://payhip.com/b/hTA0a','size2','qty2')">
       Buy Now
     </button>
   </div>
@@ -168,7 +204,7 @@ select,input{
 <!-- PLAYER -->
 <div class="playerBar">
   <div id="now">Not Playing</div>
-  <button class="buy" onclick="togglePlay()">Play/Pause</button>
+  <button class="buy" onclick="togglePlay()" style="width:auto;padding:6px 10px;">Play/Pause</button>
 </div>
 
 <audio id="audio"></audio>
@@ -177,18 +213,13 @@ select,input{
 
 const audio=document.getElementById("audio");
 
-/* ================= PLAYER ================= */
+/* PLAYER */
 function play(url,title){
   document.getElementById("now").innerText=title;
-
   audio.src=url;
   audio.currentTime=0;
   audio.play();
-
-  // 30 second preview lock
-  setTimeout(()=>{
-    audio.pause();
-  },30000);
+  setTimeout(()=>audio.pause(),30000);
 }
 
 function togglePlay(){
@@ -196,104 +227,84 @@ function togglePlay(){
   else audio.pause();
 }
 
-/* ================= ADMIN ================= */
+/* ADMIN */
 function toggleAdmin(){
-  const pass = prompt("Enter Admin Password:");
-  if(pass === "voent123"){
-    window.location.href = "admin.html";
-  } else {
-    alert("Access denied");
+  const pass=prompt("Enter Admin Password:");
+  if(pass==="voent123"){
+    window.location.href="admin.html";
   }
 }
 
-/* ================= HARD-CODED SONGS (100% RELIABLE) ================= */
+/* SONGS */
 function loadSongs(){
 
-  const songs=[
-    {
-      t:"Focus",
-      u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/focus_full.mp3",
-      p:"#"
-    },
-    {
-      t:"No Coat",
-      u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/no_coat.mp3",
-      p:"https://payhip.com/b/FNAEB"
-    },
-    {
-      t:"Ohhhhhh",
-      u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/veo_dinero-ohhhhhhhh.mp3",
-      p:"#"
-    },
-    {
-      t:"Harder",
-      u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_kiing_charles-_harder.mp3",
-      p:"https://payhip.com/b/T2rRj"
-    },
-    {
-      t:"Coupe in the Slums",
-      u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3",
-      p:"https://payhip.com/b/Jouvz"
-    },
-    {
-      t:"R8",
-      u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_r8.mp3",
-      p:"#"
-    }
-  ];
+const songs=[
+{t:"Focus",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/focus_full.mp3",p:"#"},
+{t:"No Coat",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/no_coat.mp3",p:"https://payhip.com/b/FNAEB"},
+{t:"Ohhhhhh",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/veo_dinero-ohhhhhhhh.mp3",p:"#"},
+{t:"Harder",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_kiing_charles-_harder.mp3",p:"https://payhip.com/b/T2rRj"},
+{t:"Coupe in the Slums",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3",p:"https://payhip.com/b/Jouvz"},
+{t:"R8",c:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_r8.mp3",p:"#"}
+];
 
-  const grid=document.getElementById("songs");
+const grid=document.getElementById("songs");
 
-  songs.forEach(s=>{
+songs.forEach(s=>{
+const c=document.createElement("div");
+c.className="card";
 
-    const c=document.createElement("div");
-    c.className="card";
+c.innerHTML=`
+<img class="cover" src="${s.c}">
+<div>${s.t}</div>
+<button class="buy">Play 30s</button>
+<button class="buy" onclick="window.open('${s.p}','_blank')">Buy</button>
+`;
 
-    c.innerHTML=`
-      <div>${s.t}</div>
-      <button class="buy">Play 30s</button>
-      <button class="buy" onclick="window.open('${s.p}','_blank')">Buy Full Song</button>
-    `;
-
-    c.onclick=()=>play(s.u,s.t);
-    grid.appendChild(c);
-  });
+c.onclick=()=>play(s.u,s.t);
+grid.appendChild(c);
+});
 }
 
-/* ================= OLD SONGS ================= */
-function loadOld(){
+/* MERCH */
+function buyMerch(url,sizeId,qtyId){
+  const size=document.getElementById(sizeId).value;
+  const qty=document.getElementById(qtyId).value;
+  window.open(`${url}?size=${size}&qty=${qty}`,"_blank");
+}
 
-  const old=[
-    {
-      t:"No Coat",
-      u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/no_coat.mp3"
-    },
-    {
-      t:"Harder",
-      u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_kiing_charles-_harder.mp3"
-    }
-  ];
+/* SUPABASE ADMIN LOAD */
+const supabase=window.supabase.createClient(
+"https://dlssxyetewziingcwajz.supabase.co",
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs"
+);
 
-  const grid=document.getElementById("old");
+async function loadUploads(){
+  const grid=document.getElementById("uploads");
 
-  old.forEach(s=>{
+  const {data}=await supabase.from("songs").select("*");
 
+  if(!data || data.length===0){
+    grid.innerHTML="<div style='opacity:.6'>No uploads yet</div>";
+    return;
+  }
+
+  data.forEach(song=>{
     const c=document.createElement("div");
     c.className="card";
 
     c.innerHTML=`
-      <div>${s.t}</div>
-      <button class="buy">Play 30s</button>
+      <img class="cover" src="${song.cover_url || ''}">
+      <div>${song.title || 'Untitled'}</div>
+      <button class="buy" onclick="play('${song.song_url}','${song.title}')">Play 30s</button>
     `;
 
-    c.onclick=()=>play(s.u,s.t);
     grid.appendChild(c);
   });
 }
 
 /* INIT */
 loadSongs();
-loadOld();
+loadUploads();
 
 </script>
 
