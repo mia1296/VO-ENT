@@ -1,88 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VO ENT — Welcome</title>
-  <meta name="description" content="VO ENT • Music, Merch, and Sign-Up" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VO ENT — Music & Merch</title>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N1J0WYNQ2Y"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-N1J0WYNQ2Y');
-  </script>
-  <!-- End Google Analytics -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{ --bg:#000; --muted:#c6c6c6; --text:#fff; --accent:#e50914; --border:rgba(255,255,255,.08) }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-    .container{width:min(1200px,92vw);margin-inline:auto}
-    header.nav{position:fixed; inset-inline:0; top:0; z-index:50;
-      backdrop-filter:saturate(140%) blur(10px); -webkit-backdrop-filter:saturate(140%) blur(10px);
-      background:linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.35) 70%, transparent);
-      border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav-inner{display:flex;align-items:center;justify-content:center;padding:8px 16px}
-    .brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.5px;font-size:15px}
-    .brand img{height:22px; filter:drop-shadow(0 0 15px rgba(255,255,255,.25))}
-    .hero{display:grid;place-items:center;text-align:center;min-height:92svh;padding:120px 16px 48px;
-      background: radial-gradient(1200px 520px at 50% -10%, rgba(229,9,20,.18), transparent 60%),
-                  radial-gradient(1000px 500px at 80% 20%, rgba(229,9,20,.12), transparent 60%),
-                  #000}
-    .logo{width:min(320px,70vw);height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.8))}
-    h1{font-size:clamp(28px,5vw,52px);margin:14px 0 8px}
-    p{color:var(--muted);margin:0 0 18px}
-    .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .btn{background:#111;border:1px solid var(--border);color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;font-size:15px}
-    .btn-primary{background:var(--accent);border-color:transparent}
-  </style>
+<style>
+body{
+  margin:0;
+  font-family:Inter,Arial;
+  background:#000;
+  color:#fff;
+}
+
+.container{width:min(1200px,92vw);margin:auto}
+
+header{
+  text-align:center;
+  padding:40px 20px;
+}
+
+h1{margin:0}
+
+.grid{
+  display:grid;
+  gap:16px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
+
+.card{
+  background:#0c0c0c;
+  border:1px solid #222;
+  padding:16px;
+  text-align:center;
+  border-radius:12px;
+}
+
+audio{width:100%}
+
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 16px;
+  background:#E50914;
+  color:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.preview{
+  color:#E50914;
+  font-size:12px;
+  margin:5px 0;
+}
+</style>
 </head>
+
 <body>
-  <header class="nav">
-    <div class="nav-inner container">
-      <div class="brand">
-        <img src="logo1small.png" alt="VO ENT logo" />
-        <span>VO&nbsp;ENT</span>
-      </div>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <img class="logo" src="logo3small.png" alt="VO ENT metallic logo" />
-      <h1>WELCOME TO VO ENT</h1>
-      <p>Music • Merch • Community</p>
-      <div class="btns">
-        <a class="btn btn-primary" href="home2.html">Enter Site</a>
-        <a class="btn" href="signup.html">Sign Up</a>
-      </div>
-    </div>
-  </section>
+<header>
+  <h1>VO ENT</h1>
+  <p>Music • Merch • Community</p>
 
-  <!-- Button Click Tracking -->
-  <script>
-    const enterBtn = document.querySelector('.btn-primary');
-    const signupBtn = document.querySelector('.btn:not(.btn-primary)');
+  <a class="btn" href="https://music.apple.com/us/artist/vito-gwuap/1504520516" target="_blank">Apple Music</a>
+</header>
 
-    enterBtn.addEventListener('click', () => {
-      gtag('event', 'click', {
-        'event_category': 'Button',
-        'event_label': 'Enter Site'
-      });
-    });
+<div class="container">
 
-    signupBtn.addEventListener('click', () => {
-      gtag('event', 'click', {
-        'event_category': 'Button',
-        'event_label': 'Sign Up'
-      });
-    });
-  </script>
+<h2 style="text-align:center">Music (PREVIEWS)</h2>
+
+<div class="grid">
+
+  <div class="card">
+    <div>No Coat</div>
+    <div class="preview">PREVIEW</div>
+    <audio controls><source src="no_coat.mp3?v=4"></audio>
+    <a class="btn" href="https://payhip.com/b/FNAEB">Buy Full Song</a>
+  </div>
+
+  <div class="card">
+    <div>Coupe in the Slums</div>
+    <div class="preview">PREVIEW</div>
+    <audio controls><source src="vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3?v=4"></audio>
+    <a class="btn" href="https://payhip.com/b/Jouvz">Buy Full Song</a>
+  </div>
+
+  <div class="card">
+    <div>Harder</div>
+    <div class="preview">PREVIEW</div>
+    <audio controls><source src="vito_gwuap_ft_kiing_charles-_harder.mp3?v=4"></audio>
+    <a class="btn" href="https://payhip.com/b/T2rRj">Buy Full Song</a>
+  </div>
+
+  <div class="card">
+    <div>Ohhhhhh</div>
+    <div class="preview">PREVIEW</div>
+    <audio controls><source src="veo_dinero-ohhhhhhhh.mp3?v=4"></audio>
+    <a class="btn" href="https://payhip.com/b/vb6q9">Buy Full Song</a>
+  </div>
+
+  <div class="card">
+    <div>Body</div>
+    <div class="preview">PREVIEW</div>
+    <audio controls><source src="focus_full.mp3?v=4"></audio>
+    <a class="btn" href="https://payhip.com/b/CmV5D">Buy Full Song</a>
+  </div>
+
+  <div class="card">
+    <div>Boss Up</div>
+    <div class="preview">PREVIEW</div>
+    <audio controls><source src="boss_up.mp3?v=4"></audio>
+    <a class="btn" href="https://payhip.com/b/3kfzP">Buy Full Song</a>
+  </div>
+
+  <div class="card">
+    <div>R8</div>
+    <div class="preview">PREVIEW</div>
+    <audio controls><source src="vito_r8.mp3?v=4"></audio>
+    <a class="btn" href="https://payhip.com/b/mSiYJ">Buy Full Song</a>
+  </div>
+
+</div>
+
+</div>
+
+<!-- ADMIN ACCESS BUTTON (hidden entry point) -->
+<div style="text-align:center;margin:40px">
+  <a href="javascript:void(0)" onclick="openAdmin()" style="color:#555;font-size:12px">Admin Access</a>
+</div>
+
+<script>
+function openAdmin(){
+  const pass = prompt("Enter Admin Password:");
+  if(pass === "voent123"){
+    window.location.href = "admin.html";
+  } else {
+    alert("Wrong password");
+  }
+}
+</script>
+
 </body>
 </html>
