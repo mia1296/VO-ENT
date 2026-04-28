@@ -5,99 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VO ENT — Admin</title>
 
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-
-const supabase = createClient(
-  "https://dlssxyetewziingcwajz.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs"
-);
-
-// 🔐 LOGIN
-window.login = function () {
-  const pass = document.getElementById("pass").value;
-
-  if (pass === "voent123") {
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("panel").style.display = "block";
-  } else {
-    alert("Wrong password");
-  }
-};
-
-// 🚀 UPLOAD SONG
-window.uploadSong = async function () {
-  const title = document.getElementById("title").value;
-  const audio = document.getElementById("audio").files[0];
-  const cover = document.getElementById("cover").files[0];
-  const status = document.getElementById("status");
-
-  if (!title || !audio || !cover) {
-    status.innerText = "Fill all fields ❌";
-    return;
-  }
-
-  status.innerText = "Uploading... ⏳";
-
-  try {
-    const audioPath = `songs/${Date.now()}-${audio.name}`;
-    const coverPath = `covers/${Date.now()}-${cover.name}`;
-
-    // 🎧 Upload audio
-    const { error: audioError } = await supabase.storage
-      .from("songs")
-      .upload(audioPath, audio);
-
-    if (audioError) {
-      console.error(audioError);
-      status.innerText = "Audio upload failed ❌";
-      return;
-    }
-
-    // 🖼 Upload cover
-    const { error: coverError } = await supabase.storage
-      .from("covers")
-      .upload(coverPath, cover);
-
-    if (coverError) {
-      console.error(coverError);
-      status.innerText = "Cover upload failed ❌";
-      return;
-    }
-
-    const audioUrl = supabase.storage
-      .from("songs")
-      .getPublicUrl(audioPath).data.publicUrl;
-
-    const coverUrl = supabase.storage
-      .from("covers")
-      .getPublicUrl(coverPath).data.publicUrl;
-
-    // 💾 Insert into database
-    const { error: dbError } = await supabase.from("songs").insert([
-      {
-        title,
-        song_url: audioUrl,
-        cover_url: coverUrl,
-        created_at: new Date().toISOString()
-      }
-    ]);
-
-    if (dbError) {
-      console.error(dbError);
-      status.innerText = "Database insert failed ❌";
-      return;
-    }
-
-    status.innerText = "Upload successful 🔥";
-
-  } catch (err) {
-    console.error(err);
-    status.innerText = "Unexpected error ❌";
-  }
-};
-</script>
-
 <style>
 body{
   margin:0;
@@ -110,12 +17,11 @@ body{
   height:100vh;
 }
 
-/* login box */
 .box{
   background:#111;
   border:1px solid #222;
   padding:20px;
-  width:300px;
+  width:320px;
   text-align:center;
 }
 
@@ -138,34 +44,88 @@ button{
   cursor:pointer;
 }
 
-#panel{
-  display:none;
-  width:320px;
-}
-
-h2{
-  text-align:center;
-  margin-bottom:10px;
-}
+#panel{display:none}
 </style>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabase = createClient(
+  "https://dlssxyetewziingcwajz.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs"
+);
+
+window.login = function () {
+  const pass = document.getElementById("pass").value;
+
+  if (pass === "voent123") {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("panel").style.display = "block";
+  } else {
+    alert("Wrong password");
+  }
+};
+
+window.uploadSong = async function () {
+
+  const title = document.getElementById("title").value;
+  const audio = document.getElementById("audio").files[0];
+  const status = document.getElementById("status");
+
+  if (!audio) {
+    status.innerText = "Select a file ❌";
+    return;
+  }
+
+  status.innerText = "Uploading... ⏳";
+
+  const filePath = `songs/${Date.now()}-${audio.name}`;
+
+  const { error: uploadError } = await supabase.storage
+    .from("songs")
+    .upload(filePath, audio);
+
+  if (uploadError) {
+    status.innerText = uploadError.message;
+    return;
+  }
+
+  const song_url = supabase.storage
+    .from("songs")
+    .getPublicUrl(filePath).data.publicUrl;
+
+  const { error: dbError } = await supabase.from("songs").insert([
+    {
+      title: title || audio.name,
+      song_url,
+      cover_url: "https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/covers/logo1small.png",
+      created_at: new Date().toISOString()
+    }
+  ]);
+
+  if (dbError) {
+    status.innerText = dbError.message;
+    return;
+  }
+
+  status.innerText = "Upload successful 🔥";
+};
+</script>
 </head>
 
 <body>
 
-<!-- 🔐 LOGIN -->
 <div id="loginBox" class="box">
   <h2>VO ENT ADMIN</h2>
-  <input id="pass" type="password" placeholder="Enter password">
+  <input id="pass" type="password" placeholder="Password">
   <button onclick="login()">Login</button>
 </div>
 
-<!-- 🎧 UPLOAD PANEL -->
 <div id="panel" class="box">
   <h2>Upload Song</h2>
 
-  <input id="title" placeholder="Song Title">
+  <input id="title" placeholder="Song Title (optional)">
   <input id="audio" type="file" accept="audio/*">
-  <input id="cover" type="file" accept="image/*">
 
   <button onclick="uploadSong()">Upload</button>
 
