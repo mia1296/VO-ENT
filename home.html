@@ -199,7 +199,7 @@ function toggleAdmin(){
   }
 }
 
-/* ✅ ONLY CHANGE IS HERE */
+/* ONLY CHANGE: LINKS UPDATED */
 async function loadSongs(){
 
   const { data } = await supabase
@@ -211,12 +211,12 @@ async function loadSongs(){
   grid.innerHTML = "";
 
   const links = {
-    "Focus": "#",
-    "No Coat": "https://payhip.com/b/FNAEB",
-    "Ohhhhhhhh": "https://payhip.com/b/vb6q9",
-    "Harder (ft Kiing Charles)": "https://payhip.com/b/T2rRj",
-    "Coupe in the Slums": "https://payhip.com/b/Jouvz",
-    "Vito R8": "https://payhip.com/b/mSiYJ"
+    "Vito Gwuap - Coupe in the slums ft. Veo Dinero & Kiing Charles": "https://payhip.com/b/Jouvz",
+    "Veo Dinero- Ohhhhhhhh": "https://payhip.com/b/vb6q9",
+    "Vito Gwuap- Boss up (Classy)": "https://payhip.com/b/3kfzP",
+    "Vito Gwuap- Harder ft. Kiing Charles": "https://payhip.com/b/T2rRj",
+    "Vito Gwuap- R8": "https://payhip.com/b/mSiYJ",
+    "Vito Gwuap- No Coat": "https://payhip.com/b/FNAEB"
   };
 
   data.forEach(s=>{
@@ -256,4 +256,3 @@ window.toggleAdmin = toggleAdmin;
 
 </body>
 </html>
-
