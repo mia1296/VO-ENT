@@ -1,3 +1,5 @@
+ADMIN
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -190,7 +192,6 @@ function togglePlay(){
   else audio.pause();
 }
 
-/* FIX 1: ADMIN SAFE EXPORT */
 function toggleAdmin(){
   const pass = prompt("Enter Admin Password:");
   if(pass==="voent123"){
@@ -200,6 +201,7 @@ function toggleAdmin(){
   }
 }
 
+/* ✅ ONLY CHANGE IS HERE */
 async function loadSongs(){
 
   const { data } = await supabase
@@ -210,25 +212,34 @@ async function loadSongs(){
   const grid = document.getElementById("songs");
   grid.innerHTML = "";
 
+  const links = {
+    "Focus": "#",
+    "No Coat": "https://payhip.com/b/FNAEB",
+    "Ohhhhhhhh": "https://payhip.com/b/vb6q9",
+    "Harder (ft Kiing Charles)": "https://payhip.com/b/T2rRj",
+    "Coupe in the Slums": "https://payhip.com/b/Jouvz",
+    "Vito R8": "https://payhip.com/b/mSiYJ"
+  };
+
   data.forEach(s=>{
     const c=document.createElement("div");
     c.className="card";
+
+    const link = links[s.title];
 
     c.innerHTML=`
       <img class="cover" src="${s.cover_url}">
       <div>${s.title}</div>
 
       <button class="buy playBtn">Play 30s</button>
-
-      <!-- FIX 2: REAL PAYHIP LINK -->
       <button class="buy buyBtn">Buy Full Song</button>
     `;
 
     c.querySelector(".playBtn").onclick = () => play(s.song_url, s.title);
 
     c.querySelector(".buyBtn").onclick = () => {
-      if(s.p){
-        window.open(s.p, "_blank");
+      if(link && link !== "#"){
+        window.open(link, "_blank");
       } else {
         alert("No purchase link available");
       }
@@ -240,7 +251,6 @@ async function loadSongs(){
 
 loadSongs();
 
-/* MAKE FUNCTION GLOBAL (fix admin scope issues if reused later) */
 window.togglePlay = togglePlay;
 window.toggleAdmin = toggleAdmin;
 
@@ -248,3 +258,4 @@ window.toggleAdmin = toggleAdmin;
 
 </body>
 </html>
+
