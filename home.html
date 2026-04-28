@@ -199,7 +199,7 @@ function toggleAdmin(){
   }
 }
 
-/* ONLY CHANGE: LINKS UPDATED */
+/* FULLY UPDATED: SUPABASE-DRIVEN */
 async function loadSongs(){
 
   const { data } = await supabase
@@ -210,20 +210,9 @@ async function loadSongs(){
   const grid = document.getElementById("songs");
   grid.innerHTML = "";
 
-  const links = {
-    "Vito Gwuap - Coupe in the slums ft. Veo Dinero & Kiing Charles": "https://payhip.com/b/Jouvz",
-    "Veo Dinero- Ohhhhhhhh": "https://payhip.com/b/vb6q9",
-    "Vito Gwuap- Boss up (Classy)": "https://payhip.com/b/3kfzP",
-    "Vito Gwuap- Harder ft. Kiing Charles": "https://payhip.com/b/T2rRj",
-    "Vito Gwuap- R8": "https://payhip.com/b/mSiYJ",
-    "Vito Gwuap- No Coat": "https://payhip.com/b/FNAEB"
-  };
-
   data.forEach(s=>{
     const c=document.createElement("div");
     c.className="card";
-
-    const link = links[s.title];
 
     c.innerHTML=`
       <img class="cover" src="${s.cover_url}">
@@ -236,8 +225,8 @@ async function loadSongs(){
     c.querySelector(".playBtn").onclick = () => play(s.song_url, s.title);
 
     c.querySelector(".buyBtn").onclick = () => {
-      if(link && link !== "#"){
-        window.open(link, "_blank");
+      if(s.buy_link){
+        window.open(s.buy_link, "_blank");
       } else {
         alert("No purchase link available");
       }
