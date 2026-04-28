@@ -25,12 +25,6 @@ body{
     radial-gradient(circle at 20% 20%, rgba(229,9,20,.35), transparent 45%),
     radial-gradient(circle at 80% 30%, rgba(229,9,20,.15), transparent 55%),
     radial-gradient(circle at 50% 80%, rgba(255,255,255,.06), transparent 60%);
-  animation:float 12s ease-in-out infinite alternate;
-}
-
-@keyframes float{
-  from{transform:scale(1)}
-  to{transform:scale(1.12)}
 }
 
 /* HEADER */
@@ -78,12 +72,6 @@ h1{
   border-radius:12px;
   text-align:center;
   border:1px solid #222;
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:#E50914;
 }
 
 .cover{
@@ -106,7 +94,7 @@ h1{
   font-size:12px;
 }
 
-/* MERCH INPUTS */
+/* MERCH */
 select,input{
   width:100%;
   padding:6px;
@@ -143,7 +131,6 @@ select,input{
 
 <header>
   <h1>VO ENT</h1>
-  <div class="sub">Music • Merch • Motion</div>
 
   <div class="nav">
     <a href="https://music.apple.com/us/artist/vito-gwuap/1504520516">Apple</a>
@@ -163,20 +150,16 @@ select,input{
   <div class="card">
     <img class="cover" src="whitehoodiesmall.jpeg">
     <h3>White Hoodie</h3>
-    <select id="size1">
-      <option>S</option><option>M</option><option>L</option><option>XL</option>
-    </select>
-    <input id="qty1" type="number" min="1" value="1">
+    <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+    <input type="number" value="1">
     <button class="buy" onclick="window.open('https://payhip.com/b/I6lbt','_blank')">Buy Now</button>
   </div>
 
   <div class="card">
     <img class="cover" src="blackhoodiesmall.jpeg">
     <h3>Black Hoodie</h3>
-    <select id="size2">
-      <option>S</option><option>M</option><option>L</option><option>XL</option>
-    </select>
-    <input id="qty2" type="number" min="1" value="1">
+    <select><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+    <input type="number" value="1">
     <button class="buy" onclick="window.open('https://payhip.com/b/hTA0a','_blank')">Buy Now</button>
   </div>
 
@@ -184,115 +167,74 @@ select,input{
 
 <div class="playerBar">
   <div id="now">Not Playing</div>
-  <button class="buy" onclick="togglePlay()" style="width:auto;padding:5px 8px;">Play/Pause</button>
+  <button class="buy" onclick="togglePlay()" style="width:auto">Play/Pause</button>
 </div>
 
 <audio id="audio"></audio>
 
-<script>
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-const audio=document.getElementById("audio");
+const supabase = createClient(
+  "https://dlssxyetewziingcwajz.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsc3N4eWV0ZXd6aWluZ2N3YWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNDkwNDksImV4cCI6MjA5MjgyNTA0OX0.obaAo-n8-OTAWXFr6motzeOSLDqEHbqV6x6TL8b1wMs"
+);
 
-/* PLAY FUNCTION */
+const audio = document.getElementById("audio");
+
 function play(url,title){
-  document.getElementById("now").innerText=title;
-  audio.src=url;
-  audio.currentTime=0;
+  document.getElementById("now").innerText = title;
+  audio.src = url;
+  audio.currentTime = 0;
   audio.play();
   setTimeout(()=>audio.pause(),30000);
 }
 
-function togglePlay(){
+window.togglePlay = function(){
   if(audio.paused) audio.play();
   else audio.pause();
-}
+};
 
-/* ADMIN (SINGLE SAFE LOGIN) */
-function toggleAdmin(){
-  const pass=prompt("Enter Admin Password:");
+window.toggleAdmin = function(){
+  const pass = prompt("Enter Admin Password:");
   if(pass==="voent123"){
     window.location.href="admin.html";
   } else {
     alert("Access denied");
   }
-}
+};
 
-/* ALL SONGS RESTORED */
-function loadSongs(){
+/* 🔥 AUTO SYNC (ONLY REPLACEMENT OF PLACEHOLDERS) */
+async function loadSongs(){
 
-const songs=[
-{
-t:"Focus",
-c:"logo1small.png",
-u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/focus_full.mp3",
-p:"#"
-},
-{
-t:"No Coat ft Kiing Charles",
-c:"logo1small.png",
-u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/no_coat.mp3",
-p:"https://payhip.com/b/FNAEB"
-},
-{
-t:"Ohhhhhh",
-c:"logo1small.png",
-u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/veo_dinero-ohhhhhhhh.mp3",
-p:"https://payhip.com/b/vb6q9"
-},
-{
-t:"Harder ft Kiing Charles",
-c:"logo1small.png",
-u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_kiing_charles-_harder.mp3",
-p:"https://payhip.com/b/T2rRj"
-},
-{
-t:"Coupe in the Slums",
-c:"logo1small.png",
-u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_gwuap_ft_veo_dinero_kiing_charles-_coupe_in_the_slums_.mp3",
-p:"https://payhip.com/b/Jouvz"
-},
-{
-t:"Body",
-c:"logo1small.png",
-u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/focus_full.mp3",
-p:"https://payhip.com/b/CmV5D"
-},
-{
-t:"Boss Up (classy)",
-c:"logo3small.png",
-u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/boss_up.mp3",
-p:"https://payhip.com/b/3kfzP"
-},
-{
-t:"R8",
-c:"logo3small.png",
-u:"https://dlssxyetewziingcwajz.supabase.co/storage/v1/object/public/songs/vito_r8.mp3",
-p:"https://payhip.com/b/mSiYJ"
-}
-];
+  const { data } = await supabase
+    .from("songs")
+    .select("*")
+    .order("created_at",{ascending:false});
 
-const grid=document.getElementById("songs");
+  const grid = document.getElementById("songs");
+  grid.innerHTML = "";
 
-songs.forEach(s=>{
-const c=document.createElement("div");
-c.className="card";
+  data.forEach(s=>{
 
-c.innerHTML=`
-<img class="cover" src="${s.c}">
-<div>${s.t}</div>
+    const c=document.createElement("div");
+    c.className="card";
 
-<button class="buy playBtn">Play 30s</button>
-<button class="buy" onclick="window.open('${s.p}','_blank')">Buy Full Song</button>
-`;
+    c.innerHTML=`
+      <img class="cover" src="${s.cover_url}">
+      <div>${s.title}</div>
 
-c.querySelector(".playBtn").onclick=()=>play(s.u,s.t);
+      <button class="buy playBtn">Play 30s</button>
+      <button class="buy" onclick="window.open('#','_blank')">Buy Full Song</button>
+    `;
 
-grid.appendChild(c);
-});
+    c.querySelector(".playBtn").onclick=()=>play(s.song_url,s.title);
+
+    grid.appendChild(c);
+  });
 }
 
 loadSongs();
-
 </script>
 
 </body>
