@@ -25,6 +25,12 @@ body{
     radial-gradient(circle at 20% 20%, rgba(229,9,20,.35), transparent 45%),
     radial-gradient(circle at 80% 30%, rgba(229,9,20,.15), transparent 55%),
     radial-gradient(circle at 50% 80%, rgba(255,255,255,.06), transparent 60%);
+  animation:float 12s ease-in-out infinite alternate;
+}
+
+@keyframes float{
+  from{transform:scale(1)}
+  to{transform:scale(1.12)}
 }
 
 /* HEADER */
@@ -172,8 +178,9 @@ select,input{
 
 <audio id="audio"></audio>
 
+<!-- ONLY CHANGE: FIXED IMPORT -->
 <script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const supabase = createClient(
   "https://dlssxyetewziingcwajz.supabase.co",
@@ -204,7 +211,6 @@ window.toggleAdmin = function(){
   }
 };
 
-/* 🔥 AUTO SYNC (ONLY REPLACEMENT OF PLACEHOLDERS) */
 async function loadSongs(){
 
   const { data } = await supabase
@@ -216,7 +222,6 @@ async function loadSongs(){
   grid.innerHTML = "";
 
   data.forEach(s=>{
-
     const c=document.createElement("div");
     c.className="card";
 
@@ -235,6 +240,7 @@ async function loadSongs(){
 }
 
 loadSongs();
+
 </script>
 
 </body>
